@@ -1,7 +1,67 @@
-<h1>Jetzt kostenlosen Akkount erstellen</h1>
+  <h1 class="col-sm-offset-2">Jetzt kostenlosen Akkount erstellen</h1>
+  <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+    <div class="form-group col-sm-offset-2">
+      <label for="name" class="col-sm-2 control-label">Betriebsname</label>
+      <div class="col-sm-6">
+        <%= f.text_field :name, class: "form-control", placeholder: "Name des Betriebes"%>
+      </div>
+    </div>
+    <div class="form-group col-sm-offset-2">
+      <label for="inhaber" class="col-sm-2 control-label">Geschäftsführer</label>
+      <div class="col-sm-6">
+        <%= f.text_field :inhaber, class: "form-control", placeholder: "Geschäftsführer"%>
+      </div>
+    </div>  
+    <div class="form-group col-sm-offset-2">
+      <label for="email" class="col-sm-2 control-label">Email Adresse</label>
+      <div class="col-sm-6">
+        <%= f.email_field :email, class: "form-control", placeholder: "info@beispiel.de"%>
+      </div>
+    </div>  
+    <div class="form-group col-sm-offset-2">
+      <label for="url" class="col-sm-2 control-label">Webseite</label>
+      <div class="input-group col-sm-6">
+        <span class="input-group-addon" id="basic-addon3">http://</span><%= f.text_field :url, class: "form-control", placeholder: "www.beispielseite.de", aria_describedby: "basic-addon3" %>
+      </div>
+    </div>
+    <div class="form-group col-sm-offset-2">
+      <label for="telefon" class="col-sm-2 control-label">Telefon Nummer</label>
+      <div class="col-sm-6">
+        <%= f.phone_field :telefon, class: "form-control", placeholder: "0123456789"%>
+      </div>      
+    </div> 
+    <div class="form-group col-sm-offset-2">
+      <label for="adresse" class="col-sm-2 control-label">Straße, Hausnummer</label>
+      <div class="col-sm-6">
+        <%= f.phone_field :adresse, class: "form-control", placeholder: "Hauptstraße 1"%>
+      </div>      
+    </div> 
+    <div class="form-group col-sm-offset-2">
+      <label for="plz" class="col-sm-2 control-label">PLZ, Ort</label>
+      <div class="col-sm-2">
+        <%= f.text_field :plz, class: "form-control", placeholder: "67275"%>
+      </div>      
+      <div class="col-sm-4">
+        <%= f.text_field :stadt, class: "form-control", placeholder: "Ettlingen"%>
+      </div> 
+    </div>   
+    <div class="form-group col-sm-offset-2">
+      <label for="adresse" class="col-sm-2 control-label">Neues Passwort</label>
+      <div class="col-sm-6">
+        <%= f.password_field :password, class: "form-control" %>
+      </div>      
+    </div> 
+    <div class="form-group">
+      <div class="checkbox col-sm-offset-2">
+        <label>
+          <input type="checkbox"> <%= link_to "AGB's", "#" %> akzeptieren
+        </label>
+      </div>
+    </div>
+    <div class="form-group col-sm-offset-2">
+      <div class="col-sm-offset-2 col-sm-6">
+        <button type="submit" class="btn btn-default">Sign in</button>
+      </div>
+    </div>
+  <% end %>
 
-<%= form_for @user do |f| %>
-
-
-
-<% end %>
