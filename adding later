@@ -18,3 +18,5 @@ Addition to User
       t.boolean :l2
       ...
       
+              = f.select :industry_id,                                                                   |
+          options_for_select(Industry.all.map{|i| [i.name, i.id]}, selected: f.object.industry_id)

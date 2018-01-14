@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   has_secure_password  
   #has_many :comments
-  #has_many :fields
+  has_and_belongs_to_many :fields
+  has_many :services
   before_save { self.email = email.downcase }
   
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 3, maximum: 25 }  

@@ -1,0 +1,12 @@
+<%= if @partners.any? do %>
+  <label>Gruppen (<%= @partners.count %></label>
+<% end %>
+<% for @partners.each do |p| %>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      Gruppe um <%= p.users.first.name => (<%= p.users.count %>)
+    </div>  
+    <div class="panel-body">
+    </div>
+  </div>
+<% end %>

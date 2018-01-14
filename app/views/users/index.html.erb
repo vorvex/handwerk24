@@ -1,0 +1,58 @@
+<%= render 'shared/messages' %>
+<div class ="col-md-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Nutzer <%= link_to "Neues Konto eröffnen", signup_path, class: "pull-right" %></h3>
+    </div>
+      <table class="table table-hover">
+        <thead>
+          <th>#</th>
+          <th>Betriebsname</th>
+          <th>Branche</th>
+          <th>Inhaber</th>
+          <th>Email-Adresse</th>
+          <th>Domain</th>
+          <th>Telefon</th>
+          <th>Adresse</th>
+        </thead>
+        <tbody>
+          <% @users.each do |t| %>
+            <tr>
+              <th><%= t.id %></th>
+              <td><%= t.name %></td>
+              <td>
+                <%= Field.find("#{t.field_id}").name if t.field_id != 0 %>
+              </td>
+              <td><%= t.inhaber %></td>
+              <td><%= t.email %></td>
+              <td><%= link_to "#{t.url}", "http://#{t.url}" %></td>
+              <td><%= t.telefon %></td>
+              <td><%= t.adresse %>, <%= t.plz %> <%= t.stadt %></td>
+            </tr>
+          <% end %>
+        </tbody>  
+      </table>
+  </div>
+  
+<div class="col-md-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Branchen <%= link_to "Neue Branche", "#", class: "pull-right" %></h3>
+    </div>
+    <table class="table table-hover">
+      <thead>
+        <th>#</th>
+        <th>Branche</th>
+      </thead>
+      <tbody>
+        <% @fields.each do |t| %>
+          <tr>
+            <th><%= t.id %></th>
+            <td><%= t.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
