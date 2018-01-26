@@ -1,0 +1,21 @@
+<h1>Leistung bearbeiten</h1>
+<%= form_for(@service, :html => {class: "form", role: "form"}) do |f| %>
+ <div class="form-group">
+   <div class="control-label">
+    <%= f.label :name %>           
+   </div>
+    <%= f.text_field :name, class: "form-control", placeholder: "Branche", autofocus: true %>
+ </div>  
+ <div class="form-group">
+   <div class="control-label">
+    <%= f.label :category %>           
+   </div>
+    <%= f.radio_button :category, 'Gartenarbeit', :checked => true %> Gartenarbeit
+    <%= f.radio_button :category, "Außen am Haus", :checked => true %> Außen am Haus
+    <%= f.radio_button :category, "Haus & Wohnung", :checked => true %> Haus & Wohnung
+    <%= f.radio_button :category, "Haus & Wohnung", :checked => true %> Bodenbeläge
+ </div> 
+ <div class="form-group">
+     <%= f.submit class: 'btn btn-primary' %>
+</div>
+<% end %> 

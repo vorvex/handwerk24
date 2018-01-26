@@ -3,6 +3,12 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   post 'users', to: 'users#create'
   get 'users/:username', to: 'users#page'
-  get 'users', to: 'users#index'
-  get 'amdin', to: 'admin#index'
+  get 'dashboard', to: 'users#index'
+  get 'dashboard/edit',  to: 'users#edit'
+  post 'dashboard/edit', to: 'users#update'
+  get 'admin', to: 'admin#index'
+  
+  resources :services
+  
+  resources :fields
 end

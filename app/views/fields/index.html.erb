@@ -1,0 +1,36 @@
+<div class="panel panel-default">
+  <div class="panel-heading"><h3 class="panel-title">Liste der Branchen</h3></div>
+  <div class="panel-body">
+    <table class="table table-hover">
+      <thead>
+        <th>ID</th>
+        <th>Branche</th> 
+        <th>Change</th>
+      </thead>
+       <% @fields.each do |f| %>
+         <tbody>
+          <td><%= f.id %></td>
+          <td><%= f.name %></td> 
+          <td><%= link_to 'Bearbeiten', edit_field_path(f) %> 
+              <%= link_to 'Löschen', field_path(f), method: :delete, data: {confirm: "Sicher?"} %></td> 
+        </tbody>
+      <% end %>
+    </table>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading"><h3 class="panel-title">Neue Branche erstellen</h3></div>
+  <div class="panel-body">
+    <%= form_for(@field, :html => {class: "form", role: "form"}, url: fields_url) do |f| %>
+     <div class="form-group">
+       <div class="control-label">
+        <%= f.label :name %>           
+       </div>
+        <%= f.text_field :name, class: "form-control", placeholder: "Branche", autofocus: true %>
+     </div>  
+     <div class="form-group">
+         <%= f.submit class: 'btn btn-primary' %>
+    </div>
+    <% end %> 
+  </div>
+</div>
