@@ -33,11 +33,11 @@
         </tbody>  
       </table>
   </div>
-  
+</div>  
 <div class="col-md-4">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">Branchen <%= link_to "Neue Branche", "#", class: "pull-right" %></h3>
+      <h3 class="panel-title">Branchen <%= link_to "Neue Branche", fields_path, class: "pull-right" %></h3>
     </div>
     <table class="table table-hover">
       <thead>
@@ -55,4 +55,26 @@
     </table>
   </div>
 </div>
-
+<div class="col-md-8">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Leistungen <%= link_to "Neue Leistung", services_path, class: "pull-right" %></h3>
+    </div>
+    <table class="table table-hover">
+      <thead>
+        <th>#</th>
+        <th>Branche</th>
+        <th>Kategorie</th>
+      </thead>
+      <tbody>
+        <% @services.each do |t| %>
+          <tr>
+            <th><%= t.id %></th>
+            <td><%= t.name %></td>
+            <td><%= t.category %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
