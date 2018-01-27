@@ -4,6 +4,8 @@ class UsersController < ApplicationController
     @users = User.all
     @fields = Field.all
     @services = Service.order(:category)
+    @field = Field.new
+    @service = Service.new
   end
   
   def new
