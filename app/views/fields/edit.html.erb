@@ -1,3 +1,5 @@
+<%= render 'shared/messages' %>
+<%= render 'shared/errors', obj: @field %>
 <h1>Edit Branche</h1>
 <%= form_for(@field, :html => {class: "form", role: "form"}) do |f| %>
  <div class="form-group">

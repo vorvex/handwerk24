@@ -1,3 +1,5 @@
+<%= render 'shared/messages' %>
+<%= render 'shared/errors', obj: @service %>
 <h1>Leistung bearbeiten</h1>
 <%= form_for(@service, :html => {class: "form", role: "form"}) do |f| %>
  <div class="form-group">

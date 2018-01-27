@@ -1,0 +1,158 @@
+<%= render 'shared/messages' %>
+<%= render 'shared/errors', obj: @service %>
+<%= render 'shared/errors', obj: @field %>
+<%= render 'shared/errors', obj: @admin %>
+<div class ="col-md-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Nutzer <%= link_to "Neues Konto eröffnen", signup_path, class: "pull-right" %></h3>
+    </div>
+      <table class="table table-hover">
+        <thead>
+          <th>#</th>
+          <th>Betriebsname</th>
+          <th>Branche</th>
+          <th>Inhaber</th>
+          <th>Email-Adresse</th>
+          <th>Domain</th>
+          <th>Telefon</th>
+          <th>Adresse</th>
+        </thead>
+        <tbody>
+          <% @users.each do |t| %>
+            <tr>
+              <th><%= t.id %></th>
+              <td><%= t.name %></td>
+              <td>
+                <%= Field.find("#{t.field_id}").name if t.field_id != 0 %>
+              </td>
+              <td><%= t.inhaber %></td>
+              <td><%= t.email %></td>
+              <td><%= link_to "#{t.url}", "http://#{t.url}" %></td>
+              <td><%= t.telefon %></td>
+              <td><%= t.adresse %>, <%= t.plz %> <%= t.stadt %></td>
+            </tr>
+          <% end %>
+        </tbody>  
+      </table>
+  </div>
+</div>  
+<div class="col-md-4 parnel">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= link_to "Branchen", fields_path %></h3>    
+    </div>
+    <table class="table table-hover">
+      <thead>
+        <th>#</th>
+        <th>Branche</th>
+      </thead>
+      <tbody>
+        <% @fields.each do |t| %>
+          <tr>
+            <th><%= t.id %></th>
+            <td><%= t.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="panel-body">
+      <%= form_for(@field, :html => {class: "form-inline", role: "form"}, url: fields_url) do |f| %>
+        <div class="form-group">
+          <%= f.text_field :name, class: "form-control", placeholder: "Neue Branche", autofocus: true %>
+        </div>
+        <div class="form-group">
+          <%= f.submit class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="col-md-8">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= link_to "Leistungen", services_path %></h3>
+    </div>
+    <table class="table table-hover">
+      <thead>
+        <th>#</th>
+        <th>Branche</th>
+        <th>Kategorie</th>
+      </thead>
+      <tbody>
+        <% @services.each do |t| %>
+          <tr>
+            <th><%= t.id %></th>
+            <td><%= t.name %></td>
+            <td><%= t.category %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="panel panel-default">
+  <div class="panel-heading"><h3 class="panel-title">Neue Leistung erstellen</h3></div>
+  <div class="panel-body">
+    <%= form_for(@service, :html => {class: "form", role: "form"}, url: services_url) do |f| %>
+      <div class="form-group">
+        <div class="control-label">
+          <%= f.label :name %>           
+        </div>
+        <%= f.text_field :name, class: "form-control", placeholder: "Leistung", autofocus: true %>
+      </div>  
+      <div class="form-group">
+        <div class="control-label">
+          <%= f.label :category %>           
+        </div>
+          <%= f.radio_button :category, 'Gartenarbeit', :checked => true %> Gartenarbeit
+          <%= f.radio_button :category, "Außen am Haus", :checked => true %> Außen am Haus
+          <%= f.radio_button :category, "Haus & Wohnung", :checked => true %> Haus & Wohnung
+          <%= f.radio_button :category, "Haus & Wohnung", :checked => true %> Bodenbeläge
+        </div>  
+     <div class="form-group">
+         <%= f.submit class: 'btn btn-primary' %>
+    </div>
+    <% end %> 
+  </div>
+</div>
+</div>
+<div class="col-md-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Partner</h3>
+    </div>
+    <div class="panel-body">
+      Panel content
+    </div>
+  </div>
+</div>
+<div class="col-md-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Kundenanfragen</h3>
+    </div>
+    <div class="panel-body">
+      Panel content
+    </div>
+  </div>
+</div>
+<div class="col-md-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Öffentliche Anfragen</h3>
+    </div>
+    <div class="panel-body">
+      Panel content
+    </div>
+  </div>
+</div>
+<div class="col-md-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Admin erstellen</h3>
+    </div>
+    <div class="panel-body">
+      <%= render 'admins/form' %>
+    </div>
+  </div>
+</div>

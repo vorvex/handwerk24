@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'users#index'
   get 'dashboard/edit',  to: 'users#edit'
   post 'dashboard/edit', to: 'users#update'
-  get 'admin', to: 'admin#index'
+  
+  get 'admin', to: 'admins#index'
+  get 'admin/new', to: 'admins#new'
+  post 'admin', to: 'admins#create'
+  
   
   resources :services
   

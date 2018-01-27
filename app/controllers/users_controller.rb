@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @services = Service.order(:category)
     @field = Field.new
     @service = Service.new
+    @admin = Admin.new
   end
   
   def new
