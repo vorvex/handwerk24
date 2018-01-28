@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get 'admin/new', to: 'admins#new'
   post 'admin', to: 'admins#create'
   
+  get 'admin/login', to: 'sessions#newadmin'
+  post 'admin/login', to: 'sessions#createadmin'
+  delete 'logout', to: 'sessions#destroyadmin'
   
   resources :services
   

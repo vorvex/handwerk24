@@ -1,12 +1,17 @@
 class AdminsController < ApplicationController
   
   def index
-    @users = User.all
-    @fields = Field.all
-    @services = Service.order(:category)
-    @field = Field.new
-    @service = Service.new
-    @admin = Admin.new
+    if logged_in_admin?       
+      @users = User.all
+      @fields = Field.all
+      @services = Service.order(:category)
+      @field = Field.new
+      @service = Service.new
+      @admin = Admin.new
+    else
+      flash[:warning] = "Bitte Anmelden"
+      redirect_to admin_login_path
+    end
   end
   
   def new
@@ -17,17 +22,18 @@ class AdminsController < ApplicationController
     @admin = Admin.new(admin_params)
     if @admin.save
       flash[:success] = "Ihr Akkount wurde erfolgreich erstellt"
-      redirect_to admins_path
+      redirect_to admin_path
     else
-      render 'new'
+      render 'root'
     end  
   end
+  
 private
     def set_admin
       @admin = Admin.find(params[:id])
     end
     def admin_params
-      params.require(:user).permit(:email, :password)
+      params.require(:admin).permit(:email, :password)
     end
   
   
