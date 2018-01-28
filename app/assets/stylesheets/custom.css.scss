@@ -1,6 +1,15 @@
   @import "bootstrap-sprockets";
   @import "bootstrap";
 
+body { 
+  padding-top: 70px; 
+}
+
 .parnel {
   height: 100%;
+}
+
+.logo {
+  height: 20px;
+  
 }
