@@ -6,16 +6,22 @@ Rails.application.routes.draw do
   post 'users', to: 'users#create'
   get 'users/:username', to: 'users#page'
   get 'dashboard', to: 'users#index'
-  get 'dashboard/edit',  to: 'users#edit'
-  post 'dashboard/edit', to: 'users#update'
+
   
   get 'admin', to: 'admins#index'
   get 'admin/new', to: 'admins#new'
   post 'admin', to: 'admins#create'
   
+  get 'users/:id/edit', to: 'users#edit'
+  post 'users/:id/edit', to: 'users#update'
+  
   get 'admin/login', to: 'sessions#newadmin'
   post 'admin/login', to: 'sessions#createadmin'
-  delete 'logout', to: 'sessions#destroyadmin'
+  delete 'logoutadmin', to: 'sessions#destroyadmin'
+  
+  get 'login', to: 'sessions#newuser'
+  post 'login', to: 'sessions#createuser'
+  delete 'logout', to: 'sessions#destroyuser'
   
   resources :services
   

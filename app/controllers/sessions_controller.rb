@@ -23,4 +23,27 @@ class SessionsController < ApplicationController
     redirect_to admin_login_path
   end
   
+  #User Sessions
+  def newuser
+    @user = User.new
+  end
+  
+  def createuser
+    user = User.find_by(email: params[:session][:email].downcase)
+    if user && user.authenticate(params[:session][:password])    
+      session[:user_id] = user.id
+      flash[:success] = "Sie wurden erfolgreich angemeldet"
+      redirect_to dashboard_path
+    else
+      flash.now[:danger] = "Email-Adresse und/oder Password stimmen nicht überein"
+      render 'newuser'
+    end
+  end
+  
+  def destroyuser
+    session[:user_id] = nil
+    flash[:success] = "Sie sind erfolgreich abgemeldet bis zum nächsten Mal"
+    redirect_to user_login_path
+  end
+  
 end

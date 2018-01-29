@@ -1,4 +1,6 @@
-<%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+<%= render 'shared/header' %>
+<div class ="col-md-12">
+   <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
   <div>
     <div class="form-group">
       <label class="control-label">Name Ihres Betriebs</label>
@@ -52,3 +54,4 @@
     </div>
   </div>
 <% end %>
+</div>

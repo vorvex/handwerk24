@@ -1,16 +1,26 @@
 class UsersController < ApplicationController 
-  
+  before_action :set_user, only: [:update, :destroy]
+    
   def index
-    @users = User.all
-    @fields = Field.all
-    @services = Service.order(:category)
-    @field = Field.new
-    @service = Service.new
-    @admin = Admin.new
+    if logged_in_user?
+      @users = User.all
+      @fields = Field.all
+      @services = Service.order(:category)
+      @field = Field.new
+      @service = Service.new
+      @admin = Admin.new
+    else
+      flash[:warning] = "Sie können diesen Bereich nur als Partner einsehen"
+      redirect_to login_path
+    end
   end
   
   def new
     @user = User.new
+  end
+  
+  def edit
+    @user = User.find(params[:id])
   end
   
   def create
@@ -25,8 +35,20 @@ class UsersController < ApplicationController
      
   end
   
+  def update
+    if @user.update(user_params)
+      flash[:success] = "Betrieb wurde erfolgreich aktualisiert"
+      redirect_to(:back)
+    else
+      render 'edit'
+    end
+  end
+  
   def page
     set_user
+  end
+  
+  def destroy
   end
   
   private
