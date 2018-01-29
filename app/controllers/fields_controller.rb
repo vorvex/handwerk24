@@ -1,5 +1,6 @@
 class FieldsController < ApplicationController
   before_action :set_field, only: [:edit, :show, :update, :destroy]
+  before_action :require_admin 
   
   def index
     @fields = Field.all
@@ -17,7 +18,7 @@ class FieldsController < ApplicationController
     @field = Field.new(field_params)
     if @field.save
       flash[:success] = "Branche wurde erfolgreich erstellt"
-      redirect_to fields_url
+      redirect_to admin_path
     else
       render 'new'
     end
@@ -26,7 +27,7 @@ class FieldsController < ApplicationController
   def update 
   if @field.update(field_params)
     flash[:success] = "Branche wurde erfolgreich aktualisiert"
-    redirect_to fields_url
+    redirect_to admin_path
   else
     render 'edit'
   end
@@ -35,7 +36,7 @@ class FieldsController < ApplicationController
  def destroy
     @field.destroy
     flash[:success] = "Branche wurde erfolgreich gelöscht"
-    redirect_to fields_url
+    redirect_to admin_path
  end
   
   def show
@@ -48,4 +49,11 @@ class FieldsController < ApplicationController
     def field_params
       params.require(:field).permit(:name)
     end      
+  
+    def require_admin
+      if !current_admin
+        flash[:danger] = "Nur Administratoren können diese Funktion ausführen"
+        redirect_to root_path
+      end
+    end
 end

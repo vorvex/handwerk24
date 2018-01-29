@@ -1,5 +1,6 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:edit, :show, :update, :destroy]
+  before_action :require_admin
   
   def index
     @services = Service.order(:category)
@@ -18,7 +19,7 @@ class ServicesController < ApplicationController
     @service = Service.new(service_params)
     if @service.save
       flash[:success] = "Leistung wurde erfolgreich erstellt"
-      redirect_to services_url
+      redirect_to admin_path
     else
       render 'index'
     end
@@ -27,7 +28,7 @@ class ServicesController < ApplicationController
   def update 
   if @service.update(service_params)
     flash[:success] = "Leistung wurde erfolgreich aktualisiert"
-    redirect_to services_url
+    redirect_to admin_path
   else
     render 'edit'
   end
@@ -36,7 +37,7 @@ class ServicesController < ApplicationController
  def destroy
       @service.destroy
       flash[:success] = "Leistung wurde erfolgreich gelöscht"
-      redirect_to services_url
+      redirect_to admin_path
   end
   
   private
@@ -45,5 +46,11 @@ class ServicesController < ApplicationController
     end
     def service_params
       params.require(:service).permit(:name, :category)
+    end
+    def require_admin
+      if !current_admin
+        flash[:danger] = "Nur Administratoren können diese Funktion ausführen"
+        redirect_to root_path
+      end
     end
 end

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get 'root', to: 'users#new'
+ root 'users#new'
   
   get 'signup', to: 'users#new'
   post 'users', to: 'users#create'
@@ -12,8 +12,7 @@ Rails.application.routes.draw do
   get 'admin/new', to: 'admins#new'
   post 'admin', to: 'admins#create'
   
-  get 'users/:id/edit', to: 'users#edit'
-  post 'users/:id/edit', to: 'users#update'
+resources :users, except: [:new, :create, :index]
   
   get 'admin/login', to: 'sessions#newadmin'
   post 'admin/login', to: 'sessions#createadmin'
