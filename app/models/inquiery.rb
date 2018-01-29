@@ -1,6 +1,8 @@
-class Comment < ApplicationRecord
-  
-  #has_many :users
+class Inquiery < ApplicationRecord
+  has_many :user_inquieries
+  has_many :users, through: :user_inquieries 
+  has_many :service_inquieries
+  has_many :services, through: :service_inquieries
   before_save { self.email = email.downcase }
   
   validates :name, presence: true  

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180127022350) do
+ActiveRecord::Schema.define(version: 20180129205807) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email"
@@ -19,24 +19,42 @@ ActiveRecord::Schema.define(version: 20180127022350) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "adresse"
-    t.integer "plz"
-    t.string "stadt"
-    t.string "telefon"
-  end
-
   create_table "fields", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "inquieries", force: :cascade do |t|
+    t.integer "plz"
+    t.string "email"
+    t.string "vorname"
+    t.string "nachname"
+    t.string "adresse"
+    t.string "stadt"
+    t.string "nachricht"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "service_inquieries", force: :cascade do |t|
+    t.integer "service_id"
+    t.integer "inquiery_id"
+  end
+
   create_table "services", force: :cascade do |t|
     t.string "name"
     t.string "category"
+  end
+
+  create_table "user_inquieries", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "inquiery_id"
+  end
+
+  create_table "user_services", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "service_id"
   end
 
   create_table "users", force: :cascade do |t|
