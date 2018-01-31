@@ -1,7 +1,9 @@
 <% @users.each do |u| %>
+<% if u.score > 0.0 %>
     <div class="panel panel-primary">
       <div class="panel-body">
         <%= u.score %>
       </div>
     </div>
-  <% end %>
+<% end %>
+<% end %>

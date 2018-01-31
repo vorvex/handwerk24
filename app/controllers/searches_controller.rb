@@ -1,9 +1,9 @@
 class SearchesController < ApplicationController
   
   def gartenarbeit
-    @u = User.all
+    @hw = User.all
     @users = []
-    @u.each do |user|
+    @users.each do |user|
       @users << user if user.score == 1.0
     end
     @search = "false"
@@ -30,6 +30,10 @@ class SearchesController < ApplicationController
     @ins = []
     @ins = @inquiery.service_ids
     add_score_to_user
+    @hws = []
+    @users.each do |u|
+      @hws << u if u.score > 0.0 
+    end
     render 'gartenarbeit'
   end
   
