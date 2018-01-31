@@ -1,0 +1,28 @@
+<div class="panel panel-primary">
+  <div class="panel-body">
+    <div class="form-group col-md-6">
+      <%= f.text_field :vorname, class: "form-control", placeholder: "Vorname", autofocus: true %>
+    </div>
+    <div class="form-group col-md-6">
+      <%= f.text_field :nachname, class: "form-control", placeholder: "Nachname*", autofocus: true %>
+    </div>
+    <div class="form-group col-md-12">
+      <%= f.email_field :email, class: "form-control", placeholder: "Email*", autofocus: true %>
+    </div>
+    <div class="form-group col-md-12">
+      <%= f.text_field :adresse, class: "form-control", placeholder: "Straße, Hausnummer", autofocus: true %>
+    </div>
+    <div class="form-group col-md-4">
+      <%= f.text_field :plz, class: "form-control", placeholder: "76275", id: "disabled-input" %>
+    </div>
+    <div class="form-group col-md-8">
+      <%= f.text_field :stadt, class: "form-control", placeholder: "Stadt", autofocus: true %>
+    </div>
+    <div class="form-group col-md-12">
+      <%= f.text_area :nachricht, class: "form-control", placeholder: "Nachricht schreiben", autofocus: true %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Anfrage senden" %>
+    </div>
+  </div>
+</div>

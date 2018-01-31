@@ -58,7 +58,7 @@ class ApplicationController < ActionController::Base
         if z <= 10
           b = 1.0
         elsif z > 10 && z <= 100
-          b = 0.8
+          b = 0.9
         elsif z > 100 && z <= 200
           b = 0.4
         elsif z > 200

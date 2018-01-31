@@ -2,7 +2,15 @@
 <% if u.score > 0.0 %>
     <div class="panel panel-primary">
       <div class="panel-body">
-        <%= u.score %>
+        <div class="col-md-8">
+          <small><%= Field.find_by_id(u.field_id).name %></small>
+          <h1><%= u.name %></h1>
+          <l1><%= u.plz %>, <%= truncate(u.stadt, :length => 15) %></l1>
+          <li><%= link_to "#{u.telefon}", "tel:#{u.telefon}"%></li>
+        </div>
+        <div class="checkbox col-md-4">
+          <label><input name="inquiery[user_ids][]" type="checkbox" value="<%= u.id %>" /></label>
+        </div>
       </div>
     </div>
 <% end %>

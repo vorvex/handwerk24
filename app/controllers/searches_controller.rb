@@ -38,7 +38,13 @@ class SearchesController < ApplicationController
   end
   
   def create
-    
+    @inquiery = Inquiery.new(inquiery_params_two)
+    @services = Service.all
+    if @inquiery.save
+      @body = "bodyGarten"
+    else 
+      render 'searchgarten'
+    end
   end
   
   def aussenamhaus
@@ -73,6 +79,10 @@ private
   
   def inquiery_params
     params.require(:inquiery).permit(:plz, service_ids: [])
+  end
+  
+  def inquiery_params_two
+    params.require(:inquiery).permit(:plz, :email, :vorname, :nachname, :adresse, :stadt, :nachricht, user_ids: [], service_ids: [])
   end
     
 end
