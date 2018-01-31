@@ -51,6 +51,38 @@
         <span class="input-group-addon" id="basic-addon3">http://</span><%= f.text_field :url, class: "form-control", placeholder: "www.beispielseite.de", aria_describedby: "basic-addon3" %>
       </div> 
     </div>
+    <%= if @garten.any? %>
+      <div class="form-group">
+         <h3>Gartenarbeit</h3>
+         <%= f.collection_check_boxes :service_ids, @garten, :id, :name do |cb| %>
+           <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
+         <% end %>
+      </div>
+    <% end %>
+    <%= if @aussen.any? %>
+      <div class="form-group">
+        <h3>Außen am Haus</h3>
+         <%= f.collection_check_boxes :service_ids, @aussen, :id, :name do |cb| %>
+           <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
+         <% end %>
+      </div>
+    <% end %>
+     <%= if @haus.any? %>
+      <div class="form-group">
+        <h3>Haus & Wohnung</h3>
+        <%= f.collection_check_boxes :service_ids, @haus, :id, :name do |cb| %>
+          <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
+        <% end %>
+      </div>
+    <% end %>
+    <%= if @boden.any? %>
+      <div class="form-group">
+        <h3>Bodenbeläge</h3>
+         <%= f.collection_check_boxes :service_ids, @boden, :id, :name do |cb| %>
+           <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
+         <% end %>
+      </div>
+    <% end %>
     <div class="form-group">
       <%= f.submit class: 'btn btn-primary' %>
       <%= link_to "Akkount löschen", user_path, method: :destroy, class: 'btn btn-error pull-right' %>

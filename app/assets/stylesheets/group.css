@@ -1,0 +1,298 @@
+
+h1, h2, h3, h4, h5, h6 {
+  pading-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+
+}
+
+
+.buttonstyle1 .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+overflow:
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    right: 5%;
+}
+
+.buttonstyle1:hover .tooltiptext {
+    visibility: visible;
+}
+
+.infoContainer {
+  display: block;
+  min-width: 428px;
+  width: 100%;
+
+}
+
+.Info1 {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.Info2 {
+  display: inline-block;
+  float: right;
+  font-size: 14px;
+  font-weight: 400;
+  color: #004EFF;
+  text-decoration: none;
+}
+
+.Info2:hover {
+  cursor: pointer;
+}
+
+
+
+.GroupContainer {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background: white;
+  border-radius: 8px;
+  width: calc(100%-30px);
+  min-width: 428px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.30);
+}
+
+.SoloContainer {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  background: white;
+  border-radius: 8px;
+  width: calc(100%-30px);
+  min-width: 428px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.30);
+
+}
+
+
+.GroupHeader {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background: #4990E2;
+  overflow: hidden;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.GroupH2 {
+    font-family: Roboto;
+    color: white;
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 500;
+    display: inline;
+    padding-top: 0px;
+    margin-top: 0px;
+}
+.HeaderCheck {
+  float: right;
+  display: inline;
+  height: 30px;
+  width: 30px;
+}
+.GroupBody {
+  padding-left: 20px;
+  padding-right: 0px;
+}
+.line {
+  border: 1px solid rgba(0,0,0,0.30);
+  margin-right: 20px;
+}
+.HandwerkerInner {
+   display: inline-flex;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   width: 100%;
+
+}
+.HWimg {
+  height: 80px;
+  width: 80px;
+  border-radius: 40px;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+@media screen and (max-width: 984px) {
+  .HWimg {
+    display: none;
+  }
+}
+
+.Reviews {
+  display: none;
+  font-family: Roboto-Bold;
+  font-size: 14px;
+  color: #004EFF;
+  line-height: 16px;
+  margin-right: 5px;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.Leistung {
+  display: inline;
+  font-family: Roboto-Bold;
+  font-size: 14px;
+  color: #9B9B9B;
+  line-height: 16px;
+  margin-right: 5px;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  max-width: 200px;
+  overflow: hidden;
+}
+.InfoOben {
+  display: inline-block;
+
+  max-width: 100%;
+}
+
+@media screen and (max-width: 1064px) {
+  .InfoOben h6{
+    font-size: 14px;
+    font-weight: normal;
+  }
+  .Reviews {
+    display: none;
+  }
+}
+
+.InfoBottom {
+  display: inline-block;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.info {
+  display: block;
+  height: 80px;
+  width: calc(100% - 160px);
+}
+.HWName {
+  display: inline-block;
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 26px;
+  color: #000000;
+  line-height: 32px;
+  width: calc(100%);
+}
+
+@media screen and (max-width: 1064px) {
+    .HWName {
+        font-size: 20px;
+    }
+}
+
+.phone {
+  display: inline;
+  padding-left: 27px;
+  padding-right: 5px;
+  font-family: Roboto;
+  font-size: 20px;
+  color: #000000;
+  line-height: 24px;
+  font-weight: 300;
+  background-image: url(/assets/phone64.png) ;
+  background-position: 0% 50%;
+  background-size: 18px;
+  background-repeat: no-repeat;
+  max-width: 200px;
+  text-overflow: ellipsis;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 1064px) {
+  .phone {
+    font-size: 14px;
+    line-height: 20px;
+    background-size: 14px;
+    font-weight: 400;
+  }
+}
+
+
+.home {
+  display: inline;
+  padding-left: 27px;
+  font-family: Roboto;
+  font-size: 20px;
+  color: #000000;
+  line-height: 24px;
+  font-weight: 300;
+  background-image: url(/assets/adress64.png) ;
+  background-position: 0% 50%;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  text-transform: uppercase;
+  max-width: 200px;
+  text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 1064px) {
+  .home{
+    font-size: 14px;
+    line-height: 20px;
+    background-size: 16px;
+    font-weight: 400;
+  }
+}
+
+.links {
+  display: flex;
+  height: 80px;
+  width: 160px;
+
+}
+.Website {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  width: 80px;
+}
+
+.links :hover {
+  background: #90B2FF;
+}
+.World {
+  height: 100%;
+  width: 100%;
+
+}
+
+}
+.HWCheck {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.checkcontainer{
+    display: flex;
+    align-items: center;
+    float: right;
+    padding: 20px;
+    width: 80px;
+}

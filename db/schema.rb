@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180129205807) do
+ActiveRecord::Schema.define(version: 20180131005054) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email"
@@ -71,9 +71,8 @@ ActiveRecord::Schema.define(version: 20180129205807) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.integer "field_id"
-    t.integer "services_id"
+    t.float "score"
     t.index ["field_id"], name: "index_users_on_field_id"
-    t.index ["services_id"], name: "index_users_on_services_id"
   end
 
 end

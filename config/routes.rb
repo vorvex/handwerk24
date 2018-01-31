@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get 'users/:username', to: 'users#page'
   get 'dashboard', to: 'users#index'
 
+  get 'suche/gartenarbeit', to: 'searches#gartenarbeit'
+  post 'suche/gartenarbeit', to: 'searches#searchgarten'
+  post 'vielendank', to: 'searches#create'
   
   get 'admin', to: 'admins#index'
   get 'admin/new', to: 'admins#new'
@@ -25,4 +28,6 @@ resources :users, except: [:new, :create, :index]
   resources :services
   
   resources :fields
+  
+  resources :inquieries
 end

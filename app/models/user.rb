@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   has_secure_password  
-  #has_many :comments
   has_and_belongs_to_many :fields
   has_many :user_services
   has_many :services, through: :user_services

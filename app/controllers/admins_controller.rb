@@ -8,6 +8,7 @@ class AdminsController < ApplicationController
       @field = Field.new
       @service = Service.new
       @admin = Admin.new
+      @body = "bodyDash"
     else
       flash[:warning] = "Bitte Anmelden"
       redirect_to admin_login_path

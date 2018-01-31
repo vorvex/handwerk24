@@ -1,0 +1,22 @@
+<header class="header">
+  <%= image_tag("logo.png", :alt => "Handwerk24", :class => "logo") %>
+  <%= link_to "Handwerker?", signup_path, class: "buttonstyle1"%>
+  <div id="nav-icon1">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
+<div class="rowcontainer">
+  <%= render 'search' %>
+  <%= @inquiery.plz %>
+  <%= form_for(@inquiery, :html => {class: "right", role: "form"}, url: vielendank_path) do |f| %>
+    <div class="ergebnisContainer" id="paste">
+      <%= render 'craftsmen' %>
+    </div>
+    <div class="ergebnisFooter" id="ergebnisFooter">
+      <%= f.submit "Kontaktanfrage senden", class: "buttonstyle4", id: "KonButton"%>
+    </div>
+  <% end %>
+</div>

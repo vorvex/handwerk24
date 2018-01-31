@@ -18,11 +18,27 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
+    @services = Service.all
+    @garten , @aussen, @haus, @boden = [], [], [], []
+    @services.each do |service|
+      @garten << service if service.category == 'Gartenarbeit'
+      @aussen << service if service.category == 'Außen am Haus'
+      @haus << service if service.category == 'Haus und Wohnung'
+      @boden << service if service.category == 'Bodenbeläge'
+    end
   end
   
   def edit
     require_same_user
     @user = User.find(params[:id])
+    @services = Service.all
+    @garten , @aussen, @haus, @boden = [], [], [], []
+    @services.each do |service|
+      @garten << service if service.category == 'Gartenarbeit'
+      @aussen << service if service.category == 'Außen am Haus'
+      @haus << service if service.category == 'Haus und Wohnung'
+      @boden << service if service.category == 'Bodenbeläge'
+    end
   end
   
   def create
@@ -62,8 +78,9 @@ class UsersController < ApplicationController
     def set_user
       @user = User.find_by(username: params[:username])
     end
+    
     def user_params
-      params.require(:user).permit(:username, :name, :email, :telefon, :adresse, :plz, :stadt, :url, :inhaber, :password, :field_id)
+      params.require(:user).permit(:username, :name, :email, :telefon, :adresse, :plz, :stadt, :url, :inhaber, :password, :field_id, service_ids: [])
     end
   
     def require_same_user

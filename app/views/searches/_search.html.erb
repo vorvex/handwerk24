@@ -1,0 +1,17 @@
+<%= form_for(@inquiery, :html => {class: "menu", role: "form", id: "menu"}, url: suche_gartenarbeit_path) do |f| %>
+  <div class="menuHeader">
+    <h3 class="menuHeaderH3">PLZ eingeben</h3>
+    <div>
+      <%= f.text_field :plz, class: "plz", placeholder: "76275", autofocus: true, length: 5 %>
+    </div>
+  </div>
+  <div class="LeistungContainer">
+    <%= f.collection_check_boxes :service_ids, @leistung, :id, :name do |cb| %>
+        <% cb.label(class: "check_container") {cb.check_box(id: "click", checked: false  ) + cb.text + "<span class='checkmark'></span>".html_safe} %>    
+    <% end %>
+  </div>
+  <div class="ergebnisFooter" id="ergebnisFooter">
+    <%= link_to "Zurück", :back, class: "buttonstyle2" %>
+    <%= f.submit "Suchen", class: "buttonstyle3", id: "Suche"%>
+  </div>        
+<% end %>
