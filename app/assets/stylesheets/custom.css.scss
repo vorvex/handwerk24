@@ -28,8 +28,15 @@
 td.center {
   text-align: center;
 }
-
 input[type="checkbox"] {
+  margin: 0px 0px 0px 0px;
+}
+
+.checkbox {
+  padding-top: 1px;
+}
+
+#click input[type="checkbox"] {
   margin: 0px 0px 0px -44px;
   
 }

@@ -1,51 +1,55 @@
+<%= render 'shared/header' %>
 <%= render 'shared/messages' %>
 <%= render 'shared/errors', obj: @service %>
-<div class="panel panel-default">
-  <div class="panel-heading"><h3 class="panel-title">Liste der Leistungen</h3></div>
-  <div class="panel-body">
-    <table class="table table-hover">
-      <thead>
-        <th>ID</th>
-        <th>Leistung</th> 
-        <th>Kategorie</th>
-        <th>Change</th>
-      </thead>
-      <tbody>
-        <% @services.each do |f| %>
-          <tr>
-            <td><%= f.id %></td>
-            <td><%= f.name %></td>
-            <td><%= f.category %></td>
-            <td><%= link_to 'Bearbeiten', edit_service_path(f) %> 
-                <%= link_to 'Löschen', service_path(f), method: :delete, data: {confirm: "Sicher?"} %></td> 
-        </tr>
-      <% end %>
-      </tbody> 
-    </table>
-  </div>
-</div>
-<div class="panel panel-default">
-  <div class="panel-heading"><h3 class="panel-title">Neue Leistung erstellen</h3></div>
-  <div class="panel-body">
-    <%= form_for(@service, :html => {class: "form", role: "form"}, url: services_url) do |f| %>
-      <div class="form-group">
-        <div class="control-label">
-          <%= f.label :name %>           
-        </div>
-        <%= f.text_field :name, class: "form-control", placeholder: "Leistung", autofocus: true %>
-      </div>  
+<div class="container-fluid">
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3 class="panel-title">Liste der Leistungen</h3></div>
+      <table class="table table-hover">
+        <thead>
+          <th>ID</th>
+          <th>Leistung</th> 
+          <th>Kategorie</th>
+          <th>Change</th>
+        </thead>
+        <tbody>
+          <% @services.each do |f| %>
+            <tr class="<%= "active" if !f.show %>">
+              <td class="col-md-1"><%= f.id %></td>
+              <td class="col-md-5"><%= f.name %></td>
+              <td class="col-md-5"><%= f.category %></td>
+              <td class="col-md-1"><%= link_to 'Bearbeiten', edit_service_path(f) %> 
+                  <%= link_to 'Löschen', service_path(f), method: :delete, data: {confirm: "Sicher?"} %></td> 
+          </tr>
+        <% end %>
+        </tbody> 
+      </table>
+    </div>
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3 class="panel-title">Neue Leistung erstellen</h3></div>
+    <div class="panel-body">
+      <%= form_for(@service, :html => {class: "form", role: "form"}, url: services_url) do |f| %>
+        <div class="form-group">
+          <div class="control-label">
+            <%= f.label :name %>           
+          </div>
+          <%= f.text_field :name, class: "form-control", placeholder: "Leistung", autofocus: true %>
+        </div>  
       <div class="form-group">
         <div class="control-label">
           <%= f.label :category %>           
         </div>
-          <%= f.radio_button :category, 'Gartenarbeit', :checked => true %> Gartenarbeit
-          <%= f.radio_button :category, "Außen am Haus", :checked => true %> Außen am Haus
-          <%= f.radio_button :category, "Haus und Wohnung", :checked => true %> Haus und Wohnung
-          <%= f.radio_button :category, "Bodenbeläge", :checked => true %> Bodenbeläge
+          <%= f.radio_button :category, 'Gartenarbeit' %> Gartenarbeit
+          <%= f.radio_button :category, "Außen am Haus" %> Außen am Haus
+          <%= f.radio_button :category, "Haus und Wohnung" %> Haus und Wohnung
+          <%= f.radio_button :category, "Bodenbeläge" %> Bodenbeläge
         </div>  
-     <div class="form-group">
-         <%= f.submit class: 'btn btn-primary' %>
+        <div class="checkbox">
+          <label><%= f.check_box :show %>Anzeigen</label>           
+        </div>
+        <div class="form-group">
+           <%= f.submit class: 'btn btn-primary' %>
+        </div>
+      <% end %> 
     </div>
-    <% end %> 
   </div>
 </div>

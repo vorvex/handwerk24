@@ -1,4 +1,10 @@
 class InquieriesController < ApplicationController
+  before_action :dashboard
+  before_action :require_admin 
+  
+  def index
+    @inquieries = Inquiery.order('id DESC')
+  end
   
   def new
 

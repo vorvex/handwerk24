@@ -1,14 +1,18 @@
+<%= render 'shared/header' %>
 <%= render 'shared/messages' %>
 <%= render 'shared/errors', obj: @field %>
-<h1>Edit Branche</h1>
-<%= form_for(@field, :html => {class: "form", role: "form"}) do |f| %>
- <div class="form-group">
-   <div class="control-label">
-    <%= f.label :name %>           
-   </div>
-    <%= f.text_field :name, class: "form-control", placeholder: "Branche", autofocus: true %>
- </div>  
- <div class="form-group">
-     <%= f.submit class: 'btn btn-primary' %>
+<div class="container">
+  <h1>Branche bearbeiten</h1>
+  <%= form_for(@field, :html => {class: "form", role: "form"}) do |f| %>
+   <div class="form-group">
+     <div class="control-label">
+      <%= f.label :name %>           
+     </div>
+      <%= f.text_field :name, class: "form-control", placeholder: "Branche", autofocus: true %>
+   </div>  
+   <div class="form-group">
+       <%= f.submit class: 'btn btn-primary' %>
+       <%= link_to "Zurück", :back, class: "btn btn-default" %>
+  </div>
+  <% end %> 
 </div>
-<% end %> 

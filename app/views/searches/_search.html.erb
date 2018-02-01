@@ -7,7 +7,7 @@
   </div>
   <div class="LeistungContainer">
     <%= f.collection_check_boxes :service_ids, @leistung, :id, :name do |cb| %>
-        <% cb.label(class: "check_container") {cb.check_box(id: "click", checked: false  ) + cb.text + "<span class='checkmark'></span>".html_safe} %>    
+        <% cb.label(class: "check_container") {cb.check_box(id: "click", checked: false ) + cb.text + "<span class='checkmark'></span>".html_safe} %>    
     <% end %>
   </div>
   <div class="ergebnisFooter" id="ergebnisFooter">

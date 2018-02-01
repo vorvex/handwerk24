@@ -1,4 +1,5 @@
 class AdminsController < ApplicationController
+  before_action :dashboard
   
   def index
     if logged_in_admin?       
@@ -36,6 +37,5 @@ private
     def admin_params
       params.require(:admin).permit(:email, :password)
     end
-  
   
 end

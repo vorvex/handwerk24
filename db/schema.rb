@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180131005054) do
+ActiveRecord::Schema.define(version: 20180201132042) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20180131005054) do
   create_table "services", force: :cascade do |t|
     t.string "name"
     t.string "category"
+    t.boolean "show"
   end
 
   create_table "user_inquieries", force: :cascade do |t|
@@ -72,6 +73,7 @@ ActiveRecord::Schema.define(version: 20180131005054) do
     t.string "password_digest"
     t.integer "field_id"
     t.float "score"
+    t.boolean "bulletproof", default: false
     t.index ["field_id"], name: "index_users_on_field_id"
   end
 

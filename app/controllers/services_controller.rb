@@ -1,6 +1,7 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:edit, :show, :update, :destroy]
   before_action :require_admin
+  before_action :dashboard  
   
   def index
     @services = Service.order(:category)
@@ -45,7 +46,7 @@ class ServicesController < ApplicationController
       @service = Service.find(params[:id])
     end
     def service_params
-      params.require(:service).permit(:name, :category)
+      params.require(:service).permit(:name, :category, :show)
     end
     def require_admin
       if !current_admin

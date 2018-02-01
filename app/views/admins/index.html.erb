@@ -1,9 +1,9 @@
 <%= render 'shared/header' %>
-<%= render 'shared/messages' %>
-<%= render 'shared/errors', obj: @service %>
-<%= render 'shared/errors', obj: @field %>
-<%= render 'shared/errors', obj: @admin %>
-<div class ="col-md-12">
+<div class ="container-fluid">
+  <%= render 'shared/messages' %>
+  <%= render 'shared/errors', obj: @service %>
+  <%= render 'shared/errors', obj: @field %>
+  <%= render 'shared/errors', obj: @admin %>
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">Nutzer <%= link_to "Neues Konto eröffnen", signup_path, class: "pull-right" %></h3>
@@ -21,17 +21,17 @@
         </thead>
         <tbody>
           <% @users.each do |t| %>
-            <tr class='clickable-row' data-href='/users/<%= t.id %>/edit'>
+            <tr class='clickable-row <%= "warning" if !t.bulletproof %>' data-href='/users/<%= t.id %>/edit'>
               <th><%= t.id %></th>
-              <td><%= t.name %></td>
-              <td>
+              <td class="col-md-2"><%= link_to t.name, edit_user_path(t) %></td>
+              <td class="col-md-1">
                 <%= Field.find("#{t.field_id}").name if t.field_id != 0 %>
               </td>
-              <td><%= t.inhaber %></td>
-              <td><%= t.email %></td>
-              <td><%= link_to "#{t.url}", "http://#{t.url}" %></td>
-              <td><%= t.telefon %></td>
-              <td><%= t.adresse %>, <%= t.plz %> <%= t.stadt %></td>
+              <td class="col-md-2"><%= t.inhaber %></td>
+              <td class="col-md-2"><%= t.email %></td>
+              <td class="col-md-2"><%= link_to "#{t.url}", "http://#{t.url}" %></td>
+              <td class="col-md-1"><%= t.telefon %></td>
+              <td class="col-md-2"><%= t.adresse %>, <%= t.plz %> <%= t.stadt %></td>
             </tr>
           <% end %>
         </tbody>  
@@ -85,7 +85,7 @@
       </thead>
       <tbody>
         <% @services.each do |t| %>
-          <tr class='clickable-row' data-href='/services/<%= t.id %>/edit'>
+          <tr class='clickable-row <%= "active" if !t.show %>' data-href='/services/<%= t.id %>/edit'>
             <th><%= t.id %></th>
             <td><%= t.name %></td>
             <td><%= t.category %></td>
@@ -112,8 +112,11 @@
           <%= f.radio_button :category, 'Gartenarbeit', :checked => true %> Gartenarbeit
           <%= f.radio_button :category, "Außen am Haus", :checked => true %> Außen am Haus
           <%= f.radio_button :category, "Haus & Wohnung", :checked => true %> Haus & Wohnung
-          <%= f.radio_button :category, "Haus & Wohnung", :checked => true %> Bodenbeläge
-        </div>  
+          <%= f.radio_button :category, "Bodenbelaege", :checked => true %> Bodenbeläge
+      </div>
+      <div class="checkbox">
+        <label><%= f.check_box :show %>Anzeigen</label>           
+      </div>
      <div class="form-group">
          <%= f.submit class: 'btn btn-primary' %>
     </div>

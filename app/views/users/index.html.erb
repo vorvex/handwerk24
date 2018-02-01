@@ -1,6 +1,6 @@
 <%= render 'shared/header' %>
 <%= render 'shared/messages' %>
-<div class="col-xs-12">
+<div class="container-fluid">
   <div class="panel panel-default">
     <div class="panel-heading">
       <ul class="nav nav-tabs">
@@ -12,12 +12,64 @@
     <div class="panel-body">
       <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
-          <h3>Kundenanfragen</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <table class="table table-hover">
+            <thead>
+              <th>Name</th>
+              <th>Nachricht</th>
+              <th>Leistungen</th>
+              <th>Email-Adresse</th>
+              <th>Adresse</th>
+              <th>Erstellt vor:</th>
+            </thead>
+            <tbody>
+              <% @inquieries.each do |t| %>
+                <tr>
+                  <td class="col-md-1"><%= t.vorname if t.vorname %> <%= t.nachname %></td>
+                  <td class="col-md-5"><%= truncate(t.nachricht, :length => 80) %></td>
+                  <td class="col-md-2">                    
+                    <% t.services.each do |s| %>
+                      <span class="label label-success"><%= s.name %></span>
+                    <% end %>
+                  </td>
+                  <td class="col-md-1"><%= t.email %></td>
+                  <td class="col-md-2"><%= t.adresse %>, <%= t.plz %> <%= t.stadt %></td>
+                  <td class="col-md-1"><%= time_ago_in_words(t.created_at) %></td>
+                  <td></td>
+                </tr>
+              <% end %>
+            </tbody>  
+         </table>
         </div>
         <div id="menu1" class="tab-pane fade">
-          <h3>Öffentliche Anfragen</h3>
-          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <table class="table table-hover">
+            <thead>
+              <th>Name</th>
+              <th>Nachricht</th>
+              <th>Leistungen</th>
+              <th>Email-Adresse</th>
+              <th>Adresse</th>
+              <th>Erstellt vor:</th>
+            </thead>
+            <tbody>
+              <% @public_inquieries.each do |t| %>
+                <% if t.users.empty? && t.plz == current_user.plz && t.email != nil %>
+                  <tr>
+                    <td class="col-md-1"><%= t.vorname if t.vorname %> <%= t.nachname %></td>
+                    <td class="col-md-5"><%= t.nachricht %></td>
+                    <td class="col-md-2">                    
+                      <% t.services.each do |s| %>
+                        <span class="label label-success"><%= s.name %></span> 
+                      <% end %>
+                    </td>
+                    <td class="col-md-1"><%= t.email %></td>
+                    <td class="col-md-1"><%= t.plz %></td>
+                    <td class="col-md-1"><%= time_ago_in_words(t.created_at) %></td>
+                    <td></td>
+                  </tr>
+                <% end %>
+              <% end %>
+            </tbody>  
+         </table>
         </div>
         <div id="menu2" class="tab-pane fade">
           <h3>Kontakt mit HW24</h3>

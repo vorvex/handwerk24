@@ -1,6 +1,7 @@
 class FieldsController < ApplicationController
   before_action :set_field, only: [:edit, :show, :update, :destroy]
   before_action :require_admin 
+  before_action :dashboard
   
   def index
     @fields = Field.all

@@ -1,0 +1,39 @@
+<%= render 'shared/header' %>
+<div class ="container-fluid">
+  <%= render 'shared/messages' %>
+  <div class="panel panel-default">
+    <div class="panel-heading">Nutzeranfragen</div>
+    <table class="table table-hover">
+      <thead>
+        <th>Name</th>
+        <th>Nachricht</th>
+        <th>Leistungen</th>
+        <th>Handwerker</th>
+        <th>Email-Adresse</th>
+        <th>PLZ</th>
+        <th>Erstellt vor:</th>
+      </thead>
+      <tbody>
+        <% @inquieries.each do |t| %>
+          <tr>
+            <td class="col-md-1"><%= t.vorname if t.vorname %> <%= t.nachname %></td>
+            <td class="col-md-3"><%= truncate(t.nachricht, :length => 30) %></td>
+            <td class="col-md-2">
+              <% t.services.each do |s| %>
+                <span class="label label-success"><%= s.name %></span>
+              <% end %>
+            </td>
+            <td class="col-md-2">
+              <% t.users.each do |s| %>
+                <span class="label label-info"><%= s.name %></span>
+              <% end %>
+            </td>
+            <td class="col-md-1"><%= t.email %></td>
+            <td class="col-md-2"><%= t.plz %></td>
+            <td class="col-md-1"><%= time_ago_in_words(t.created_at) %></td>
+            <td></td>
+          </tr>
+        <% end %>
+      </tbody>  
+    </table>
+  </div>

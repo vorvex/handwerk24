@@ -1,7 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user, :logged_in_user?, :current_admin, :logged_in_admin?, :add_score_to_user, :search_true?
-
+  helper_method :current_user, :logged_in_user?, :current_admin, :logged_in_admin?, :add_score_to_user, :search_true?, :current_user_validation
+  
+  def dashboard
+    @body = "bodyDash"
+  end
 
   def current_admin
     @current_admin ||=  Admin.find(session[:admin_id]) if session[:admin_id]
@@ -25,6 +28,12 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
+  def current_user_validation
+    if !current_user.bulletproof
+      flash.now[:danger] = "Ihr Betrieb wird aktuell überprüft, solange wird Ihr Betrieb nicht angezeigt."
+    end
+  end
+  
   def require_user
     if !logged_in_user?
       flash[:danger] = "Diese Funktion kann nur von einem Partner ausgeführt werden"
@@ -65,8 +74,12 @@ class ApplicationController < ActionController::Base
           b = 0
         end
 
-        # Ratings
-        c += 1.0
+        # Ratings, HW-Intern
+        if t.bulletproof
+          c += 1.0
+        else
+          c = 0.0
+        end
         t.score = a*b*c
       end 
     end  
@@ -75,4 +88,9 @@ class ApplicationController < ActionController::Base
     if @inquiery.plz != nil
     end
   end
+  
+  def service_request
+    @service = Service.new
+  end
+  
 end

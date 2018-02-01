@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController 
-  
+  before_action :dashboard
   #Admin Sessions
   def newadmin
     @admin = Admin.new
@@ -41,9 +41,9 @@ class SessionsController < ApplicationController
   end
   
   def destroyuser
-    session[:user_id] = nil
+    session[:user_id] = nil 
     flash[:success] = "Sie sind erfolgreich abgemeldet bis zum nächsten Mal"
-    redirect_to user_login_path
+    redirect_to login_path
   end
   
 end
