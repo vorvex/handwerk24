@@ -1,0 +1,27 @@
+<%= render 'shared/header' %>
+<%= render 'shared/messages' %>
+<div class="container-fluid">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= link_to "Leistungen", services_path %></h3>
+    </div>
+    <table class="table table-hover">
+      <thead>
+        <th>#</th>
+        <th>Leistung</th>
+        <th>Kategorie</th>
+        <th class="col-md-1">Löschen</th>
+      </thead>
+      <tbody>
+        <% @services.each do |t| %>
+          <tr class='clickable-row <%= "active" if !t.show %>' data-href='/services/<%= t.id %>/edit'>
+            <th><%= t.id %></th>
+            <td><%= t.name %></td>
+            <td><%= t.category %></td>
+            <td class="col-md-1 center"><%= link_to 'x', service_path(t), method: :delete, data: {confirm: "Sicher?"} %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

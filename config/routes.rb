@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post 'users', to: 'users#create'
   get 'users/:username', to: 'users#page'
   get 'dashboard', to: 'users#index'
+  get 'dashboard/services', to: 'users#services'
 
   get 'suche/gartenarbeit', to: 'searches#gartenarbeit'
   post 'suche/gartenarbeit', to: 'searches#searchgarten'

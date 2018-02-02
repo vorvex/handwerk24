@@ -83,14 +83,6 @@
           </div>
         </div>
     </div>
-      <%= form_for(@service, :html => {class: "form", role: "form-group", onsubmit: "preventDefault()"}) do |s| %>    
-        <div class="input-group">    
-            
-            <span class="input-group-add"> 
-            </span>
-            <%= s.text_field :name, class: "form-control", placeholder: "Neue Leistung" %>
-          </div>
-        <% end %>
     <div class="form-group">
       <%= f.submit "Konto erstellen", class: 'btn btn-primary' %>
     </div>

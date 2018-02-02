@@ -23,37 +23,20 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
-    @services = Service.all
-    @service = Service.new
-    @garten , @aussen, @haus, @boden = [], [], [], []
-    @services.each do |service|
-      @garten << service if service.show && service.category == 'Gartenarbeit'
-      @aussen << service if service.show && service.category == 'Außen am Haus'
-      @haus << service if service.show && service.category == 'Haus und Wohnung'
-      @boden << service if service.show && service.category == 'Bodenbeläge'
-    end
+    service_tabs
   end
   
   def edit
-    require_same_user
     @user = User.find(params[:id])
-    @services = Service.all
-    @garten , @aussen, @haus, @boden = [], [], [], []
-    @services.each do |service|
-      @garten << service if service.show && service.category == 'Gartenarbeit'
-      @aussen << service if service.show && service.category == 'Außen am Haus'
-      @haus << service if service.show && service.category == 'Haus und Wohnung'
-      @boden << service if service.show && service.category == 'Bodenbeläge'
-    end
+    require_same_user
+    service_tabs
   end
   
   def create
     @user = User.new(user_params)
-    @service = Service.new(service_params)
     @user.username = @user.name.gsub(" ","-").downcase().gsub("ä","ae").gsub("ü","ue").gsub("ö","oe").gsub("ß","ss").gsub("Ö","oe").gsub("Ü","ue").gsub("Ä","ae")
-    if @user.save && @service.save
-      @service.user_ids = @user.id
-      @service.save 
+    service_tabs
+    if @user.save
       session[:user_id] = @user.id
       flash[:success] = "Ihr Akkount wurde erfolgreich erstellt"
       redirect_to dashboard_path
@@ -66,6 +49,7 @@ class UsersController < ApplicationController
   def update
     require_same_user
     @user = User.find(params[:id])
+    service_tabs
     if @user.update(user_params)
       flash[:success] = "Betrieb wurde erfolgreich aktualisiert"
       redirect_back(fallback_location: dashboard_path)
@@ -84,6 +68,11 @@ class UsersController < ApplicationController
     flash[:success] = "Branche wurde erfolgreich gelöscht"
     redirect_to :back
   end
+
+  def services
+    @services = current_user.services.order(:category)
+  end
+  
   
   private
     def set_user
@@ -99,7 +88,7 @@ class UsersController < ApplicationController
     end
   
     def require_same_user
-      if current_user != @user && !current_admin
+      if params[:id] != session[:user_id]
         flash[:danger] = "Sie können nur Ihren eigenen Akkount bearbeiten"
         redirect_to root_path
       end
@@ -111,4 +100,15 @@ class UsersController < ApplicationController
         redirect_to root_path
       end
     end
+  
+  def service_tabs
+    @services = Service.all
+    @garten , @aussen, @haus, @boden = [], [], [], []
+    @services.each do |service|
+      @garten << service if service.show && service.category == 'Gartenarbeit'
+      @aussen << service if service.show && service.category == 'Außen am Haus'
+      @haus << service if service.show && service.category == 'Haus und Wohnung'
+      @boden << service if service.show && service.category == 'Bodenbeläge'
+    end
+  end
 end

@@ -23,8 +23,8 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Einstellungen <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="#">Partner bearbeiten</a></li>
-              <li><a href="#">Leistungen bearbeiten</a></li>
-              <li><a href="#">Akkount Einstellungen</a></li>
+              <li><a href="/dashboard/services">Leistungen bearbeiten</a></li>
+              <li><%= link_to "Akkount bearbeiten", edit_user_path(current_user.id) %></li>
               <li role="separator" class="divider"></li>
               <li><a href="#">Spenden</a></li>
             </ul>
