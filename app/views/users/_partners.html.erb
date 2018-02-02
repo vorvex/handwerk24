@@ -1,0 +1,29 @@
+<div class="col-md-6">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Partner
+      <div class="pull-right">
+        <%= form_for @user, method: :post, action: :attach, url: attach_partner_path(@user) do |f| %>
+          <%= f.select :partner_ids, options_from_collection_for_select(@possible_partners, :id, :name), include_blank: "" %>
+          <%= f.submit "Partner hinzufügen" %>
+        <% end %>
+      </div>
+    </div>
+    <table class="table table-hover">
+      <thead>
+        <th>Betrieb</th>
+        <th>Inhaber</th>
+        <th>Email-Adresse</th>
+      </thead>
+      <tbody>
+        <% @partners.each do |p| %>
+          <tr>
+            <td class="col-xs-4"><%= p.name %> <%= Field.find("#{p.field_id}").name if p.field_id != 0 %></td>
+            <td class="col-xs-4"><%= p.inhaber %></td>
+            <td class="col-xs-4"><%= p.email %></td>
+          </tr>
+        <% end %>
+      </tbody>  
+    </table>
+  </div>
+</div>

@@ -1,18 +1,20 @@
 class SearchesController < ApplicationController
   
   def gartenarbeit
-    @hw = User.all
-    @users = []
+    @users = User.all
+    @hws = []
     @users.each do |user|
-      @users << user if user.score == 1.0
+      user.score = 0.0
+      @hws << user if user.score == 1.0
     end
-    @search = "false"
+    @search = false
     @inquiery = Inquiery.new
     @services = Service.all
     @leistung = []
     @services.each do |service|
-      @leistung << service if service.category == 'Gartenarbeit'
+      @leistung << service if service.show && service.category == 'Gartenarbeit'
     end
+    @results = User.order(:score)
     @body = "bodyGarten"
   end
   
@@ -23,7 +25,7 @@ class SearchesController < ApplicationController
     @services = Service.all
     @leistung = []
     @services.each do |service|
-      @leistung << service if service.category == 'Gartenarbeit'
+      @leistung << service if service.show && service.category == 'Gartenarbeit'
     end
     @body = "bodyGarten"
     session[:inquiery_id] = @inquiery.id
@@ -32,7 +34,7 @@ class SearchesController < ApplicationController
     add_score_to_user
     @hws = []
     @users.each do |u|
-      @hws << u if u.score > 0.0 
+      @hws << u if u.score >= 0.01 
     end
     render 'gartenarbeit'
   end

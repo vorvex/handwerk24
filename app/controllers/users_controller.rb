@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     if logged_in_user?
       current_user_validation
       @users = User.all
+      @user = current_user
       @fields = Field.all
       @services = Service.order(:category)
       @field = Field.new
@@ -14,6 +15,8 @@ class UsersController < ApplicationController
       @admin = Admin.new
       @inquieries = current_user.inquieries
       @public_inquieries = Inquiery.all
+      @possible_partners = User.all.where.not(id: @user.partner_ids << @user.id)
+      @partners = @user.partners
     else
       flash[:warning] = "Sie können diesen Bereich nur als Partner einsehen"
       redirect_to login_path
@@ -71,6 +74,25 @@ class UsersController < ApplicationController
 
   def services
     @services = current_user.services.order(:category)
+  end
+  
+  def attach
+    @user = current_user
+    @id = @user.id
+    partner = User.find(params[:user][:partner_ids])
+
+    @user.partners << partner
+    partner.partners << @user
+    redirect_to edit_user_path(@user)
+  end
+
+  def detach
+    @user = current_user_validation
+    partner = User.find(params[:partner_id])
+
+    @user.partners.delete(partner)
+    partner.partners.delete(@user)
+    redirect_to edit_user_path(@user)
   end
   
   

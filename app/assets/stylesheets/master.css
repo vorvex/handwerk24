@@ -323,7 +323,7 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
   height: 40px;
   align-content: space-between;
-  padding-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .ergebnisPLZAlert {
@@ -432,11 +432,12 @@ h1, h2, h3, h4, h5, h6 {
 
 
 .buttonstyle4 {
+  cursor: grab;
   height: 40px;
   padding-left: 20px;
   padding-right: 20px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 8px;
+  padding-bottom: 9px;
   line-height: 30px;
   font-size: 20px;
   font-weight: 300;
@@ -675,8 +676,11 @@ h1, h2, h3, h4, h5, h6 {
     padding: 20px;
   }
 
+  .kontaktContainer {
+    display: none;
+  }
 
-
+  
   .logo {
     height: 40px;
     max-width: 100%;
@@ -870,11 +874,12 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .buttonstyle4 {
+    display: inline;
     height: 40px;
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 8px;
+    padding-bottom: 9px;
     line-height: 30px;
     font-size: 20px;
     font-weight: 300;
@@ -882,7 +887,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 4px;
     border-style: none;
     background-color: #007ace;
-
+    max-width: 200px;
   }
 
   .buddybutton {

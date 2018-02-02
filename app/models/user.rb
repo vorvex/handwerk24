@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+  has_and_belongs_to_many(:partners, class_name: 'User',
+                          join_table: 'partners',
+                          foreign_key: 'company_a_id',
+                          association_foreign_key: 'company_b_id')
+  
   has_secure_password  
   has_and_belongs_to_many :fields
   has_many :user_services
@@ -18,5 +23,11 @@ class User < ApplicationRecord
   validates :stadt, presence: true
   validates :adresse, presence: true
   validates :telefon, presence: true
-    
+  
+  def connected_partners
+    self.partners.order('id ASC')
+  end
+
+  
+  
 end

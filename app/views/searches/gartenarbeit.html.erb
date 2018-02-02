@@ -1,3 +1,4 @@
+<%= render 'overlay' %>
 <header class="header">
   <%= image_tag("logo.png", :alt => "Handwerk24", :class => "logo") %>
   <%= link_to "Handwerker?", signup_path, class: "buttonstyle1"%>
@@ -11,7 +12,8 @@
 <div class="rowcontainer">
   <%= render 'search' %>
   <%= form_for(@inquiery, :html => {class: "right", role: "form"}, url: vielendank_path) do |f| %>
-    <div class="ergebnisContainer" id="paste">
+  <%= render 'errors' %>  
+  <div class="ergebnisContainer" id="paste">
       <%= render 'craftsmen' %>
     </div>
     <div class="kontaktContainer" id="show">
@@ -50,7 +52,7 @@
       </div>
     </div>
     <div class="ergebnisFooter" id="ergebnisFooter">
-      <button class="buttonstyle4" id="Konbutton">Nachricht senden</button>
+      <span class="buttonstyle4" id="Konbutton" onsubmit="PreventDefault()" onclick="KonButton">Nachricht senden</span>
     </div>
   <% end %>
 </div>
