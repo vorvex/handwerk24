@@ -5,9 +5,9 @@ function Count() {
 }
 
 function KonButton() {
-  $('.ergebnisContainer').hide();
-  $('#show').show();
-  
+  $('.ergebnisContainer').fadeToggle(100);
+  $('#show').fadeToggle(100);
+  $('#KonButton').fadeToggle(100);
 }
 
 
@@ -17,8 +17,15 @@ jQuery(document).ready(function($) {
     });
   
     $("#Konbutton").click(function() {
-      $('.ergebnisContainer').hide();
-      $('#show').show();
+      $('.ergebnisContainer').fadeToggle(100);
+      $('#show').fadeToggle(100);
+      $('.buttonstyle4').toggle();
+    });
+  
+    $("#hideKontakt").click(function() {
+      $('.ergebnisContainer').fadeToggle(100);
+      $('#show').fadeToggle(100);
+      $('.buttonstyle4').toggle();
     });
   
     $("*[id*=cbx]").click(function() {
@@ -33,3 +40,4 @@ jQuery(document).ready(function($) {
       Count();
     }});
 });
+
