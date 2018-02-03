@@ -9,8 +9,6 @@ end
 
 gem 'rails', '~> 5.1.4'
 
-gem 'sqlite3'
-
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'puma', '~> 3.7'
@@ -32,6 +30,8 @@ gem 'jquery-rails'
 
 group :development, :test do
 
+  gem 'sqlite3'
+
   gem 'web-console', '>= 3.3.0'
   
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -49,7 +49,7 @@ end
 
 group :production do
 
-#gem 'pg', '~> 1.0.0'
+gem 'pg', '~> 1.0.0'
 
 end
 
