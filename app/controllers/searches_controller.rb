@@ -1,6 +1,70 @@
 class SearchesController < ApplicationController
   
   def gartenarbeit
+    @category = "Gartenarbeit"
+    @body = "bodyGarten"
+    search
+  end
+  
+  def searchgarten
+    @category = "Gartenarbeit"
+    @body = "bodyGarten"
+    create_search
+    render 'gartenarbeit'
+  end
+  
+  def aussen
+    @category = "Außen am Haus"
+    @body = "bodyGarten"
+    search
+  end
+  
+  def searchaussen
+    @category = "Außen am Haus"
+    @body = "bodyGarten"
+    create_search
+    render 'aussen'
+  end
+  
+  def hauswohnung
+    @category = "Haus und Wohnung"
+    @body = "bodyGarten"
+    search
+  end
+
+  def searchhaus
+    @category = "Haus und Wohnung"
+    @body = "bodyGarten"
+    create_search
+    render 'hauswohnung'
+  end  
+
+  def bodenbelag
+    @category = "Bodenbeläge"
+    @body = "bodyGarten"
+    search
+  end
+  
+  def searchboden
+    @category = "Bodenbeläge"
+    @body = "bodyGarten"
+    create_search
+    render 'bodenbelag'
+  end  
+  
+  def create
+    @inquiery = Inquiery.new(inquiery_params_two)
+    @services = Service.all
+    if @inquiery.save
+      @body = "bodyGarten"
+    else 
+      render 'searchgarten'
+    end
+  end 
+  
+private
+  
+  def search
     @users = User.all
     @hws = []
     @users.each do |user|
@@ -12,22 +76,19 @@ class SearchesController < ApplicationController
     @services = Service.all
     @leistung = []
     @services.each do |service|
-      @leistung << service if service.show && service.category == 'Gartenarbeit'
+      @leistung << service if service.show && service.category == @category
     end
     @results = User.order(:score)
-    @body = "bodyGarten"
   end
   
-  def searchgarten
-    
+  def create_search
     @search = true
     @inquiery = Inquiery.new(inquiery_params)
     @services = Service.all
     @leistung = []
     @services.each do |service|
-      @leistung << service if service.show && service.category == 'Gartenarbeit'
+      @leistung << service if service.show && service.category == @category
     end
-    @body = "bodyGarten"
     session[:inquiery_id] = @inquiery.id
     @ins = []
     @ins = @inquiery.service_ids
@@ -36,44 +97,7 @@ class SearchesController < ApplicationController
     @users.each do |u|
       @hws << u if u.score >= 0.01 
     end
-    render 'gartenarbeit'
   end
-  
-  def create
-    @inquiery = Inquiery.new(inquiery_params_two)
-    @services = Service.all
-    if @inquiery.save
-      @body = "bodyGarten"
-    else 
-      render 'searchgarten'
-    end
-  end
-  
-  def aussenamhaus
-    @services = Service.all
-    @leistung = []
-    @services.each do |service|
-      @leistung << service if service.category == 'Außen am Haus'
-    end
-  end
-  
-  def hausundwohnung
-    @services = Service.all
-    @leistung = []
-    @services.each do |service|
-      @leistung << service if service.category == 'Haus & Wohnung'
-    end    
-  end
-  
-  def bodenbelage
-    @services = Service.all
-    @leistung = []
-    @services.each do |service|
-      @leistung << service if service.category == 'Bodenbeläge'
-    end
-  end
-  
-private
   
   def new_inquiery
     @inquiery = Inquiery.new

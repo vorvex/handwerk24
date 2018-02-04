@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
- root 'users#new'
+ root 'userinterfaces#index'
   
   get 'signup', to: 'users#new'
   post 'users', to: 'users#create'
@@ -10,6 +10,16 @@ Rails.application.routes.draw do
 
   get 'suche/gartenarbeit', to: 'searches#gartenarbeit'
   post 'suche/gartenarbeit', to: 'searches#searchgarten'
+  
+  get 'suche/hauswohnung', to: 'searches#hauswohnung'
+  post 'suche/hauswohnung', to: 'searches#searchhaus'
+  
+  get 'suche/bodenbelag', to: 'searches#bodenbelag'
+  post 'suche/bodenbelag', to: 'searches#searchboden'
+  
+  get 'suche/aussen', to: 'searches#aussen'
+  post 'suche/aussen', to: 'searches#searchaussen'
+  
   post 'vielendank', to: 'searches#create'
   
   get 'admin', to: 'admins#index'

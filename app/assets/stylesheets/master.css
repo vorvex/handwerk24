@@ -460,18 +460,18 @@ top : 17px;
 #nav-icon1 span:nth-child(4) {
 top : 34px;
 }
-#nav-icon1.open span:nth-child(1) {
+#nav-icon1.open-menu span:nth-child(1) {
 top : 17px;
 width : 0%;
 left : 50%;
 }
-#nav-icon1.open span:nth-child(2) {
+#nav-icon1.open-menu span:nth-child(2) {
 transform : rotate(45deg);
 }
-#nav-icon1.open span:nth-child(3) {
+#nav-icon1.open-menu span:nth-child(3) {
 transform : rotate(-45deg);
 }
-#nav-icon1.open span:nth-child(4) {
+#nav-icon1.open-menu span:nth-child(4) {
 top : 17px;
 width : 0%;
 left : 50%;
@@ -957,18 +957,18 @@ top : 17px;
 #nav-icon1 span:nth-child(4) {
 top : 34px;
 }
-#nav-icon1.open span:nth-child(1) {
+#nav-icon1.open-menu span:nth-child(1) {
 top : 17px;
 width : 0%;
 left : 50%;
 }
-#nav-icon1.open span:nth-child(2) {
+#nav-icon1.open-menu span:nth-child(2) {
 transform : rotate(45deg);
 }
-#nav-icon1.open span:nth-child(3) {
+#nav-icon1.open-menu span:nth-child(3) {
 transform : rotate(-45deg);
 }
-#nav-icon1.open span:nth-child(4) {
+#nav-icon1.open-menu span:nth-child(4) {
 top : 17px;
 width : 0%;
 left : 50%;

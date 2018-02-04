@@ -1,0 +1,3 @@
+class Userinterface < ApplicationRecord
+
+end

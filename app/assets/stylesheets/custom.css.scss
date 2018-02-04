@@ -18,6 +18,15 @@ html {
   background-size: cover;
 }
 
+.bodyHome {
+  height: 100vh;
+  overflow: hidden;
+  background-image: url('background-home-img.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;  
+  
+}
+
 .parnel {
   height: 100%;
 }

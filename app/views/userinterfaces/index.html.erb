@@ -1,0 +1,52 @@
+<div class="bg">
+  <header class="header">
+    <%= image_tag("logo-white.png", :alt => "Handwerk24", :class => "logo") %>
+    <%= link_to "Handwerker?", signup_path, class: "buttonstyle1"%>
+    <div id="nav-icon1">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+</header>
+  <div class="overlay">
+    <h1><%= @overlay %></h1>
+    <button class="buttonstyle3">
+      Mehr erfahren
+    </button>
+  </div>
+  <div class="categoryContainer">
+    <a class="category" href="/suche/hauswohnung">
+      <div class="category-inner">
+        <%= image_tag("haus.png", :alt => "Haus und Wohnung", :class => "category-img") %>
+        <label class="category-text">Haus und Wohnung</label>
+      </div>
+      <%= image_tag("arrow-right.png", :alt => "Pfeil", :class => "arrow-right") %>
+    </a>
+    <a class="category" href="/suche/bodenbelag">
+      <div class="category-inner">
+        <%= image_tag("bodenbelag.png", :alt => "Bodenbeläge", :class => "category-img") %>
+        <label class="category-text">Bodenbeläge</label>
+      </div>
+      <%= image_tag("arrow-right.png", :alt => "Pfeil", :class => "arrow-right") %>
+    </a>
+    <a class="category" href="/suche/aussen">
+      <div class="category-inner">
+        <%= image_tag("aussen.png", :alt => "Außen am Haus", :class => "category-img") %>
+        <label class="category-text">Außen am Haus</label>
+      </div>
+      <%= image_tag("arrow-right.png", :alt => "Pfeil", :class => "arrow-right") %>
+    </a>
+    <a class="category" href="/suche/gartenarbeit">
+      <div class="category-inner">
+        <%= image_tag("gartenarbeit.png", :alt => "Gartenarbeit", :class => "category-img") %>
+        <label class="category-text">Gartenarbeit</label>
+      </div>
+      <%= image_tag("arrow-right.png", :alt => "Haus und Wohnung", :class => "arrow-right") %>
+    </a>
+  </div>
+  <div class="footer">
+    <a class="footer-link" href="#">Impressum</a>
+    <a class="footer-link" href="#">Copyright Leon Dahmer 2018</a>
+  </div>
+</div>
