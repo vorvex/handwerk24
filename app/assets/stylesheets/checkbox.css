@@ -1,8 +1,3 @@
-input[type='checkbox'] {
-   width: 100%;
-   height: 100%;
-}
-
 /* Divider */
 .divider_form {
   margin-left: 0px;
@@ -29,7 +24,7 @@ input[type='checkbox'] {
   margin-left: 0px;
   font-weight: 300;
   vertical-align: middle;
-  font-family: Roboto;
+  font-family: Helvetica-Neue;
   padding-top: 0px;
   padding-bottom: 0px;
   margin-bottom: 10px;
@@ -40,6 +35,8 @@ input[type='checkbox'] {
 .check_container input {
   position: absolute;
   opacity: 0;
+  width: 100%;
+  height: 100%;
 
 }
 
@@ -173,7 +170,8 @@ input[type='checkbox'] {
 .check_container2 input {
   position: absolute;
   opacity: 0;
-
+  width: 100%;
+  height: 100%;
 }
 
 /* Create a custom checkbox */
