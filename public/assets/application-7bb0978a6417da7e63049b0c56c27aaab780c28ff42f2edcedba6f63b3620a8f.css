@@ -29,7 +29,6 @@ input[type='checkbox'] {
   margin-left: 0px;
   font-weight: 300;
   vertical-align: middle;
-  font-family: Roboto;
   padding-top: 0px;
   padding-bottom: 0px;
   margin-bottom: 10px;
@@ -9209,7 +9208,6 @@ overflow:
 }
 
 .GroupH2 {
-    font-family: Roboto;
     color: white;
     font-size: 20px;
     line-height: 30px;
@@ -9255,18 +9253,18 @@ overflow:
 
 .Reviews {
   display: none;
-  font-family: Roboto-Bold;
   font-size: 14px;
   color: #004EFF;
   line-height: 16px;
   margin-right: 5px;
   margin-bottom: 4px;
   text-transform: uppercase;
+  font-weight: 500;
 }
 
 .Leistung {
   display: inline;
-  font-family: Roboto-Bold;
+  font-weight: 500;
   font-size: 14px;
   color: #9B9B9B;
   line-height: 16px;
@@ -9305,7 +9303,6 @@ overflow:
 }
 .HWName {
   display: inline-block;
-  font-family: Roboto;
   font-weight: 400;
   font-size: 26px;
   color: #000000;
@@ -9323,7 +9320,6 @@ overflow:
   display: inline;
   padding-left: 27px;
   padding-right: 5px;
-  font-family: Roboto;
   font-size: 20px;
   color: #000000;
   line-height: 24px;
@@ -9350,7 +9346,7 @@ overflow:
 .home {
   display: inline;
   padding-left: 27px;
-  font-family: Roboto;
+
   font-size: 20px;
   color: #000000;
   line-height: 24px;
@@ -9440,7 +9436,6 @@ html {
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: Roboto;
     padding-top: 0px;
     padding-bottom: 0px;
     margin-top: 0px;
@@ -9785,7 +9780,6 @@ html {
     background: white;
     border-radius: 6px;
     /* Kontaktanfrage Senden: */
-    font-family: Roboto;
     font-weight: 300;
     font-size: 20px;
     padding: 5px 20px 5px 20px;
@@ -9835,7 +9829,6 @@ html {
     background: white;
     border-radius: 6px;
     /* Kontaktanfrage Senden: */
-    font-family: Roboto;
     font-weight: 300;
     font-size: 20px;
     padding: 5px 20px 5px 20px;
@@ -9885,7 +9878,6 @@ html {
   }
 
   .footer a{
-    font-family: Roboto;
     font-weight: 400;
     text-decoration: none;
     margin-right: 5px;
@@ -9918,7 +9910,7 @@ html {
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: Roboto;
+
     padding-top: 0px;
     padding-bottom: 0px;
     margin-top: 0px;
@@ -10336,7 +10328,6 @@ html {
   }
 
   .footer a{
-    font-family: Roboto;
     font-weight: 400;
     text-decoration: none;
     margin-right: 5px;
@@ -10409,7 +10400,6 @@ html {
 background: white;
 border-radius: 6px;
 /* Kontaktanfrage Senden: */
-font-family: Roboto;
 font-weight: 300;
 font-size: 20px;
 padding: 5px 20px 5px 20px;
@@ -10458,7 +10448,6 @@ line-height: 30px;
 background: white;
 border-radius: 6px;
 /* Kontaktanfrage Senden: */
-font-family: Roboto;
 font-weight: 300;
 font-size: 20px;
 padding: 5px 20px 5px 20px;
@@ -10520,7 +10509,6 @@ line-height: 30px;
 
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: Roboto;
     padding-top: 0px;
     padding-bottom: 0px;
     margin-top: 0px;
@@ -10918,7 +10906,6 @@ line-height: 30px;
   .buddybutton {
     float: right;
     margin: 0px;
-
     height: 40px;
     width: 40px;
     border-radius: 100%;
@@ -10936,7 +10923,6 @@ line-height: 30px;
     text-decoration: none;
   }
   .footer a{
-    font-family: Roboto;
     font-weight: 400;
     text-decoration: none;
     margin-right: 5px;

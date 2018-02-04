@@ -18,7 +18,6 @@ background-color : white;
 padding : 20px;
 }
 h1, h2, h3, h4, h5, h6 {
-font-family : Roboto;
 padding-top : 0;
 padding-bottom : 0;
 margin-top : 0;
@@ -245,7 +244,9 @@ flex-grow : 2;
 background-color : rgba(11, 108, 175, 1);
 }
 .buttonstyle2:hover {
-background-color : rgba(0, 122, 206, 0.5);
+  background-color : rgba(0, 122, 206, 1);
+  color: white;
+  text-decoration: none;
 }
 .buttonstyle3:hover {
 background-color : rgba(11, 108, 175, 1);
@@ -311,7 +312,6 @@ margin-bottom : 20px;
 .flex_container button {
 background : white;
 border-radius : 6px;
-font-family : Roboto;
 font-weight : 300;
 font-size : 20px;
 padding : 5px 20px 5px 20px;
@@ -368,7 +368,6 @@ z-index : 9;
 text-decoration : none;
 }
 .footer a {
-font-family : Roboto;
 font-weight : 400;
 text-decoration : none;
 margin-right : 5px;
@@ -398,7 +397,6 @@ padding : 20px;
 display : none;
 }
 h1, h2, h3, h4, h5, h6 {
-font-family : Roboto;
 padding-top : 0;
 padding-bottom : 0;
 margin-top : 0;
@@ -653,13 +651,15 @@ vertical-align : middle;
 flex-grow : 2;
 }
 .buttonstyle1:hover {
-background-color : rgba(11, 108, 175, 1);
+  background-color : rgba(11, 108, 175, 1);
 }
 .buttonstyle2:hover {
-background-color : rgba(0, 122, 206, 0.5);
+  background-color : rgba(0, 122, 206, 1);
+  color: white;
+  text-decoration: none;
 }
 .buttonstyle3:hover {
-background-color : rgba(11, 108, 175, 1);
+  background-color : rgba(11, 108, 175, 1);
 }
 .right {
 width : 100%;
@@ -724,7 +724,6 @@ z-index : 9;
 text-decoration : none;
 }
 .footer a {
-font-family : Roboto;
 font-weight : 400;
 text-decoration : none;
 margin-right : 5px;
@@ -787,7 +786,6 @@ margin-bottom : 20px;
 .flex_container button {
 background : white;
 border-radius : 6px;
-font-family : Roboto;
 font-weight : 300;
 font-size : 20px;
 padding : 5px 20px 5px 20px;
@@ -828,7 +826,6 @@ vertical-align : top;
 #DDSubmit {
 background : white;
 border-radius : 6px;
-font-family : Roboto;
 font-weight : 300;
 font-size : 20px;
 padding : 5px 20px 5px 20px;
@@ -882,7 +879,6 @@ background-color : white;
 padding : 20px;
 }
 h1, h2, h3, h4, h5, h6 {
-font-family : Roboto;
 padding-top : 0;
 padding-bottom : 0;
 margin-top : 0;
@@ -1200,7 +1196,6 @@ z-index : 9;
 text-decoration : none;
 }
 .footer a {
-font-family : Roboto;
 font-weight : 400;
 text-decoration : none;
 margin-right : 5px;
