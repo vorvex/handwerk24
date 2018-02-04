@@ -1,6 +1,10 @@
   @import "bootstrap-sprockets";
   @import "bootstrap";
 
+html {
+  font-family: 'Helvetica-Neue'; 
+}
+
 .bodyDash { 
   padding-top: 70px; 
 }

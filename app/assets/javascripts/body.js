@@ -1,5 +1,4 @@
 //Burger Menu in Mobile
-if($(window).width() <= 904 ) {
   $.when( $.ready ).then(function() {
     $('#nav-icon1').toggleClass('open');
     console.log('test1');
@@ -11,14 +10,14 @@ if($(window).width() <= 904 ) {
       $('#toggle').delay(250).slideToggle(50);
     });
   });
-  
-} 
 if(($('.search').length) && ($(window).width() <= 904)){
+  $(document).ready(function(){    
       console.log("Test");
       $('#nav-icon1').toggleClass('open');
       $('.menu').slideToggle(300);
       $('#toggle').delay(250).slideToggle(50); 
-  }
+  })
+}
 
 
 
