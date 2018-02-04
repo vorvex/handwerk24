@@ -1,9 +1,3 @@
-var cbxCount;
-function Count() {
-  var KButton = $('#KonButton');
-  KButton.text("Kontaktanfrage senden (" + cbxCount + ")");
-}
-
 function KonButton() {
   $('.ergebnisContainer').fadeToggle(100);
   $('#show').fadeToggle(100);
@@ -15,8 +9,14 @@ jQuery(document).ready(function($) {
     $(".clickable-row").click(function() {
       window.location = $(this).data("href");
     });
-  
+    
     $("#Konbutton").click(function() {
+      $('.ergebnisContainer').fadeToggle(100);
+      $('#show').fadeToggle(100);
+      $('.buttonstyle4').toggle();
+    });
+
+    $("#Konbutton").touch(function() {
       $('.ergebnisContainer').fadeToggle(100);
       $('#show').fadeToggle(100);
       $('.buttonstyle4').toggle();

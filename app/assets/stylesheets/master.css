@@ -115,12 +115,18 @@ background : #007ace;
 border-radius : 4px;
 }
 .rowcontainer {
-display : flex;
-margin : 40px;
-height : calc(100% - 140px);
-width : calc(100% - 80px);
-align-items : stretch;
-align-content : space-between;
+  display : flex;
+  margin : 40px;
+  height: 80%;
+  height: -webkit-calc(100% - 140px);
+  height: -moz-calc(100% - 140px);  
+  height : calc(100% - 140px);
+  width: 80%;
+  width: -webkit-calc(100% - 80px);
+  width: -moz-calc(100% - 80px);    
+  width : calc(100% - 80px);
+  align-items : stretch;
+  align-content : space-between;
 }
 .menu {
 min-width : 315px;
@@ -184,13 +190,16 @@ color : rgba(255, 255, 255, 0.5);
 color : rgba(255, 255, 255, 0.5);
 }
 .LeistungContainer {
-display : block;
-overflow : hidden;
-overflow : scroll;
-background : transparent;
-height : calc(100% - 140px);
-margin-bottom : 40px;
-z-index : 10;
+  display : block;
+  overflow : hidden;
+  overflow : scroll;
+  background : transparent;
+  height: 80%;
+  height: -webkit-calc(100% - 140px);
+  height: -moz-calc(100% - 140px);
+  height : calc(100% - 140px);
+  margin-bottom : 40px;
+  z-index : 10;
 }
 .line2 {
 border : rgba(255, 255, 255, 0.6) solid thin;
@@ -260,12 +269,15 @@ flex-grow : 2;
 flex-direction : column;
 }
 .ergebnisContainer {
-display : block;
-overflow-y : scroll;
-height : calc(100% - 60px);
-width : 100%;
-border-radius : 6px;
-margin-bottom : 20px;
+  display : block;
+  overflow-y : scroll;
+  height: 80%;
+  height: -webkit-calc(100% - 60px);
+  height: -moz-calc(100% - 60px);  
+  height : calc(100% - 60px);
+  width : 100%;
+  border-radius : 6px;
+  margin-bottom : 20px;
 }
 .ergebnisFooter {
 display : block;
@@ -543,19 +555,25 @@ height : 40px;
 max-width : 100%;
 }
 .rowcontainer {
-display : block;
-margin : 20px;
-height : calc(100% - 80px);
-width : 300px;
-align-items : stretch;
-align-content : space-between;
+  display : block;
+  margin : 20px;
+  height: 80%;
+  height: -webkit-calc(100% - 80px);
+  height: -moz-calc(100% - 80px);  
+  height : calc(100% - 80px);
+  width : 300px;
+  align-items : stretch;
+  align-content : space-between;
 }
 .menu {
-height : calc(100% - 80px);
-padding : 20px;
-border-radius : 6px;
-margin-bottom : 40px;
-background : rgba(54, 54, 54, 0.8);
+  height: 80%;
+  height: -webkit-calc(100% - 80px);
+  height: -moz-calc(100% - 80px);  
+  height : calc(100% - 80px);
+  padding : 20px;
+  border-radius : 6px;
+  margin-bottom : 40px;
+  background : rgba(54, 54, 54, 0.8);
 }
 .menuHeader {
 display : block;
@@ -595,13 +613,16 @@ text-align : center;
 color : rgba(255, 255, 255, 0.5);
 }
 .LeistungContainer {
-display : block;
-overflow : hidden;
-overflow : scroll;
-background : transparent;
-height : calc(100% - 140px);
-margin-bottom : 40px;
-z-index : 10;
+  display : block;
+  overflow : hidden;
+  overflow : scroll;
+  background : transparent;
+  height: 80%;
+  height: -webkit-calc(100% - 140px);
+  height: -moz-calc(100% - 140px);  
+  height : calc(100% - 140px);
+  margin-bottom : 40px;
+  z-index : 10;
 }
 .line2 {
 border : rgba(255, 255, 255, 0.6) solid thin;
@@ -662,16 +683,22 @@ flex-grow : 2;
   background-color : rgba(11, 108, 175, 1);
 }
 .right {
-width : 100%;
-height : calc(100% - 40px);
+  width : 100%;
+  height: 80%;
+  height: -webkit-calc(100% - 140px);
+  height: -moz-calc(100% - 140px);  
+  height : calc(100% - 140px);
 }
 .ergebnisContainer {
-display : none;
-overflow-y : scroll;
-height : calc(100% - 60px);
-width : 100%;
-border-radius : 6px;
-margin-bottom : 20px;
+  display : none;
+  overflow-y : scroll;
+  height: 80%;
+  height: -webkit-calc(100% - 60px);
+  height: -moz-calc(100% - 60px);  
+  height : calc(100% - 60px);
+  width : 100%;
+  border-radius : 6px;
+  margin-bottom : 20px;
 }
 .ergebnisFooter {
 display : block;
@@ -732,15 +759,15 @@ color : black;
 }
 @media screen and (max-width:400px) {
 .rowcontainer {
-display : block;
-margin-left : 0;
-margin-right : 0;
-margin-top : 20px;
-margin-bottom : 20px;
-height : calc(100% - 80px);
-width : 100%;
-align-items : stretch;
-align-content : space-between;
+  display : block;
+  margin-left : 0;
+  margin-right : 0;
+  margin-top : 20px;
+  margin-bottom : 20px;
+  height : calc(100% - 80px);
+  width : 100%;
+  align-items : stretch;
+  align-content : space-between;
 }
 .menu {
 margin-left : 20px;
