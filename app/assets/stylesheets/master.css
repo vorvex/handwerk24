@@ -250,6 +250,8 @@ text-align : center;
 vertical-align : middle;
 flex-grow : 2;
 }
+  
+  
 .buttonstyle1:hover {
 background-color : rgba(11, 108, 175, 1);
 }
