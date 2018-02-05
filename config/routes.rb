@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   
   get 'signup', to: 'users#new'
   post 'users', to: 'users#create'
+  
   get 'users/:username', to: 'users#page'
+  
   get 'dashboard', to: 'users#index'
   get 'dashboard/services', to: 'users#services'
 

@@ -1,6 +1,16 @@
-<%= render 'shared/header' %>
-<%= render 'shared/errors', obj: @user %>
-<%= render 'shared/messages' %>
-<div class="container">
-  <%= render 'signup' %>
+<div class="bg">
+  <header class="header">
+    <a href="/"><%= image_tag("logo-white.png", :alt => "Handwerk24", :class => "logo") %></a>
+    <%= link_to "Anmelden", login_path, class: "buttonstyle1"%>
+  </header>
+  <div class="hw-container">
+    <%= render 'shared/errors', obj: @user %>
+    <%= render 'shared/messages' %>
+    <%= render 'signup' %>
+  </div>
+  <div class="footer">
+    <a class="footer-link" href="#">Impressum</a>
+    <a class="footer-link" href="#">Copyright Leon Dahmer 2018</a>
+  </div>
 </div>
+

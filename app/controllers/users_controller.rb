@@ -1,7 +1,7 @@
 class UsersController < ApplicationController 
   before_action :set_user, only: [:update, :destroy]
   before_action :require_same_user, only: [:edit, :update, :destroy]
-  before_action :dashboard
+  before_action :dashboard, except: [:new, :create]
  
   def index
     if logged_in_user?
@@ -25,17 +25,18 @@ class UsersController < ApplicationController
   end
   
   def new
+    @body = "bodyHome"
     @user = User.new
     service_tabs
   end
   
   def edit
     @user = User.find(params[:id])
-    require_same_user
     service_tabs
   end
   
   def create
+    @body = "bodyHome"
     @user = User.new(user_params)
     @user.username = @user.name.gsub(" ","-").downcase().gsub("ä","ae").gsub("ü","ue").gsub("ö","oe").gsub("ß","ss").gsub("Ö","oe").gsub("Ü","ue").gsub("Ä","ae")
     service_tabs
@@ -50,7 +51,6 @@ class UsersController < ApplicationController
   end
   
   def update
-    require_same_user
     @user = User.find(params[:id])
     service_tabs
     if @user.update(user_params)
@@ -110,9 +110,12 @@ class UsersController < ApplicationController
     end
   
     def require_same_user
-      if params[:id] != session[:user_id]
+      @user = User.find(params[:id])
+      @current_user = false
+      @current_user = User.find(session[:user_id]) if session[:user_id]
+      if @user != @current_user
         flash[:danger] = "Sie können nur Ihren eigenen Akkount bearbeiten"
-        redirect_to root_path
+        redirect_to dashboard_path
       end
     end
   

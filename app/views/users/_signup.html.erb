@@ -1,32 +1,33 @@
+<h1 class="signup col-xs-12">Kostenlosen Akkount erstellen</h1>
 <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
   <div>
-    <div class="form-group">
+    <div class="form-group col-xs-12">
       <label class="control-label">Name Ihres Betriebs</label>
       <%= f.text_field :name, class: "form-control", placeholder: "Betriebsname" %> 
     </div>
-    <div class="form-group">
+    <div class="form-group col-xs-12">
       <label class="control-label">Name des Inhabers/Geschäftsführer</label>
       <%= f.text_field :inhaber, class: "form-control", placeholder: "Max Mustermann" %> 
     </div>
-    <div class="form-group">
+    <div class="form-group col-xs-12">
       <label class="control-label">Email-Adresse</label>
       <%= f.email_field :email, class: "form-control", placeholder: "info@beispiel.de" %> 
     </div>
-    <div class="form-group">
+    <div class="form-group col-xs-12">
       <label class="control-label">Passwort eingeben</label>
       <%= f.password_field :password, class: "form-control" %> 
     </div>
   </div>
   <div>
-    <div class="form-group">
+    <div class="form-group col-xs-12">
       <label class="control-label">Branche</label>
       <%= f.select :field_id, options_for_select(Field.all.map{|i| [i.name, i.id]}, selected: f.object.field_id), { }, { class: "form-control" } %>  
     </div>
-    <div class="form-group">
+    <div class="form-group col-xs-12">
       <label class="control-label">Straße & Hausnummer</label>
       <%= f.text_field :adresse, class: "form-control", placeholder: "Hauptstraße 1" %> 
     </div>
-    <div class="form-group">
+    <div class="form-group col-xs-12">
       <label class="control-label">PLZ, Stadt</label>
       <div class="row">
         <div class="col-xs-3">
@@ -37,23 +38,24 @@
         </div>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group col-xs-12">
       <label class="control-label">Telefon</label>
       <%= f.text_field :telefon, class: "form-control", placeholder: "01234567890" %> 
     </div>
-    <div class="form-group">
+    <div class="form-group col-xs-12">
       <label class="control-label">Webseite</label>
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon3">http://</span><%= f.text_field :url, class: "form-control", placeholder: "www.beispielseite.de", aria_describedby: "basic-addon3" %>
       </div> 
     </div>
-    <ul class="nav nav-tabs">
+    <h2 class="signup col-xs-12">Wählen Sie Ihre Leistungen aus</h2>
+    <ul class="nav nav-tabs col-xs-12">
       <li class="active"><a data-toggle="tab" href="#garten">Gartenarbeit</a></li>
       <li><a data-toggle="tab" href="#aussen">Außen am Haus</a></li>
       <li><a data-toggle="tab" href="#haus">Haus und Wohnung</a></li>
       <li><a data-toggle="tab" href="#boden">Bodenbeläge</a></li>
     </ul>
-    <div class="tab-content">
+    <div class="tab-content col-xs-12">
         <div id="garten" class="tab-pane fade in active">
           <div class="form-group">
              <%= f.collection_check_boxes :service_ids, @garten, :id, :name do |cb| %>
@@ -78,7 +80,7 @@
         <div id="boden" class="tab-pane fade">
           <div class="form-group">
              <%= f.collection_check_boxes :service_ids, @boden, :id, :name do |cb| %>
-               <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
+               <% cb.label(class: "checkbox-inline input_checkbox col-xs-12") {cb.check_box(class: "checkbox") + cb.text} %>
              <% end %>
           </div>
         </div>

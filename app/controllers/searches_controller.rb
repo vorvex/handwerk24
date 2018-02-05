@@ -56,7 +56,8 @@ class SearchesController < ApplicationController
     @inquiery = Inquiery.new(inquiery_params_two)
     @services = Service.all
     if @inquiery.save
-      @body = "bodyGarten"
+      @body = "bodyHome"
+      @overlay = "Vielen Dank! Ihre Nachricht wurde an die ausgewählten Handwerker weitergeleitet."
     else 
       render 'searchgarten'
     end
