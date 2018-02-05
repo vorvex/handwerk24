@@ -44,8 +44,8 @@
                 <li><%= link_to "Admin Ausloggen", logoutadmin_path, method: :delete %></li>
               </ul>
             </li>
-        </ul>
-      <% end %>
+        <% end %>
+      </ul>
       <% if logged_in_admin? && !logged_in_user? %>
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "Ausloggen", logoutadmin_path, method: :delete %></li>
