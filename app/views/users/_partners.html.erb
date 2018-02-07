@@ -24,21 +24,23 @@
         </div>
     <% end %>
     <div class="panel-body">
-      <% @partners.each do |p| %>
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="col-xs-8" style="padding: 0 0;">
-              <h3 style="margin: 0 0 10px 0;"><%= p.name %>, <small><%= Field.find("#{p.field_id}").name if p.field_id != 0 %></small></h3>
-              <p style="margin-bottom: 0px">
-                <strong>Inhaber:</strong> <%= p.inhaber %>  
-                <strong>Adresse:</strong> <%= p.adresse %>, <%= p.stadt %>
-              </p>
+      <% if @partners.any? then %>
+        <% @partners.each do |p| %>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="col-xs-8" style="padding: 0 0;">
+                <h3 style="margin: 0 0 10px 0;"><%= p.name %>, <small><%= Field.find("#{p.field_id}").name if p.field_id != 0 %></small></h3>
+                <p style="margin-bottom: 0px">
+                  <strong>Inhaber:</strong> <%= p.inhaber %>  
+                  <strong>Adresse:</strong> <%= p.adresse %>, <%= p.stadt %>
+                </p>
+              </div>
+              <div class="pull-right">
+                <%= link_to '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>'.html_safe, detach_partner_path(@user, p), method: :delete %>
+              </div>
             </div>
-            <div class="pull-right">
-              <%= link_to '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>'.html_safe, detach_partner_path(@user, p), method: :delete %>
-            </div>
-          </div>
-        </div>     
+          </div>     
+        <% end %>
       <% end %>
     </div>
   </div>
