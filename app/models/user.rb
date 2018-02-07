@@ -30,7 +30,7 @@ class User < ApplicationRecord
 
   def self.search(term)
     if term
-      where('name LIKE ?', "%#{term}%")
+      where('name LIKE ?', "%#{term}%").limit(10)
     else
       none
     end

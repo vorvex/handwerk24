@@ -3,10 +3,11 @@
 <div class="container-fluid">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <ul class="nav nav-tabs">
+      <ul class="nav nav-pills">
         <li class="active"><a data-toggle="tab" href="#home">Anfragen</a></li>
         <li><a data-toggle="tab" href="#menu1">Öffentliche Anfragen</a></li>
-        <li><a data-toggle="tab" href="#menu2">Kontakt mit Handwerk24</a></li>
+        <li>
+        </li>
       </ul>
     </div>
     <div class="panel-body">
@@ -31,7 +32,7 @@
                       <span class="label label-success"><%= s.name %></span>
                     <% end %>
                   </td>
-                  <td class="col-xs-1"><%= t.email %></td>
+                  <td class="col-xs-1"><%= link_to "#{t.email}", "mailto:#{t.email}" %></td>
                   <td class="col-xs-2"><%= t.adresse %>, <%= t.plz %> <%= t.stadt %></td>
                   <td class="col-xs-1"><%= time_ago_in_words(t.created_at) %></td>
                   <td></td>
@@ -70,10 +71,6 @@
               <% end %>
             </tbody>  
          </table>
-        </div>
-        <div id="menu2" class="tab-pane fade">
-          <h3>Kontakt mit HW24</h3>
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
         </div>
       </div>
     </div>

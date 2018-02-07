@@ -13,8 +13,8 @@ class UsersController < ApplicationController
       @field = Field.new
       @service = Service.new
       @admin = Admin.new
-      @inquieries = current_user.inquieries
-      @public_inquieries = Inquiery.all
+      @inquieries = current_user.inquieries.order('id DESC')
+      @public_inquieries = Inquiery.all.where.not('email == ""').order('id DESC')
       @possible_partners = User.all.where.not(id: @user.partner_ids << @user.id).search(params[:name])
       @partners = @user.partners
     else
@@ -73,7 +73,8 @@ class UsersController < ApplicationController
   end
 
   def services
-    @services = current_user.services.order(:category)
+    @user = current_user
+    service_tabs    
   end
   
   def attach

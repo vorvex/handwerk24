@@ -14,7 +14,7 @@
     <% if @possible_partners.any? then %>
         <div class="list-group">
           <% @possible_partners.each do |p| %>
-            <li class="list-group-item list-group-item-info">
+            <li class="list-group-item">
               <strong><%= p.name %></strong>, <%= Field.find("#{p.field_id}").name if p.field_id != 0 %>
               <strong>Inhaber:</strong> <%= p.inhaber %>  
               <strong>Adresse:</strong> <%= p.adresse %>, <%= p.stadt %>

@@ -64,30 +64,30 @@
         </ul>
         <div class="tab-content">
             <div id="garten" class="tab-pane fade in active">
-              <div class="form-group col-xs-12">
+              <div class="form-group col-xs-12" style="max-height: 150px; overflow-y: scroll; overflow-x: hidden">
                  <%= f.collection_check_boxes :service_ids, @garten, :id, :name do |cb| %>
-                   <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
+                   <% cb.label(class: "check_container3") {cb.check_box(id: "click" ) + cb.text + "<span class='checkmark3'></span>".html_safe} %>
                  <% end %>
               </div>
             </div>
             <div id="aussen" class="tab-pane fade">
-              <div class="form-group">
+              <div class="form-group col-xs-12" style="max-height: 150px; overflow-y: scroll; overflow-x: hidden">
                <%= f.collection_check_boxes :service_ids, @aussen, :id, :name do |cb| %>
-                 <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
+                 <% cb.label(class: "check_container3") {cb.check_box(id: "click" ) + cb.text + "<span class='checkmark3'></span>".html_safe} %>
                <% end %>
               </div>
             </div>
             <div id="haus" class="tab-pane fade">
-              <div class="form-group">
+              <div class="form-group col-xs-12" style="max-height: 150px; overflow-y: scroll; overflow-x: hidden">
                 <%= f.collection_check_boxes :service_ids, @haus, :id, :name do |cb| %>
-                  <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
+                  <% cb.label(class: "check_container3") {cb.check_box(id: "click" ) + cb.text + "<span class='checkmark3'></span>".html_safe} %>
                 <% end %>
               </div>          
             </div>
             <div id="boden" class="tab-pane fade">
-              <div class="form-group">
+              <div class="form-group col-xs-12" style="max-height: 150px; overflow-y: scroll; overflow-x: hidden">
                 <%= f.collection_check_boxes :service_ids, @boden, :id, :name do |cb| %>
-                    <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
+                    <% cb.label(class: "check_container3") {cb.check_box(id: "click" ) + cb.text + "<span class='checkmark3'></span>".html_safe} %>
                   <% end %>
               </div>
             </div>

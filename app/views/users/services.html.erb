@@ -3,25 +3,21 @@
 <div class="container-fluid">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title"><%= link_to "Leistungen", services_path %></h3>
+      <h3 class="panel-title">Leistungen</h3>
     </div>
-    <table class="table table-hover">
-      <thead>
-        <th>#</th>
-        <th>Leistung</th>
-        <th>Kategorie</th>
-        <th class="col-md-1">Löschen</th>
-      </thead>
-      <tbody>
-        <% @services.each do |t| %>
-          <tr class='clickable-row <%= "active" if !t.show %>' data-href='/services/<%= t.id %>/edit'>
-            <th><%= t.id %></th>
-            <td><%= t.name %></td>
-            <td><%= t.category %></td>
-            <td class="col-md-1 center"><%= link_to 'x', service_path(t), method: :delete, data: {confirm: "Sicher?"} %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <div class="panel-body">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Haus und Wohnung</h3>
+        </div>
+        <div class="panel-body">
+         <% form_for(@user, :html => {class: "form-horizontal", role: "form", method: :post }, url: edit_user_url(@user)) do |f| %> 
+           <%= f.collection_check_boxes :service_ids, @home, :id, :name do |cb| %>
+              <% cb.label(class: "check_container") {cb.check_box(id: "click" ) + cb.text + "<span class='checkmark'></span>".html_safe} %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
