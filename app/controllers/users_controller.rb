@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       @admin = Admin.new
       @inquieries = current_user.inquieries
       @public_inquieries = Inquiery.all
-      @possible_partners = User.all.where.not(id: @user.partner_ids << @user.id)
+      @possible_partners = User.all.where.not(id: @user.partner_ids << @user.id).search(params[:name])
       @partners = @user.partners
     else
       flash[:warning] = "Sie können diesen Bereich nur als Partner einsehen"
@@ -79,20 +79,20 @@ class UsersController < ApplicationController
   def attach
     @user = current_user
     @id = @user.id
-    partner = User.find(params[:user][:partner_ids])
+    @partner = User.find(params[:id])
 
-    @user.partners << partner
-    partner.partners << @user
-    redirect_to edit_user_path(@user)
+    @user.partners << @partner
+    @partner.partners << @user
+    redirect_to dashboard_path
   end
 
   def detach
-    @user = current_user_validation
-    partner = User.find(params[:partner_id])
+    @user = current_user
+    @partner = User.find(params[:partner_id])
 
-    @user.partners.delete(partner)
-    partner.partners.delete(@user)
-    redirect_to edit_user_path(@user)
+    @user.partners.delete(@partner.id)
+    @partner.partners.delete(@user.id)
+    redirect_to dashboard_path
   end
   
   

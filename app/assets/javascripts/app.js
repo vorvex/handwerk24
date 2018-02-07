@@ -31,7 +31,7 @@ $(document).ready(function(){
     $('#nav-icon1').click(function(){
       $(this).toggleClass('open-menu');
       $('.menu').slideToggle(300);
-      $('#toggle').delay(250).slideToggle(50);
+      $('#toggle').slideToggle(100);
     });
 });
 

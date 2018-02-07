@@ -1076,14 +1076,14 @@ display : inline-block;
 float : left;
 font-weight : 300;
 color : white;
-font-size : 24px;
+font-size : 20px;
 line-height : 30px;
 padding-top : 5px;
 padding-bottom : 5px;
 }
 .plz {
 display : inline-block;
-width : 110px;
+width : 100px;
 float : right;
 margin-left : 20px;
 padding-left : 20px;
@@ -1096,7 +1096,7 @@ border-radius : 4px;
 border-color : #007ace;
 color : rgba(255, 255, 255, 1);
 font-weight : 300;
-font-size : 24px;
+font-size : 20px;
 line-height : 30px;
 text-align : center;
 }
@@ -1105,8 +1105,8 @@ color : rgba(255, 255, 255, 0.5);
 }
 .LeistungContainer {
 display : block;
-overflow : hidden;
-overflow : scroll;
+overflow-x : hidden;
+overflow-y : scroll;
 background : transparent;
 height : calc(100% - 140px);
 margin-bottom : 40px;

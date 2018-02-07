@@ -1,0 +1,33 @@
+<% if @possible_partners.any? then %>
+  <table class="table">
+    <tbody>
+      <% @possible_partners.each do |p| %>
+        <tr>
+          <td><strong><%= p.name %></strong>, <%= Field.find("#{p.field_id}").name if p.field_id != 0 %>  
+          <td><strong>Inhaber:</strong> <%= p.inhaber %>  
+          <td><strong>Adresse:</strong> <%= p.adresse %>, <%= p.stadt %>  
+          <td><%= link_to "Hinzufügen", attach_partner_url(p), method: :post, action: :attach %></th>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+<div class="panel-body">
+  <% @partners.each do |p| %>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="col-xs-8">
+          <h4></h1>
+          <p style="margin-bottom: 0px">
+            <strong><%= p.name %></strong>, <%= Field.find("#{p.field_id}").name if p.field_id != 0 %></br>
+            <strong>Inhaber:</strong> <%= p.inhaber %>  
+            <strong>Adresse:</strong> <%= p.adresse %>, <%= p.stadt %>
+          </p>
+        </div>
+        <div class="pull-right">
+          
+        </div>
+      </div>
+    </div>     
+  <% end %>
+</div>

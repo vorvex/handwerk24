@@ -28,6 +28,12 @@ class User < ApplicationRecord
     self.partners.order('id ASC')
   end
 
-  
+  def self.search(term)
+    if term
+      where('name LIKE ?', "%#{term}%")
+    else
+      none
+    end
+  end
   
 end

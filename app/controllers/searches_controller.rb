@@ -1,5 +1,19 @@
 class SearchesController < ApplicationController
   
+  def search
+    @search = true
+    @category = "Gartenarbeit"
+    @body = "bodyGarten"
+    @inquiery = Inquiery.new
+    @services = Service.all
+    @leistung = []
+    @services.each do |service|
+      @leistung << service if service.show && service.category == @category
+    end
+    @userss = User.where(["plz = ? and bulletproof = ?", params[:plz], true]).joins(:services).where(id: params[:service_ids]).uniq?
+    @users = User.where(services: params[:service_ids])
+  end
+  
   def gartenarbeit
     @category = "Gartenarbeit"
     @body = "bodyGarten"
