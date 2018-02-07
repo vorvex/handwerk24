@@ -44,37 +44,7 @@
          </table>
         </div>
         <div id="menu1" class="tab-pane fade">
-          <table class="table table-hover">
-            <thead>
-              <th>Name</th>
-              <th>Nachricht</th>
-              <th>Leistungen</th>
-              <th>Email-Adresse</th>
-              <th>Adresse</th>
-              <th>Erstellt vor:</th>
-            </thead>
-            <tbody>
-              <% if @public_inquieries.any? then %>
-                <% @public_inquieries.each do |t| %>
-                  <% if t.users.empty? && t.plz == current_user.plz && t.email != nil %>
-                    <tr>
-                      <td class="col-xs-1"><%= t.vorname if t.vorname %> <%= t.nachname %></td>
-                      <td class="col-xs-5"><%= t.nachricht %></td>
-                      <td class="col-xs-2">                    
-                        <% t.services.each do |s| %>
-                          <span class="label label-success"><%= s.name %></span> 
-                        <% end %>
-                      </td>
-                      <td class="col-xs-1"><%= t.email %></td>
-                      <td class="col-xs-1"><%= t.plz %></td>
-                      <td class="col-xs-1"><%= time_ago_in_words(t.created_at) %></td>
-                      <td></td>
-                    </tr>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </tbody>  
-         </table>
+          
         </div>
       </div>
     </div>
