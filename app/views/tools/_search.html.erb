@@ -1,0 +1,20 @@
+<%= form_for('', :html => {class: "menu", role: "form", id: "menu", method: :get}) do |f| %>
+  <input name="category" type="hidden" value="<%= @category %>">
+  <div class="menuHeader">
+    <h3 class="menuHeaderH3">PLZ eingeben</h3>
+    <div>
+      <%= f.text_field :plz, class: "plz", placeholder: "76275", autofocus: true, length: 5, value: "#{ @plz if @plz }" %>
+    </div>
+  </div>
+  <div class="LeistungContainer">
+    <% @services.each do |service| %>
+      <label class="check_container" for="service_ids_<%= service.id %>">
+        <input id="click" type="checkbox" value="<%= service.id %>" name="service_ids[]"><%= service.name %>
+        <span class="checkmark"></span></label>      
+    <% end %>
+  </div>
+  <div class="ergebnisFooter" id="ergebnisFooter">
+    <%= link_to "Zurück", :back, class: "buttonstyle2" %>
+    <%= f.submit "Suchen", class: "buttonstyle3", id: "Suche"%>
+  </div>        
+<% end %>

@@ -1,0 +1,61 @@
+<%= render 'overlay' %>
+<header class="header">
+  <a href="/"><%= image_tag("logo.png", :alt => "Handwerk24", :class => "logo") %></a>
+  <%= link_to "Handwerker?", signup_path, class: "buttonstyle1"%>
+  <div id="nav-icon1">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
+<div class="rowcontainer" id="<%= "search" if @search %>">
+  <%= render 'search' %>
+  <%= form_for(@inquiery, :html => {class: "right", role: "form", id: "toggle"}, url: vielendank_path) do |f| %>
+  <%= render 'errors' %>  
+  <div class="ergebnisContainer" id="paste">
+      <%= render 'craftsmen' %>
+    </div>
+    <div class="kontaktContainer" id="show">
+      <div class="kontakt-body">
+        <h3 class="kontakt-header">Schicken Sie eine Kontaktanfrage an alle ausgewählten Handwerker</h3>
+        <div class="form-group col-md-6">
+          <%= f.text_field :vorname, class: "form-control", placeholder: "Vorname", autofocus: true %>
+        </div>
+        <div class="form-group col-md-6">
+          <%= f.text_field :nachname, class: "form-control", placeholder: "Nachname*", autofocus: true %>
+        </div>
+        <div class="form-group col-md-12">
+          <%= f.email_field :email, class: "form-control", placeholder: "Email*", autofocus: true %>
+        </div>
+        <div class="form-group col-md-12">
+          <%= f.text_field :adresse, class: "form-control", placeholder: "Straße, Hausnummer", autofocus: true %>
+        </div>
+        <div class="form-group col-md-4">
+          <%= f.text_field :plz, class: "form-control", placeholder: "76275", id: "disabled-input" %>
+        </div>
+        <div class="form-group col-md-8">
+          <%= f.text_field :stadt, class: "form-control", placeholder: "Stadt", autofocus: true %>
+        </div>
+        <div style="display: none">
+          <%= f.collection_check_boxes :service_ids, @services, :id, :name do |cb| %>
+            <% cb.label(class: "checkbox") {cb.check_box + cb.text} %>
+              <% end %>
+        </div>
+        <div class="form-group col-md-12">
+          <%= f.text_area :nachricht, class: "form-control", placeholder: "Nachricht schreiben", autofocus: true %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Anfrage senden", class: "buttonstyle5" %>
+          <span class="buttonstyle3" id="hideKontakt">Zurück</span>
+        </div>
+      </div>
+    </div>
+    <div class="ergebnisFooter" id="ergebnisFooter">
+        <span class="buttonstyle3" id="Konbutton" onclick="KonButton">Nachricht senden</span> 
+    </div>
+  <% end %>
+</div>
+<div class="footer">
+  <a href="#">Impressum</a><a href="#">Copyright 2018 Leon Dahmer</a>
+</div>

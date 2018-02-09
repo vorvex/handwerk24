@@ -28,12 +28,28 @@ class User < ApplicationRecord
     self.partners.order('id ASC')
   end
 
-  def self.search(term)
+  def self.search_partner(term)
     if term
       where('name LIKE ?', "%#{term}%").limit(10)
     else
       none
     end
+  end
+  
+  def self.search(search)
+    if search
+      where('score > 0.0').order('score DESC')
+    else
+      none
+    end
+  end
+    
+  def distance(plz)  
+    (self.plz - plz).abs
+  end
+  
+  def comparison(services)
+    (services - self.services).count
   end
   
 end

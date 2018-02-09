@@ -10,19 +10,8 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'users#index'
   get 'dashboard/services', to: 'users#services'
 
-  get 'suche/gartenarbeit', to: 'searches#gartenarbeit'
-  post 'suche/gartenarbeit', to: 'searches#searchgarten'
-  
-  get 'suche/hauswohnung', to: 'searches#hauswohnung'
-  post 'suche/hauswohnung', to: 'searches#searchhaus'
-  
-  get 'suche/bodenbelag', to: 'searches#bodenbelag'
-  post 'suche/bodenbelag', to: 'searches#searchboden'
-  
-  get 'suche/aussen', to: 'searches#aussen'
-  post 'suche/aussen', to: 'searches#searchaussen'
-  
-  post 'vielendank', to: 'searches#create'
+  get 'suche', to: 'tools#search'  
+  post 'vielendank', to: 'tools#create'
   
   get 'admin', to: 'admins#index'
   get 'admin/new', to: 'admins#new'

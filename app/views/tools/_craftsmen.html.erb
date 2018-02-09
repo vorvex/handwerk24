@@ -1,0 +1,38 @@
+<% if @users.any? %>
+  <div class="infoContainer">
+    <H5 class="Info1">Infrage kommende Betriebe (<%= @users.count %>)</h5>
+    <a onclick="wasEinzeln()" class="Info2">Was ist das?</a>
+  </div>
+<% end %>
+<% @users.each do |u| %>
+    <div class="SoloContainer">
+      <div class="HandwerkerInner">
+          <!--Foto/Logo von Handwerker-->
+        <%= image_tag("image-placeholder.svg", :alt => "Handwerker Image", :class => "HWimg") %>
+        <div class ="info">
+            <div class ="InfoOben">
+                <!--Reviews dienen als Platzhalter bis ein Modell besteht // Leistungen die auf Betrieb und Suche zutreffen-->
+              <h6 class="Reviews">4,5/5 (5 Reviews)</h6>
+              <h6 class="Leistung"><%= Field.find(u.field_id).name %> <%= u.score %></h6>
+            </div>
+            <!--Name Betrieb-->
+            <h3 class="HWName"><%= u.name %></h3>
+              <div class="InfoBottom">
+                <%= link_to "#{u.telefon}", "tel:#{u.telefon}", class: "phone" %>
+                <%= link_to "#{u.plz}, #{truncate(u.stadt, :length => 15)}", "#", class: "home" %> 
+              </div>
+          </div>
+        <div class="links">
+            <!--Klick auf Link = öffnen im neuen Tap-->
+          <%= link_to image_tag("world64.png", :alt => "Website", :class => "World"), "http://#{u.url}", class: "Website" %>
+          <div class="checkcontainer">
+                <!--Check Betrieb-->
+                <label class="check_container1">
+                  <input name="inquiery[user_ids][]" type="checkbox" value="<%= u.id %>">
+                  <span class="checkmark1"></span>
+                </label>
+            </div>
+        </div>
+      </div>
+    </div>
+<% end %>
