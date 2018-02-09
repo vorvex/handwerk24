@@ -33,6 +33,8 @@ resources :users, except: [:new, :create, :index]
   
   resources :inquieries
   
+  delete '/inquieries/:id/:user_id', to: 'inquieries#detach', as: 'detach_user'
+  
   post   '/partners/:id', to: 'users#attach', as: 'attach_partner'
   delete '/partners/:id/:partner_id', to: 'users#detach', as: 'detach_partner'
 end

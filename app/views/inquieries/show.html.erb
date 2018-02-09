@@ -1,0 +1,78 @@
+<%= render 'shared/header' %>
+<div class="container">
+  <div class="col-md-12" style="margin-bottom: 20px">
+    <h3 style="display: inline"><%= link_to '<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>'.html_safe, :back %></h3>
+    <div class="pull-right">
+      <h3 style="display: inline; padding-right: 10px;">
+        <%= link_to '<span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>'.html_safe, "mailto:#{@inquiery.email}" %>
+        <%= link_to '<span class="glyphicon glyphicon-print" aria-hidden="true"></span>'.html_safe, "#", onclick: "window.print()" %>
+        <%= link_to '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>'.html_safe, detach_user_url(@inquiery.id, @user.id), method: 'delete' %>
+        <%= link_to '<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>'.html_safe, "#" %>
+      </h3>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <h3><small><%= @inquiery.vorname if @inquiery.vorname %> <%= @inquiery.nachname %> - <%= time_ago_in_words(@inquiery.created_at) %></small></h3>
+    <h1 style="margin: 5px 0 15px 0">Beispieltitel für Anfrage</h1>
+    <p style="text-align: justify"><%= @inquiery.nachricht %></p>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default" style="margin-top: 75px">
+      <table class="table">
+        <tr>
+          <td class="col-xs-1">
+            <span class="glyphicon glyphicon-user" aria-hidden="true" style="color: #337ab7"></span>
+          </td>
+          <td class="col-xs-11" style="text-align: right">
+            <%= @inquiery.vorname if @inquiery.vorname %> <%= @inquiery.nachname %>
+          </td>
+        </tr>
+        <tr>
+          <td class="col-xs-1">
+            <span class="glyphicon glyphicon-home" aria-hidden="true" style="color: #337ab7"></span>
+          </td>
+          <td class="col-xs-11" style="text-align: right">
+            <%= @inquiery.adresse if @inquiery.adresse %> <%= @inquiery.plz %> <%= @inquiery.stadt %>
+          </td>
+        </tr>
+        <tr>
+          <td class="col-xs-1">
+            <span class="glyphicon glyphicon-envelope" aria-hidden="true" style="color: #337ab7"></span>
+          </td>
+          <td class="col-xs-11" style="text-align: right">
+            <%= link_to @inquiery.email, "mailto:#{@inquiery.email}" %>
+          </td>
+        </tr>
+        <tr>
+          <td class="col-xs-1">
+            <span class="glyphicon glyphicon-earphone" aria-hidden="true" style="color: #337ab7"></span>
+          </td>
+          <td class="col-xs-11" style="text-align: right">
+            0173/2175458
+            <!-- @inquiery.telefon if @inquiery.telefon !-->
+          </td>
+        </tr>
+        <tr>
+          <td class="col-xs-1">
+            <span class="glyphicon glyphicon-time" aria-hidden="true" style="color: #337ab7"></span>
+          </td>
+          <td class="col-xs-11" style="text-align: right">
+            Innerhalb der nächsten 2 Monate
+          </td>
+        </tr>
+        <tr>
+          <td class="col-xs-1">
+            <span class="glyphicon glyphicon-wrench" aria-hidden="true" style="color: #337ab7"></span>
+          </td>
+          <td class="col-xs-11" style="text-align: right">
+            <% @inquiery.users.each do |hw| %>
+              <% if hw.id != @user.id then %>
+                <%= hw.name %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

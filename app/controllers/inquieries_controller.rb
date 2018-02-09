@@ -32,6 +32,15 @@ class InquieriesController < ApplicationController
     
   end
   
+  def show
+    @inquiery = Inquiery.find(params[:id])
+    @user = current_user
+  end
+  
+  def attach
+    
+  end
+  
 private  
   
   def inquiery_params
