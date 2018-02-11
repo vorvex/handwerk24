@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row u-mb-large">
       <div class="col-md-12">
           <div class="c-table-responsive@wide">
@@ -11,7 +11,7 @@
                           <th class="c-table__cell c-table__cell--head">Name</th>
                           <th class="c-table__cell c-table__cell--head">Betreff</th>
                           <th class="c-table__cell c-table__cell--head">Nachricht</th>
-                          <th class="c-table__cell c-table__cell--head">Erstellt</th>
+                          <th class="c-table__cell c-table__cell--head">Erstellt vor</th>
                           <th class="c-table__cell c-table__cell--head">
                               <span class="u-hidden-visually">Actions</span>
                           </th>
@@ -20,14 +20,21 @@
 
                   <tbody>
                     <% @inquieries.each do |t| %>
-                      <tr class="c-table__row">
+                      <tr class="c-table__row" onclick="window.location='/dashboard/inquieries/<%= t.id %>';">
                           <td class="c-table__cell"><%= t.vorname if t.vorname %> <%= t.nachname %></td>
                           <td class="c-table__cell">Beispielbetreff Platzhalter</td>
-                          <td class="c-table__cell"><%= truncate(t.nachricht, :length => 50) %></td>
-                          <td class="c-table__cell"><%= time_ago_in_words(t.created_at) %></td>
-                          <td class="c-table__cell u-text-right">
-                            <a href="invoice.html" class="c-btn c-btn--info u-mr-xsmall">Anzeigen</a>
-                          </td>
+                        <td class="c-table__cell"><span class="u-text-mute"><%= truncate(t.nachricht, :length => 50) %></span></td>
+                        <td class="c-table__cell"><span class="u-text-mute"><%= time_ago_in_words(t.created_at) %></span></td>
+                        <td class="c-table__cell u-text-right">
+                          <div class="c-dropdown dropdown">
+                            <button class="c-btn c-btn--secondary has-dropdown dropdown-toggle" id="dropdownMenuButton10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aktion</button>
+                            <div class="c-dropdown__menu dropdown-menu" aria-labelledby="dropdownMenuButton10">
+                              <a class="c-dropdown__item dropdown-item" onclick="window.location='/dashboard/inquieries/<%= t.id %>';">Anzeigen</a>
+                              <a class="c-dropdown__item dropdown-item" href="mailto:<%= t.email %>">Email senden</a>
+                              <%= link_to 'Löschen', detach_user_url(@inquiery.id, @user.id), class: "c-dropdown__item dropdown-item", method: 'delete' %>
+                            </div>
+                          </div>
+                        </td>
                       </tr><!-- // .table__row -->
                     <% end %>
                   </tbody>

@@ -8,7 +8,7 @@ class DashboardsController < ApplicationController
   def inquieries
     @header = 'Nachrichten'
     @active = 'Inquieries'
-    @inquieries = @user.inquieries
+    @inquieries = @user.inquieries.order('created_at DESC')
     @inquiery = Inquiery.find(36)
     if params[:inquiery_id]
       @inquiery = Inquiery.find(params[:inquiery_id]) 
@@ -17,6 +17,12 @@ class DashboardsController < ApplicationController
   
   def inquiery_show
     @inquiery = Inquiery.find(params[:id])
+  end
+  
+  def partners
+    @header = 'Partner'
+    @active = 'Partners'
+    @partners = @user.partners
   end
   
   private

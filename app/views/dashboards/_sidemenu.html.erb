@@ -8,20 +8,20 @@
         <ul class="c-sidebar__list">
 
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link <%= if @active == 'Index' then 'is-active' end %>" href="dashboard/index">
+                <a class="c-sidebar__link <%= if @active == 'Index' then 'is-active' end %>" href="/dashboard/">
                     <i class="fa fa-home u-mr-xsmall"></i>Übersicht
                 </a>
             </li>
 
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link <%= if @active == 'Inquieries' then 'is-active' end %>" href="dashboard/inquieries">
-                    <i class="fa fa-home u-mr-xsmall"></i>Nachrichten
+                <a class="c-sidebar__link <%= if @active == 'Inquieries' then 'is-active' end %>" href="/dashboard/inquieries">
+                    <i class="fa fa-envelope u-mr-xsmall"></i>Nachrichten
                 </a>
             </li>
 
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link <%= if @active == 'Public Inquieries' then 'is-active' end %>" href="dashboard/inquieries/public">
-                    <i class="fa fa-home u-mr-xsmall"></i>Öffentliche Anfragen
+                <a class="c-sidebar__link <%= if @active == 'Public Inquieries' then 'is-active' end %>" href="/dashboard/inquieries/public">
+                    <i class="fa fa-bullhorn u-mr-xsmall"></i>Auschreibungen
                 </a>
             </li>
 
@@ -29,12 +29,12 @@
         <ul class="c-sidebar__list">
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link <%= if @active == 'Partners' then 'is-active' end %>" href="dashboard/partners">
-                    <i class="fa fa-home u-mr-xsmall"></i>Partner Übersicht
+                    <i class="fa fa-users u-mr-xsmall"></i>Partner Übersicht
                 </a>
             </li>
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link <%= if @active == 'New Partners' then 'is-active' end %>" href="dashboard/partners/new">
-                    <i class="fa fa-home u-mr-xsmall"></i>Neue Partner hinzufügen
+                    <i class="fa fa-user-plus u-mr-xsmall"></i>Neue Partner hinzufügen
                 </a>
             </li>
         </ul>
@@ -50,12 +50,6 @@
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link" href="account-settings.html">
                     <i class="fa fa-cog u-mr-xsmall"></i>Einstellungen
-                </a>
-            </li>
-
-            <li class="c-sidebar__item">
-                <a class="c-sidebar__link" target="_blank" href="register.html">
-                    <i class="fa fa-user-plus u-mr-xsmall"></i>Register
                 </a>
             </li>
 

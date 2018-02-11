@@ -1,0 +1,105 @@
+<div class="container-fluid">
+  <div class="row u-mb-large">
+     <div class="col-lg-3 order-lg-2">
+        <form class="c-search-form c-search-form--dark">
+
+            <div class="c-search-form__section">
+                <div class="c-field has-icon-left">
+                    <span class="c-field__icon"><i class="fa fa-map-marker"></i></span>
+                    <label class="c-field__label c-search-form__label" for="search-location">Region</label>
+                    <input class="c-input" id="search-location" type="text" placeholder="Alle">
+                    <small class="c-field__message">Geben Sie eine PLZ ein</small>
+                </div>
+            </div>
+
+            <div class="c-search-form__section">
+                <div class="c-field has-icon-left">
+                    <span class="c-field__icon"><i class="fa fa-user-o"></i></span>
+                    <label class="c-field__label c-search-form__label" for="search-position">Betriebsname</label>
+                    <input class="c-input" id="search-position" type="text" placeholder="Alle">
+                    <small class="c-field__message">Suchen Sie nach Betriebsnamen</small>
+                </div>
+            </div>
+
+            <button class="c-btn c-btn--info c-btn--fullwidth" type="submit">Suchen</button>
+        </form>
+        <form class="c-search-form c-search-form--dark">
+
+            <div class="c-search-form__section">
+                <div class="c-field has-icon-left">
+                    <span class="c-field__icon"><i class="fa fa-user-o"></i></span>
+                    <label class="c-field__label c-search-form__label" for="search-location">Betriebsname</label>
+                    <input class="c-input" id="search-location" type="text" placeholder="Betriebname*">
+                    <small class="c-field__message">Geben Sie den Namen Ihres Partners ein</small>
+                </div>
+            </div>
+
+            <div class="c-search-form__section">
+                <div class="c-field has-icon-left">
+                    <span class="c-field__icon"><i class="fa fa-envelope-o"></i></span>
+                    <label class="c-field__label c-search-form__label" for="search-position">Email-Adresse</label>
+                    <input class="c-input" id="search-position" type="text" placeholder="Email-Adresse*">
+                    <small class="c-field__message">Geben Sie die Email Ihres Partners ein</small>
+                </div>
+            </div>
+
+            <button class="c-btn c-btn--info c-btn--fullwidth" type="submit">Anfrage senden</button>
+        </form>
+    </div>
+      <div class="col-lg-9 order-lg-1">
+          <div class="c-table-responsive@desktop">
+              <table class="c-table c-table--highlight u-mb-small">
+
+                  <caption class="c-table__title">
+                      Ihre Partner <small><%= @partners.count %> Partner</small>
+                  </caption>
+
+                  <thead class="c-table__head c-table__head--slim">
+                      <tr class="c-table__row">
+                        <th class="c-table__cell c-table__cell--head">Betrieb</th>
+                        <th class="c-table__cell c-table__cell--head">Inhaber</th>
+                        <th class="c-table__cell c-table__cell--head">Adresse</th>
+                        <th class="c-table__cell c-table__cell--head">
+                            <span class="u-hidden-visually">Actions</span>
+                        </th>
+                      </tr>
+                  </thead>
+
+                  <tbody>
+                    <% @partners.each do |p| %>
+                      <tr class="c-table__row">
+                          <td class="c-table__cell"><%= p.name %>
+                              <small class="u-block u-text-mute"><%= Field.find("#{p.field_id}").name if p.field_id != 0 %></small>
+                          </td>
+
+                          <td class="c-table__cell">
+                              <div class="o-media">
+                                  <div class="o-media__body">
+                                      <%= p.inhaber %>
+                                  </div>
+                              </div>
+                          </td>
+
+                          <td class="c-table__cell"><%= p.adresse %>
+                              <small class="u-block u-text-mute"><%= p.plz %> <%= p.stadt %></small>
+                          </td>
+
+                          <td class="c-table__cell u-text-right">
+                              <div class="c-dropdown dropdown">
+                                  <button class="c-btn c-btn--secondary has-dropdown dropdown-toggle" id="dropdownMenuButton27" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aktionen</button>
+
+                                  <div class="c-dropdown__menu dropdown-menu" aria-labelledby="dropdownMenuButton27">
+                                      <a class="c-dropdown__item dropdown-item" href="mailto:<%= p.email %>">Email senden</a>
+                                      <%= link_to 'Verbindung beenden', detach_partner_path(@user, p), class: "c-dropdown__item dropdown-item", method: :delete %>
+                                  </div>
+                              </div>
+                          </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+</div>
+
+                

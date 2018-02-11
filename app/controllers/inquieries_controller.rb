@@ -42,7 +42,7 @@ class InquieriesController < ApplicationController
     @inquiery = Inquiery.find(params[:id])    
     @user = User.find(params[:user_id])
     @user.inquieries.delete(@inquiery)
-    redirect_back :back
+    redirect_to dashboard_inquieries_path
   end
   
 private  
