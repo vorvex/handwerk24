@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   
   get 'users/:username', to: 'users#page'
   
-  get 'dashboard', to: 'users#index'
-  get 'dashboard/services', to: 'users#services'
+  get 'user', to: 'users#index'
+  get 'user/services', to: 'users#services'
 
   get 'suche', to: 'tools#search'  
   post 'vielendank', to: 'tools#create'
@@ -32,6 +32,11 @@ resources :users, except: [:new, :create, :index]
   resources :fields
   
   resources :inquieries
+  
+  get 'dashboard', to: 'dashboards#index'
+  get 'dashboard/inquieries', to: 'dashboards#inquieries'
+  get 'dashboard/settings', to: 'dashboards#settings'
+  get 'dashboard/partners', to: 'dashboards#partners'
   
   delete '/inquieries/:id/:user_id', to: 'inquieries#detach', as: 'detach_user'
   

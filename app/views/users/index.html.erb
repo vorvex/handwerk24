@@ -25,7 +25,7 @@
             <tbody>
               <% if @inquieries.any? then %>
                 <% @inquieries.each do |t| %>
-                  <tr>
+                  <tr onclick="window.location='/inquieries/<%= t.id %>';">
                     <td class="col-xs-1"><%= t.vorname if t.vorname %> <%= t.nachname %></td>
                     <td class="col-xs-5"><%= truncate(t.nachricht, :length => 80) %></td>
                     <td class="col-xs-2">                    

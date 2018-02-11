@@ -35,10 +35,14 @@ class InquieriesController < ApplicationController
   def show
     @inquiery = Inquiery.find(params[:id])
     @user = current_user
+    @services = @inquiery.services
   end
   
-  def attach
-    
+  def detach
+    @inquiery = Inquiery.find(params[:id])    
+    @user = User.find(params[:user_id])
+    @user.inquieries.delete(@inquiery)
+    redirect_back :back
   end
   
 private  
