@@ -35,6 +35,7 @@ resources :users, except: [:new, :create, :index]
   
   get 'dashboard', to: 'dashboards#index'
   get 'dashboard/inquieries', to: 'dashboards#inquieries'
+  get 'dashboard/inquieries/:id', to: 'dashboards#inquiery_show'
   get 'dashboard/settings', to: 'dashboards#settings'
   get 'dashboard/partners', to: 'dashboards#partners'
   

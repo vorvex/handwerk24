@@ -6,11 +6,17 @@ class DashboardsController < ApplicationController
   end
   
   def inquieries
+    @header = 'Nachrichten'
     @active = 'Inquieries'
     @inquieries = @user.inquieries
+    @inquiery = Inquiery.find(36)
     if params[:inquiery_id]
       @inquiery = Inquiery.find(params[:inquiery_id]) 
     end
+  end
+  
+  def inquiery_show
+    @inquiery = Inquiery.find(params[:id])
   end
   
   private

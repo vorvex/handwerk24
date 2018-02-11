@@ -1,8 +1,8 @@
-<div class="col-md-6 hw-inquiery-view">
+<div class="col-md-12" style="height: 100%">
   <div class="container">
   <% if @inquiery then %>
   <div class="col-sm-12" style="margin-bottom: 20px">
-    <h3 style="display: inline"><%= link_to '<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>'.html_safe, :back %></h3>
+    <h3 style="display: inline"><%= link_to '<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>'.html_safe, dashboard_inquieries_path %></h3>
     <div class="pull-right">
       <h3 style="display: inline; padding-right: 10px;">
         <%= link_to '<span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>'.html_safe, "mailto:#{@inquiery.email}" %>
@@ -16,7 +16,7 @@
     <h3><small><%= @inquiery.vorname if @inquiery.vorname %> <%= @inquiery.nachname %> - vor <%= time_ago_in_words(@inquiery.created_at) %> erstellt</small></h3>
     <h1 style="margin: 5px 0 5px 0">Beispieltitel für Anfrage</h1>
     <div style="margin-bottom: 15px">
-      <% @services.each do |s| %>
+      <% @inquiery.services.each do |s| %>
         <div class="btn btn-default btn-sm"><%= s.name %></div>
       <% end %>
     </div>

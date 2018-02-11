@@ -5,7 +5,7 @@
         <span class="c-sidebar-toggle__bar"></span>
     </button><!-- // .c-sidebar-toggle -->
 
-    <h2 class="c-navbar__title u-mr-auto">@header</h2>
+    <h2 class="c-navbar__title u-mr-auto"><%= @header %></h2>
   
     <div class="c-dropdown dropdown">
         <a  class="c-avatar c-avatar--xsmall has-dropdown dropdown-toggle" href="#" id="dropdwonMenuAvatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -14,7 +14,7 @@
 
         <div class="c-dropdown__menu dropdown-menu dropdown-menu-right" aria-labelledby="dropdwonMenuAvatar">
             <a class="c-dropdown__item dropdown-item" href="#">Profil bearbeiten</a>
-            <%= link_to "Abmelden", logout_path, class: "c-dropdown__item dropdown-item",method: :delete %>
+            <%= link_to "Abmelden", logout_path, class: "c-dropdown__item dropdown-item", method: :delete %>
         </div>
     </div>
 </header>

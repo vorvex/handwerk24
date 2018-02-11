@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row u-mb-large">
+      <div class="col-md-12">
+          <div class="c-table-responsive@wide">
+              <table class="c-table">
+                  <caption class="c-table__title">
+                      Nachrichten
+                  </caption>
+                  <thead class="c-table__head c-table__head--slim">
+                      <tr class="c-table__row">
+                          <th class="c-table__cell c-table__cell--head">Name</th>
+                          <th class="c-table__cell c-table__cell--head">Betreff</th>
+                          <th class="c-table__cell c-table__cell--head">Nachricht</th>
+                          <th class="c-table__cell c-table__cell--head">Erstellt</th>
+                          <th class="c-table__cell c-table__cell--head">
+                              <span class="u-hidden-visually">Actions</span>
+                          </th>
+                      </tr>
+                  </thead>
+
+                  <tbody>
+                    <% @inquieries.each do |t| %>
+                      <tr class="c-table__row">
+                          <td class="c-table__cell"><%= t.vorname if t.vorname %> <%= t.nachname %></td>
+                          <td class="c-table__cell">Beispielbetreff Platzhalter</td>
+                          <td class="c-table__cell"><%= truncate(t.nachricht, :length => 50) %></td>
+                          <td class="c-table__cell"><%= time_ago_in_words(t.created_at) %></td>
+                          <td class="c-table__cell u-text-right">
+                            <a href="invoice.html" class="c-btn c-btn--info u-mr-xsmall">Anzeigen</a>
+                          </td>
+                      </tr><!-- // .table__row -->
+                    <% end %>
+                  </tbody>
+              </table>
+          </div><!-- // .c-card -->
+      </div>
+  </div>
+</div>

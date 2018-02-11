@@ -3,8 +3,14 @@
   <head>
     <title>Handwerk24</title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= if @dashboard == true then stylesheet_link_tag 'main', media: 'all', 'data-turbolinks-track': 'reload' end %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <% if @dashboard == true %>
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,600" rel="stylesheet">
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+      <%= stylesheet_link_tag 'main', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'main', 'data-turbolinks-track': 'reload' %>
+    <% end %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
