@@ -27,13 +27,15 @@
 
         <h4 class="c-sidebar__title">Partner</h4>
         <ul class="c-sidebar__list">
+          
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link <%= if @active == 'Partners' then 'is-active' end %>" href="dashboard/partners">
+                <a class="c-sidebar__link <%= if @active == 'Partners' then 'is-active' end %>" href="/dashboard/partners">
                     <i class="fa fa-users u-mr-xsmall"></i>Partner Übersicht
                 </a>
             </li>
+          
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link <%= if @active == 'New Partners' then 'is-active' end %>" href="dashboard/partners/new">
+                <a class="c-sidebar__link <%= if @active == 'New Partners' then 'is-active' end %>" href="/dashboard/partners/new">
                     <i class="fa fa-user-plus u-mr-xsmall"></i>Neue Partner hinzufügen
                 </a>
             </li>
@@ -47,8 +49,8 @@
                 </a>
             </li>
 
-            <li class="c-sidebar__item">
-                <a class="c-sidebar__link" href="account-settings.html">
+           <li class="c-sidebar__item">
+                <a class="c-sidebar__link <%= if @active == 'Settings' then 'is-active' end %>" href="/dashboard/partners">
                     <i class="fa fa-cog u-mr-xsmall"></i>Einstellungen
                 </a>
             </li>

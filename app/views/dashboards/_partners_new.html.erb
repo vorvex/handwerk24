@@ -3,10 +3,10 @@
       <%= render 'partners_search' %>
       <div class="col-lg-9 order-lg-1">
           <div class="c-table-responsive@desktop">
-              <table class="c-table c-table--highlight u-mb-small">
+              <table class="c-table c-table--highlight u-mb-small" id="datatable">
 
                   <caption class="c-table__title">
-                      Ihre Partner <small><%= @partners.count %> Partner</small>
+                      Mögliche Partner <small><%= @partners.count %> Partner</small>
                   </caption>
 
                   <thead class="c-table__head c-table__head--slim">
@@ -41,14 +41,9 @@
                           </td>
 
                           <td class="c-table__cell u-text-right">
-                              <div class="c-dropdown dropdown">
-                                  <button class="c-btn c-btn--secondary has-dropdown dropdown-toggle" id="dropdownMenuButton27" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aktionen</button>
-
-                                  <div class="c-dropdown__menu dropdown-menu" aria-labelledby="dropdownMenuButton27">
-                                      <a class="c-dropdown__item dropdown-item" href="mailto:<%= p.email %>">Email senden</a>
-                                      <%= link_to 'Verbindung beenden', detach_partner_path(@user, p), class: "c-dropdown__item dropdown-item", method: :delete %>
-                                  </div>
-                              </div>
+                            <%= link_to attach_partner_url(p), class: 'c-btn c-btn--info u-mr-xsmall', method: :post, action: :attach do %>
+                              <i class="fa fa-plus u-mr-xsmall"></i> Hinzufügen
+                            <% end %>
                           </td>
                       </tr>
                     <% end %>
@@ -57,5 +52,3 @@
           </div>
       </div>
 </div>
-
-                

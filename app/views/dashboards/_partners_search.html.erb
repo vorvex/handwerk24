@@ -1,0 +1,45 @@
+     <div class="col-lg-3 order-lg-2">
+        <%= form_tag '/dashboard/partners/new', class: "c-search-form c-search-form--dark", :method => :get do %>
+            <div class="c-search-form__section">
+                <div class="c-field has-icon-left">
+                    <span class="c-field__icon"><i class="fa fa-map-marker"></i></span>
+                    <label class="c-field__label c-search-form__label" for="search-location">Region</label>
+                    <%= text_field_tag 'plz', params[:plz], class: 'c-input', placeholder: 'Alle', length: 5 %>
+                    <small class="c-field__message">Geben Sie eine PLZ ein</small>
+                </div>
+            </div>
+
+            <div class="c-search-form__section">
+                <div class="c-field has-icon-left">
+                    <span class="c-field__icon"><i class="fa fa-user-o"></i></span>
+                    <label class="c-field__label c-search-form__label" for="search-position">Betriebsname</label>
+                    <%= text_field_tag 'name', params[:name], class: 'c-input', placeholder: 'Alle' %>
+                    <small class="c-field__message">Suchen Sie nach Betriebsnamen</small>
+                </div>
+            </div>
+
+            <button class="c-btn c-btn--info c-btn--fullwidth" type="submit">Suchen</button>
+        <% end %>
+        <form class="c-search-form c-search-form--dark">
+
+            <div class="c-search-form__section">
+                <div class="c-field has-icon-left">
+                    <span class="c-field__icon"><i class="fa fa-user-o"></i></span>
+                    <label class="c-field__label c-search-form__label" for="search-location">Betriebsname</label>
+                    <input class="c-input" id="search-location" type="text" placeholder="Betriebname*">
+                    <small class="c-field__message">Geben Sie den Namen Ihres Partners ein</small>
+                </div>
+            </div>
+
+            <div class="c-search-form__section">
+                <div class="c-field has-icon-left">
+                    <span class="c-field__icon"><i class="fa fa-envelope-o"></i></span>
+                    <label class="c-field__label c-search-form__label" for="search-position">Email-Adresse</label>
+                    <input class="c-input" id="search-position" type="text" placeholder="Email-Adresse*">
+                    <small class="c-field__message">Geben Sie die Email Ihres Partners ein</small>
+                </div>
+            </div>
+
+            <button class="c-btn c-btn--info c-btn--fullwidth" type="submit">Anfrage senden</button>
+        </form>
+    </div>

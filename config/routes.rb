@@ -38,6 +38,9 @@ resources :users, except: [:new, :create, :index]
   get 'dashboard/inquieries/:id', to: 'dashboards#inquiery_show'
   get 'dashboard/settings', to: 'dashboards#settings'
   get 'dashboard/partners', to: 'dashboards#partners'
+  get 'dashboard/partners/new', to: 'dashboards#partners_new'
+  get 'dashboard/settings', to: 'dashboards#settings'
+  post 'dashboard/settings', to: 'dashboards#user_update', as: 'update_user'
   
   delete '/inquieries/:id/:user_id', to: 'inquieries#detach', as: 'detach_user'
   

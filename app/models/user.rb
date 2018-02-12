@@ -28,11 +28,11 @@ class User < ApplicationRecord
     self.partners.order('id ASC')
   end
 
-  def self.search_partner(term)
-    if term
-      where('name LIKE ?', "%#{term}%").limit(10)
+  def self.search_partner(name, plz)
+    if name || plz
+      where('name LIKE ?', "%#{name}%").where('plz LIKE ?', "%#{plz}%")
     else
-      none
+      all
     end
   end
   
