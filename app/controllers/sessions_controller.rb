@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController 
-  before_action :dashboard
+  before_action :set_dashboard
   #Admin Sessions
   def newadmin
     @admin = Admin.new
@@ -44,6 +44,13 @@ class SessionsController < ApplicationController
     session[:user_id] = nil 
     flash[:success] = "Sie sind erfolgreich abgemeldet bis zum nächsten Mal"
     redirect_to login_path
+  end
+  
+private
+  
+  def set_dashboard
+    @body = 'o-page o-page--center'
+    @dashboard = true
   end
   
 end

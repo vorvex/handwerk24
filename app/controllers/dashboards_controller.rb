@@ -48,6 +48,15 @@ class DashboardsController < ApplicationController
     end
   end
   
+  def reset_password
+    @body = 'o-page o-page--center'
+  end
+  
+  def forgot_password
+    @body = 'o-page o-page--center'
+  end
+  
+  
   private
   
   def set_user

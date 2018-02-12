@@ -36,11 +36,13 @@ resources :users, except: [:new, :create, :index]
   get 'dashboard', to: 'dashboards#index'
   get 'dashboard/inquieries', to: 'dashboards#inquieries'
   get 'dashboard/inquieries/:id', to: 'dashboards#inquiery_show'
-  get 'dashboard/settings', to: 'dashboards#settings'
   get 'dashboard/partners', to: 'dashboards#partners'
   get 'dashboard/partners/new', to: 'dashboards#partners_new'
   get 'dashboard/settings', to: 'dashboards#settings'
   post 'dashboard/settings', to: 'dashboards#user_update', as: 'update_user'
+  
+  get 'dashboard/reset-password', to: 'dashboards#reset_password'
+  get 'passwort-vergessen', to: 'dashboards#forgot_password'
   
   delete '/inquieries/:id/:user_id', to: 'inquieries#detach', as: 'detach_user'
   

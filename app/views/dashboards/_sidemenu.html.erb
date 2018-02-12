@@ -43,28 +43,34 @@
 
         <h4 class="c-sidebar__title">Konto bearbeiten</h4>
         <ul class="c-sidebar__list">
-            <li class="c-sidebar__item">
-                <a class="c-sidebar__link" target="_blank" href="account-details.html">
-                    <i class="fa fa-user-circle u-mr-xsmall"></i>Konto anzeigen
-                </a>
-            </li>
 
            <li class="c-sidebar__item">
-                <a class="c-sidebar__link <%= if @active == 'Settings' then 'is-active' end %>" href="/dashboard/partners">
+                <a class="c-sidebar__link <%= if @active == 'Settings' then 'is-active' end %>" href="/dashboard/settings">
                     <i class="fa fa-cog u-mr-xsmall"></i>Einstellungen
                 </a>
             </li>
 
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link" target="_blank" href="forgot-password.html">
+                <a class="c-sidebar__link" target="_blank" href="/dashboard/forgot-password">
                     <i class="fa fa-lock u-mr-xsmall"></i>Passwort vergessen?
                 </a>
             </li>
 
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link" target="_blank" href="reset-password.html">
-                    <i class="fa fa-refresh u-mr-xsmall"></i>Passwort zurücksetzen
+                <a class="c-sidebar__link" target="_blank" href="/dashboard/reset-password">
+                    <i class="fa fa-refresh u-mr-xsmall"></i> Password zurücksetzen
+            </li>
+            
+           <li class="c-sidebar__item">
+                <a class="c-sidebar__link <%= if @active == 'Support' then 'is-active' end %>" href="/dashboard/support">
+                    <i class="fa fa-life-ring u-mr-xsmall"></i>Support
                 </a>
+            </li>
+            
+            <li class="c-sidebar__item">
+                <%= link_to logout_path, class: "c-sidebar__link", method: :delete do %>
+                    <i class="fa fa-arrow-left u-mr-xsmall"></i> Abmelden
+                <% end %>
             </li>
         </ul>
     </div><!-- // .c-sidebar -->
