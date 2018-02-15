@@ -1,6 +1,9 @@
 <%= render 'sidemenu' %>
 <main class="o-page__content">
   <%= render 'header' %>
+  <%= render 'messages' %>
+  <%= render 'errors', obj: @request %>
+  <%= render 'errors', obj: @user %>
   <div class="container-fluid">
     <div class="row u-mb-large">
       <div class="col-lg-4 order-lg-2">

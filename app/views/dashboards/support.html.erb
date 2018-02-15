@@ -1,5 +1,32 @@
 <%= render 'sidemenu' %>
 <main class="o-page__content">
   <%= render 'header' %>
-
+  <%= render 'messages' %>
+  <%= render 'errors', obj: @support %>
+  <div class="container-fluid">  
+    <div class="row">
+        <div class="col-md-12">
+          <%= form_for(@support, url: new_support_url, method: :post) do |f| %>
+            <div class="c-card c-card--responsive u-mb-medium">
+                <div class="c-card__header c-card__header--transparent o-line" style="margin-bottom: 15px">
+                    <h5 class="c-card__title">Support Anfrage</h5>
+                </div>
+                <div class="col-md-12">
+                  <div class="c-field u-mb-small">
+                      <label class="c-field__label" for="firstName">Betreff</label>
+                      <%= f.text_field :title, class: "c-input", placeholder: "Betreff" %> 
+                  </div>
+                  <div class="c-field u-mb-small">
+                      <label class="c-field__label" for="firstName">Nachricht</label>
+                      <%= f.text_area :body, class: "c-input", placeholder: "Nachricht", rows: 4 %> 
+                  </div>
+                  <div class="c-field u-mb-small">
+                    <%= f.submit "Anfrage senden", class: 'c-btn c-btn--info' %>
+                  </div>
+                </div>
+            </div>
+          <% end %>
+        </div>
+    </div>
+  </div>
 </main>

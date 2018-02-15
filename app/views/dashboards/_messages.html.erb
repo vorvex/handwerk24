@@ -1,0 +1,22 @@
+<div class="container-fluid">  
+  <div class="row">
+    <div class="col-md-12">
+      <% flash.each do |name, msg| %>
+        <div class="c-alert c-alert--<%= "#{name}" %> alert">
+            <i class="c-alert__icon fa 
+            <%= case name 
+                when  'danger' 
+                  'fa-times-circle'
+                when  'success'
+                  'fa-check-circle'
+                when  'info'
+                  'fa-info-circle'
+                when 'warning'
+                  'fa-exclamation-circle'
+                end %>"></i><%= msg %>
+            <button class="c-close" data-dismiss="alert" type="button">×</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

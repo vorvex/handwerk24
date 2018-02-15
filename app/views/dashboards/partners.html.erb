@@ -1,5 +1,7 @@
 <%= render 'sidemenu' %>
 <main class="o-page__content">
   <%= render 'header' %>
+  <%= render 'errors', obj: @request %>
+  <%= render 'messages' %>
   <%= render 'partners' %>
 </main>

@@ -1,7 +1,8 @@
 <%= render 'sidemenu' %>
 <main class="o-page__content">
   <%= render 'header' %>
-
+  <%= render 'messages' %>
+  <%= render 'errors', obj: @user %>
   <div class="container-fluid">  
     <div class="row">
         <div class="col-md-12">
@@ -24,7 +25,7 @@
                       <%= f.text_field :email, class: "c-input", placeholder: "info@musterbetrieb.de" %> 
                   </div>
                   <div class="c-field u-mb-small">
-                      <label class="c-field__label" for="firstName">Inhaber/Geschäftsführer</label>
+                      <label class="c-field__label" for="firstName">Branche</label>
                       <%= f.select :field_id, options_for_select(Field.all.map{|i| [i.name, i.id]}, selected: f.object.field_id), { }, { class: "form-control" } %> 
                   </div>
                 </div>

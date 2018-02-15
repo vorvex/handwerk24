@@ -52,6 +52,7 @@ resources :users, except: [:new, :create, :index]
   get 'dashboard/settings/services', to: 'dashboards#services'
   post 'dashboard/settings/services', to: 'service_requests#create', as: 'new_service_request'
   get 'dashboard/support', to: 'dashboards#support'
+  post 'dashboard/support', to: 'supports#create', as: 'new_support'
   
   get 'dashboard/reset-password/', to: 'dashboards#reset_password'
   get 'passwort-vergessen', to: 'dashboards#forgot_password'

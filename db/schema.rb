@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180215004433) do
+ActiveRecord::Schema.define(version: 20180215170601) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 20180215004433) do
     t.string "nachricht"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
+    t.string "period"
   end
 
   create_table "partner_requests", force: :cascade do |t|
@@ -96,6 +98,15 @@ ActiveRecord::Schema.define(version: 20180215004433) do
     t.index ["service_category_id"], name: "index_services_on_service_category_id"
     t.index ["service_subcategory_id"], name: "index_services_on_service_subcategory_id"
     t.index ["service_subject_id"], name: "index_services_on_service_subject_id"
+  end
+
+  create_table "supports", force: :cascade do |t|
+    t.string "title"
+    t.string "category"
+    t.string "body"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_inquieries", force: :cascade do |t|

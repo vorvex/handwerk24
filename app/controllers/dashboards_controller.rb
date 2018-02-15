@@ -58,6 +58,7 @@ class DashboardsController < ApplicationController
   def support
     @active = 'Support'
     @header = 'Nachricht an Handwerk24'
+    @support = Support.new
   end
   
   def user_update
@@ -71,13 +72,13 @@ class DashboardsController < ApplicationController
   end
   
   def password_update
-    if @user.authenticate(@user.password_confirmation)
+    if @user.password == @user.password_confirmation
       if @user.update(user_params)
       flash[:success] = "Betrieb wurde erfolgreich aktualisiert"
       redirect_to dashboard_settings_path
       end
     else
-      flash[:error] = "Passwort stimmt nicht überein"
+      flash[:danger] = "Altes Passwort ist nicht korrekt"
       redirect_to dashboard_path
     end
   end

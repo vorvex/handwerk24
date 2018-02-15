@@ -1,21 +1,13 @@
-
 <% if obj.errors.any? %>
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="panel panel-danger">
-        <div class="panel-heading">
-          <h2 class="panel-title">
-            <%= pluralize(obj.errors.count, "error") %>
-            prohibited this article from being saved:
-          </h2>
-          <div class="panel-body">
-            <ul>
-              <% obj.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-              <% end %>
-            </ul>
+  <div class="container-fluid">    
+    <div class="row">
+      <div class="col-md-12">
+        <% obj.errors.full_messages.each do |msg| %>
+          <div class="c-alert c-alert--info alert">
+            <i class="c-alert__icon fa fa-times-circle"></i> <%= msg %>
+            <button class="c-close" data-dismiss="alert" type="button">×</button>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>
