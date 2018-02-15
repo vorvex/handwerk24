@@ -4,9 +4,15 @@ class AdminsController < ApplicationController
   def index
     if logged_in_admin?       
       @users = User.all
-      @fields = Field.all
-      @services = Service.order(:category)
+      @services = Service.order(:service_category_id)
+      @service_category = Service_Category.new
+      @service_categories = Service_Category.all
+      @service_subcategory = Service_Subcategory.new
+      @service_subcategories = Service_Subcategory.all
+      @service_subject = Service_Subject.new
+      @service_subjects = Service_Subject.all
       @field = Field.new
+      @fields = Field.all
       @service = Service.new
       @admin = Admin.new
       @body = "bodyDash"

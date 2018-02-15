@@ -1,68 +1,11 @@
 <%= render 'sidemenu' %>
 <main class="o-page__content">
   <%= render 'header' %>
-<%= form_for(@user, url: update_user_url, method: :post) do |f| %>
-  <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-3">
-          <div class="c-card u-mb-medium">
-              <div class="c-card__header c-card__header--transparent o-line">
-                  <h5 class="c-card__title">Gartenarbeiten</h5>
-              </div>
-              <div class="c-card" style="padding: 10px;">
-                <div style="height: 150px; overflow-y: scroll; overflow-x: hidden;">
-                 <%= f.collection_check_boxes :service_ids, @garten, :id, :name do |cb| %>
-                   <% cb.label(class: "check_container3") {cb.check_box(id: "click" ) + cb.text + "<span class='checkmark3'></span>".html_safe} %>
-                 <% end %> 
-                </div>
-              </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="c-card u-mb-medium">
-              <div class="c-card__header c-card__header--transparent o-line">
-                  <h5 class="c-card__title">Außen am Haus</h5>
-              </div>
-              <div class="c-card" style="padding: 10px;">
-                <div style="height: 150px; overflow-y: scroll; overflow-x: hidden;">
-                 <%= f.collection_check_boxes :service_ids, @aussen, :id, :name do |cb| %>
-                   <% cb.label(class: "check_container3") {cb.check_box(id: "click" ) + cb.text + "<span class='checkmark3'></span>".html_safe} %>
-                 <% end %> 
-                </div>
-              </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="c-card u-mb-medium">
-              <div class="c-card__header c-card__header--transparent o-line">
-                  <h5 class="c-card__title">Haus und Wohnung</h5>
-              </div>
-              <div class="c-card" style="padding: 10px;">
-                <div style="height: 150px; overflow-y: scroll; overflow-x: hidden;">
-                 <%= f.collection_check_boxes :service_ids, @haus, :id, :name do |cb| %>
-                   <% cb.label(class: "check_container3") {cb.check_box(id: "click" ) + cb.text + "<span class='checkmark3'></span>".html_safe} %>
-                 <% end %> 
-                </div>
-              </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="c-card u-mb-medium">
-              <div class="c-card__header c-card__header--transparent o-line">
-                  <h5 class="c-card__title">Bodenbeläge</h5>
-              </div>
-              <div class="c-card" style="padding: 10px;">
-                <div style="height: 150px; overflow-y: scroll; overflow-x: hidden;">
-                 <%= f.collection_check_boxes :service_ids, @boden, :id, :name do |cb| %>
-                   <% cb.label(class: "check_container3") {cb.check_box(id: "click" ) + cb.text + "<span class='checkmark3'></span>".html_safe} %>
-                 <% end %> 
-                </div>
-              </div>
-          </div>
-        </div>
-      </div>  
+
+  <div class="container-fluid">  
     <div class="row">
         <div class="col-md-12">
+          <%= form_for(@user, url: update_user_url, method: :post) do |f| %>
             <div class="c-card c-card--responsive u-mb-medium">
                 <div class="c-card__header c-card__header--transparent o-line" style="margin-bottom: 15px">
                     <h5 class="c-card__title">Konto Einstellungen</h5>
@@ -112,8 +55,30 @@
                 </div>
               </div>
             </div>
+          <% end %>
+        </div>
+        <div class="col-md-12">
+          <%= form_for(@user, url: update_password_url, method: :post) do |f| %>
+          <div class="c-card c-card--responsive u-mb-medium">
+            <div class="c-card__header c-card__header--transparent o-line" style="margin-bottom: 15px">
+                <h5 class="c-card__title">Passwort ändern</h5>
+            </div>
+            <div class="col-md-12">
+              <div class="c-field u-mb-small">
+                  <label class="c-field__label" for="firstName">Altes Passwort</label>
+                 <%= f.password_field :password_confirmation, class: "c-input", placeholder: "Altes Passwort" %>
+              </div>
+              <div class="c-field u-mb-small">
+                  <label class="c-field__label" for="firstName">Neues Passwort</label>
+                  <%= f.password_field :password, class: "c-input", placeholder: "Neues Passwort" %> 
+              </div>
+              <div class="c-field u-mb-small">
+                <%= f.submit class: 'c-btn c-btn--info' %>
+              </div>
+            </div>
+          </div>
+        <% end %>
         </div>
       </div>
-       </div>
-  <% end %>
+    </div>
 </main>

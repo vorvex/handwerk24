@@ -20,7 +20,7 @@
             </li>
 
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link <%= if @active == 'Public Inquieries' then 'is-active' end %>" href="/dashboard/inquieries/public">
+                <a class="c-sidebar__link <%= if @active == 'Public Inquieries' then 'is-active' end %>" href="/dashboard/publicinquieries">
                     <i class="fa fa-bullhorn u-mr-xsmall"></i>Auschreibungen
                 </a>
             </li>
@@ -49,6 +49,12 @@
                     <i class="fa fa-cog u-mr-xsmall"></i>Einstellungen
                 </a>
             </li>
+          
+           <li class="c-sidebar__item">
+                <a class="c-sidebar__link <%= if @active == 'Services' then 'is-active' end %>" href="/dashboard/settings/services">
+                    <i class="fa fa-cogs u-mr-xsmall"></i>Leistungen bearbeiten
+                </a>
+            </li>          
 
             <li class="c-sidebar__item">
                 <a class="c-sidebar__link" target="_blank" href="/dashboard/forgot-password">
@@ -68,7 +74,7 @@
             </li>
             
             <li class="c-sidebar__item">
-                <%= link_to logout_path, class: "c-sidebar__link", method: :delete do %>
+                <%= link_to logout_path, method: :delete, class: "c-sidebar__link" do %>
                     <i class="fa fa-arrow-left u-mr-xsmall"></i> Abmelden
                 <% end %>
             </li>

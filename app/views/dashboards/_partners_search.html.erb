@@ -20,13 +20,12 @@
 
             <button class="c-btn c-btn--info c-btn--fullwidth" type="submit">Suchen</button>
         <% end %>
-        <form class="c-search-form c-search-form--dark">
-
+        <%= form_for(@request, :html => {class: "c-search-form c-search-form--dark", role: "form"}, url: new_partner_request_url) do |f| %>
             <div class="c-search-form__section">
                 <div class="c-field has-icon-left">
                     <span class="c-field__icon"><i class="fa fa-user-o"></i></span>
-                    <label class="c-field__label c-search-form__label" for="search-location">Betriebsname</label>
-                    <input class="c-input" id="search-location" type="text" placeholder="Betriebname*">
+                    <label class="c-field__label c-search-form__label">Betriebsname</label>
+                    <%= f.text_field :name, class: 'c-input', placeholder: 'Betriebsname' %>
                     <small class="c-field__message">Geben Sie den Namen Ihres Partners ein</small>
                 </div>
             </div>
@@ -35,11 +34,11 @@
                 <div class="c-field has-icon-left">
                     <span class="c-field__icon"><i class="fa fa-envelope-o"></i></span>
                     <label class="c-field__label c-search-form__label" for="search-position">Email-Adresse</label>
-                    <input class="c-input" id="search-position" type="text" placeholder="Email-Adresse*">
+                    <%= f.text_field :email, class: 'c-input', placeholder: 'Email-Adresse' %>
                     <small class="c-field__message">Geben Sie die Email Ihres Partners ein</small>
                 </div>
             </div>
 
             <button class="c-btn c-btn--info c-btn--fullwidth" type="submit">Anfrage senden</button>
-        </form>
+       <% end %> 
     </div>

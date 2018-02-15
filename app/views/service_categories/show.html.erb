@@ -1,0 +1,48 @@
+<%= render 'shared/header' %>
+<ol class="breadcrumb" style="margin-top: -20px; background-color: white;">
+  <li><a href="/service_categories">Kategorien</a></li>
+  <li class="active"><%= @category.name %></li>
+</ol>
+<div class="container-fluid">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Unterkategorien von <%= @category.name %></h3>
+    </div>
+      <table class="table table-hover">
+        <thead>
+          <th>ID</th>
+          <th>Subcategory</th>
+          <th>Change</th>
+        </thead>
+        <tbody>
+          <% @subcategories.each do |f| %>
+            <tr onclick="window.location='/service_subcategories/<%= f.id %>';">
+              <td class="col-md-1"><%= f.id %></td>
+              <td class="col-md-4"><%= f.name %></td>
+              <td class="col-md-1">
+                <%= link_to 'Bearbeiten', edit_service_subcategory_path(f) %> 
+                <%= link_to 'Löschen', service_subcategory_path(f), method: :delete, data: {confirm: "Sicher?"} %>
+              </td> 
+            </tr>
+          <% end %>
+        </tbody> 
+      </table>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3 class="panel-title">Neue Subcategory erstellen</h3></div>
+    <div class="panel-body">
+      <%= form_for(@new_subcategory, :html => {class: "form", role: "form"}, url: service_subcategories_url) do |f| %>
+        <div class="form-group">
+          <div class="control-label">
+            <%= f.label :name %>           
+          </div>
+          <%= f.text_field :name, class: "form-control", placeholder: "Leistung", autofocus: true %>
+        </div>
+        <%= f.text_field :service_category_id, :value => "#{@category.id}", type: 'hidden' %>
+        <div class="form-group">
+           <%= f.submit class: 'btn btn-primary' %>
+        </div>
+      <% end %> 
+    </div>
+  </div>
+</div>

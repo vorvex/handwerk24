@@ -1,0 +1,51 @@
+<%= render 'sidemenu' %>
+<main class="o-page__content">
+  <%= render 'header' %>
+  <div class="container-fluid">
+    <div class="row u-mb-large">
+      <div class="col-lg-4 order-lg-2">
+        <%= form_for(@request, :html => {class: "c-search-form c-search-form--dark", role: "form"}, url: new_service_request_url) do |f| %>
+          <div class="c-search-form__section">
+                <div class="c-field">
+                    <label class="c-field__label c-search-form__label">Leistung anfragen</label>
+                    <%= f.text_field :name, class: 'c-input', placeholder: 'Leistung' %>
+                    <small class="c-field__message">Geben Sie die gewünschte Leistung ein</small>
+                </div>
+            </div>
+
+            <div class="c-search-form__section">
+                <div class="c-field">
+                    <label class="c-field__label c-search-form__label" for="search-position">Nachricht</label>
+                    <%= f.text_area :message, class: 'c-input', placeholder: 'Nachricht' %>
+                    <small class="c-field__message">Erklären Sie Ihre Anfrage</small>
+                </div>
+            </div>
+          <button class="c-btn c-btn--info c-btn--fullwidth" type="submit">Anfrage senden</button>
+        <% end %>
+      </div>
+    <div class="col-lg-8 order-lg-1">
+      <div class="c-tabs" style="margin-bottom: 1.875rem;">
+        <%= form_for(@user, url: update_user_url, method: :post) do |f| %>
+        <ul class="c-tabs__list nav nav-tabs" id="myTab" role="tablist">
+          <% @subcategories.each do |c| %>
+            <li><a class="c-tabs__link <%= 'active' if c.id == 1 %>" id="<%= c.id %>-tab" data-toggle="tab" href="#<%= c.id %>" role="tab" aria-controls="<%= c.id %>" aria-selected="false"><%= c.name %></a></li>
+          <% end %>
+        </ul>
+        <div class="c-tabs__content tab-content" id="nav-tabContent">
+          <% @subcategories.each do |c| %>
+            <div class="c-tabs__pane <%= 'active show' if c.id == 1 %>" id="<%= c.id %>" role="tabpanel" aria-labelledby="<%= c.id %>-tab">
+              <%= f.collection_check_boxes :service_ids, Service.where('service_subcategory_id = ?', c.id), :id, :name do |cb| %>
+                 <% cb.label(class: "check_container3") {cb.check_box(id: "click" ) + cb.text + "<span class='checkmark3'></span>".html_safe} %>
+               <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="c-field u-mb-small">
+            <%= f.submit class: 'c-btn c-btn--info pull-right' %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</main>

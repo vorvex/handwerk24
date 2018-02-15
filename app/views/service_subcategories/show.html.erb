@@ -1,0 +1,49 @@
+<%= render 'shared/header' %>
+<ol class="breadcrumb" style="margin-top: -20px; background-color: white;">
+  <li><a href="/service_categories">Kategorien</a></li>
+  <li><a href="/service_categories/<%= Service_Category.find(@subcategory.service_category_id).id %>"><%= Service_Category.find(@subcategory.service_category_id).name %></a></li>
+  <li class="active"><%= @subcategory.name %></li>
+</ol>
+<div class="container-fluid">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Bereiche von <%= @subcategory.name %></h3>
+    </div>
+      <table class="table table-hover">
+        <thead>
+          <th>ID</th>
+          <th>Bereich</th>
+          <th>Change</th>
+        </thead>
+        <tbody>
+          <% @subjects.each do |f| %>
+            <tr onclick="window.location='/service_subjects/<%= f.id %>';">
+              <td class="col-md-1"><%= f.id %></td>
+              <td class="col-md-4"><%= f.name %></td>
+              <td class="col-md-1">
+                <%= link_to 'Bearbeiten', edit_service_subject_path(f) %> 
+                <%= link_to 'Löschen', service_subject_url(f), method: :delete, data: {confirm: "Sicher?"} %>
+              </td> 
+            </tr>
+          <% end %>
+        </tbody> 
+      </table>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3 class="panel-title">Neuen Bereich erstellen</h3></div>
+    <div class="panel-body">
+      <%= form_for(@new_subject, :html => {class: "form", role: "form"}, url: service_subjects_url) do |f| %>
+        <div class="form-group">
+          <div class="control-label">
+            <%= f.label :name %>           
+          </div>
+          <%= f.text_field :name, class: "form-control", placeholder: "Leistung", autofocus: true %>
+        </div>
+        <%= f.text_field :service_subcategory_id, :value => "#{@subcategory.id}", type: 'hidden' %>
+        <div class="form-group">
+           <%= f.submit class: 'btn btn-primary' %>
+        </div>
+      <% end %> 
+    </div>
+  </div>
+</div>

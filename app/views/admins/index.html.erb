@@ -81,6 +81,8 @@
         <th>#</th>
         <th>Leistung</th>
         <th>Kategorie</th>
+        <th>Unter-Kategorie</th>
+        <th>Bereich</th>
         <th class="col-md-1">Löschen</th>
       </thead>
       <tbody>
@@ -88,7 +90,9 @@
           <tr class='clickable-row <%= "active" if !t.show %>' data-href='/services/<%= t.id %>/edit'>
             <th><%= t.id %></th>
             <td><%= t.name %></td>
-            <td><%= t.category %></td>
+            <td><%= Service_Category.find(t.service_category_id).name if t.service_category_id %></td>
+            <td><%= Service_Subcategory.find(t.service_subcategory_id).name if t.service_subcategory_id %></td>
+            <td><%= Service_Subject.find(t.service_subject_id).name if t.service_subject_id %></td>
             <td class="col-md-1 center"><%= link_to 'x', service_path(t), method: :delete, data: {confirm: "Sicher?"} %></td>
           </tr>
         <% end %>
@@ -106,13 +110,16 @@
         <%= f.text_field :name, class: "form-control", placeholder: "Leistung", autofocus: true %>
       </div>  
       <div class="form-group">
-        <div class="control-label">
-          <%= f.label :category %>           
-        </div>
-          <%= f.radio_button :category, 'Gartenarbeit', :checked => true %> Gartenarbeit
-          <%= f.radio_button :category, "Außen am Haus", :checked => true %> Außen am Haus
-          <%= f.radio_button :category, "Haus & Wohnung", :checked => true %> Haus & Wohnung
-          <%= f.radio_button :category, "Bodenbelaege", :checked => true %> Bodenbeläge
+        <label class="control-label">Kategorie</label>
+        <%= f.select :service_category_id, options_for_select(Service_Category.all.map{|i| [i.name, i.id]}, selected: f.object.service_category_id), { }, { class: "form-control" } %>  
+      </div>
+      <div class="form-group">
+        <label class="control-label">Unter-Kategorie</label>
+        <%= f.select :service_subcategory_id, options_for_select(Service_Subcategory.all.map{|i| [i.name, i.id]}, selected: f.object.service_subcategory_id), { }, { class: "form-control" } %>  
+      </div>
+      <div class="form-group">
+        <label class="control-label">Bereich</label>
+        <%= f.select :service_subject_id, options_for_select(Service_Subject.all.map{|i| [i.name, i.id]}, selected: f.object.service_subject_id), { }, { class: "form-control" } %>  
       </div>
       <div class="checkbox">
         <label><%= f.check_box :show %>Anzeigen</label>           
@@ -123,36 +130,6 @@
     <% end %> 
   </div>
 </div>
-</div>
-<div class="col-md-12">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Partner</h3>
-    </div>
-    <div class="panel-body">
-      Panel content
-    </div>
-  </div>
-</div>
-<div class="col-md-12">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Kundenanfragen</h3>
-    </div>
-    <div class="panel-body">
-      Panel content
-    </div>
-  </div>
-</div>
-<div class="col-md-12">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Öffentliche Anfragen</h3>
-    </div>
-    <div class="panel-body">
-      Panel content
-    </div>
-  </div>
 </div>
 <div class="col-md-12">
   <div class="panel panel-default">

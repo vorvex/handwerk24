@@ -27,27 +27,29 @@ class UsersController < ApplicationController
   def new
     @body = "bodyHome"
     @user = User.new
-    service_tabs
+    @subcategories = Service_Subcategory.all.order(:service_category_id)
   end
   
   def edit
     @user = User.find(params[:id])
-    service_tabs
+    @subcategories = Service_Subcategory.all.order(:service_category_id)
   end
   
   def create
     @body = "bodyHome"
     @user = User.new(user_params)
     @user.username = @user.name.gsub(" ","-").downcase().gsub("ä","ae").gsub("ü","ue").gsub("ö","oe").gsub("ß","ss").gsub("Ö","oe").gsub("Ü","ue").gsub("Ä","ae")
-    service_tabs
-    if @user.save
-      session[:user_id] = @user.id
-      flash[:success] = "Ihr Akkount wurde erfolgreich erstellt"
-      redirect_to dashboard_path
+    if @user.password == @user.password_confirmation
+      if @user.save
+        session[:user_id] = @user.id
+        flash[:success] = "Ihr Akkount wurde erfolgreich erstellt"
+        redirect_to dashboard_path
+      else
+        render 'new'
+      end
     else
-      render 'new'
+      render 'create'
     end
-     
   end
   
   def update
@@ -68,7 +70,7 @@ class UsersController < ApplicationController
   
   def destroy
     @user.destroy
-    flash[:success] = "Branche wurde erfolgreich gelöscht"
+    flash[:success] = " öscht"
     redirect_to :back
   end
 
@@ -129,12 +131,5 @@ class UsersController < ApplicationController
   
   def service_tabs
     @services = Service.all
-    @garten , @aussen, @haus, @boden = [], [], [], []
-    @services.each do |service|
-      @garten << service if service.show && service.category == 'Gartenarbeit'
-      @aussen << service if service.show && service.category == 'Außen am Haus'
-      @haus << service if service.show && service.category == 'Haus und Wohnung'
-      @boden << service if service.show && service.category == 'Bodenbeläge'
-    end
   end
 end

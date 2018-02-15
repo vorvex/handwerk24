@@ -2,7 +2,7 @@
   <div class="row u-mb-large">
       <%= render 'partners_search' %>
       <div class="col-lg-9 order-lg-1">
-          <div class="c-table-responsive@desktop">
+          <div class="c-table-responsive@wide">
               <table class="c-table c-table--highlight u-mb-small" id="datatable">
 
                   <caption class="c-table__title">
@@ -22,7 +22,7 @@
 
                   <tbody>
                     <% @partners.each do |p| %>
-                      <tr class="c-table__row">
+                      <tr class="c-table__row" data-href='mailto:<%= p.email %>'>
                           <td class="c-table__cell"><%= p.name %>
                               <small class="u-block u-text-mute"><%= Field.find("#{p.field_id}").name if p.field_id != 0 %></small>
                           </td>
@@ -51,4 +51,5 @@
               </table>
           </div>
       </div>
+  </div>
 </div>

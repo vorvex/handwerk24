@@ -25,9 +25,15 @@ resources :users, except: [:new, :create, :index]
   
   get 'login', to: 'sessions#newuser'
   post 'login', to: 'sessions#createuser'
-  delete 'logout', to: 'sessions#destroyuser'
+  get 'logout', to: 'sessions#destroyuser'
   
   resources :services
+  
+  resources :service_categories
+  
+  resources :service_subcategories
+  
+  resources :service_subjects
   
   resources :fields
   
@@ -36,12 +42,18 @@ resources :users, except: [:new, :create, :index]
   get 'dashboard', to: 'dashboards#index'
   get 'dashboard/inquieries', to: 'dashboards#inquieries'
   get 'dashboard/inquieries/:id', to: 'dashboards#inquiery_show'
+  get 'dashboard/publicinquieries', to: 'dashboards#public_inquieries'
   get 'dashboard/partners', to: 'dashboards#partners'
   get 'dashboard/partners/new', to: 'dashboards#partners_new'
+  post 'dashboard/partners/new', to: 'partner_requests#create', as: 'new_partner_request'
   get 'dashboard/settings', to: 'dashboards#settings'
   post 'dashboard/settings', to: 'dashboards#user_update', as: 'update_user'
+  post 'dashboard/settings', to: 'dashboards#password_update', as: 'update_password'
+  get 'dashboard/settings/services', to: 'dashboards#services'
+  post 'dashboard/settings/services', to: 'service_requests#create', as: 'new_service_request'
+  get 'dashboard/support', to: 'dashboards#support'
   
-  get 'dashboard/reset-password', to: 'dashboards#reset_password'
+  get 'dashboard/reset-password/', to: 'dashboards#reset_password'
   get 'passwort-vergessen', to: 'dashboards#forgot_password'
   
   delete '/inquieries/:id/:user_id', to: 'inquieries#detach', as: 'detach_user'

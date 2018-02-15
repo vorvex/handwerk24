@@ -17,6 +17,10 @@
       <label class="control-label">Passwort eingeben</label>
       <%= f.password_field :password, class: "form-control" %> 
     </div>
+    <div class="form-group col-xs-12">
+      <label class="control-label">Passwort wiederholen</label>
+      <%= f.password_field :password_confirmation, class: "form-control" %> 
+    </div>
   </div>
   <div>
     <div class="form-group col-xs-12">
@@ -38,6 +42,7 @@
         </div>
       </div>
     </div>
+    </div>
     <div class="form-group col-xs-12">
       <label class="control-label">Telefon</label>
       <%= f.text_field :telefon, class: "form-control", placeholder: "01234567890" %> 
@@ -49,42 +54,22 @@
       </div> 
     </div>
     <h3 class="signup col-xs-12">Wählen Sie Ihre Leistungen aus</h3>
-        <ul class="nav nav-tabs">
-          <li class="active"><a data-toggle="tab" href="#garten">Gartenarbeit</a></li>
-          <li><a data-toggle="tab" href="#aussen">Außen am Haus</a></li>
-          <li><a data-toggle="tab" href="#haus">Haus und Wohnung</a></li>
-          <li><a data-toggle="tab" href="#boden">Bodenbeläge</a></li>
+      <ul class="nav nav-tabs">
+          <% @subcategories.each do |c| %>
+          <li class="<%= 'active' if c.id == 1 %>"><a data-toggle="tab" href="#<%= c.id %>"><%= c.name %></a></li>
+          <% end %>
         </ul>
         <div class="tab-content">
-            <div id="garten" class="tab-pane fade in active">
-              <div class="form-group col-xs-12" style="max-height: 150px; overflow-y: scroll">
-                 <%= f.collection_check_boxes :service_ids, @garten, :id, :name do |cb| %>
+          <% @subcategories.each do |c| %>
+            <div id="<%= c.id %>" class="tab-pane fade in <%= 'active' if c.id == 1 %>" style="height:150px">
+              <div class="form-group col-xs-12" style="max-height: 150px; overflow-y: scroll; overflow-x: hidden">
+                 <%= f.collection_check_boxes :service_ids, Service.where('service_subcategory_id = ?', c.id), :id, :name do |cb| %>
                    <% cb.label(class: "check_container3") {cb.check_box(id: "click" ) + cb.text + "<span class='checkmark3'></span>".html_safe} %>
                  <% end %>
               </div>
             </div>
-            <div id="aussen" class="tab-pane fade">
-              <div class="form-group col-xs-12" style="max-height: 150px; overflow-y: scroll">
-               <%= f.collection_check_boxes :service_ids, @aussen, :id, :name do |cb| %>
-                 <% cb.label(class: "check_container3") {cb.check_box(id: "click" ) + cb.text + "<span class='checkmark3'></span>".html_safe} %>
-               <% end %>
-              </div>
-            </div>
-            <div id="haus" class="tab-pane fade">
-              <div class="form-group col-xs-12" style="max-height: 150px; overflow-y: scroll">
-                <%= f.collection_check_boxes :service_ids, @haus, :id, :name do |cb| %>
-                  <% cb.label(class: "check_container3") {cb.check_box(id: "click" ) + cb.text + "<span class='checkmark3'></span>".html_safe} %>
-                <% end %>
-              </div>          
-            </div>
-            <div id="boden" class="tab-pane fade">
-              <div class="form-group col-xs-12" style="max-height: 150px; overflow-y: scroll">
-                <%= f.collection_check_boxes :service_ids, @boden, :id, :name do |cb| %>
-                    <% cb.label(class: "check_container3") {cb.check_box(id: "click" ) + cb.text + "<span class='checkmark3'></span>".html_safe} %>
-                  <% end %>
-              </div>
-            </div>
-          </div>  
+          <% end %>
+        </div>
     <div class="form-group">
       <%= f.submit "Konto erstellen", class: 'btn btn-primary' %>
     </div>
