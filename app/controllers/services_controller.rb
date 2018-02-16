@@ -50,7 +50,7 @@ class ServicesController < ApplicationController
     end
    
     def service_params
-      params.require(:service).permit(:name, :show, :service_category_id, :service_subcategory_id, :service_subject_id)
+      params.require(:service).permit(:name, :show, :service_subject_id, :service_subcategory_id, :service_category_id)
     end
    
     def require_admin

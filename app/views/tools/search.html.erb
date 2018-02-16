@@ -16,9 +16,9 @@
   <div class="ergebnisContainer" id="paste">
       <%= render 'craftsmen' %>
     </div>
-    <div class="kontaktContainer" id="show">
+    <div class="kontaktContainer" id="show" style="overflow-y: scroll">
       <div class="kontakt-body">
-        <h3 class="kontakt-header"><%= params[:service_ids] %></h3>
+        <h3 class="kontakt-header">Schicken Sie eine Kontaktanfrage an alle ausgewählten Handwerker</h3>
         <div class="form-group col-md-6">
           <%= f.text_field :vorname, class: "form-control", placeholder: "Vorname", autofocus: true %>
         </div>
@@ -28,17 +28,28 @@
         <div class="form-group col-md-12">
           <%= f.email_field :email, class: "form-control", placeholder: "Email*", autofocus: true %>
         </div>
-        <div class="form-group col-md-12">
+        <div class="form-group col-md-6">
           <%= f.text_field :adresse, class: "form-control", placeholder: "Straße, Hausnummer", autofocus: true %>
         </div>
-        <div class="form-group col-md-4">
-          <%= f.text_field :plz, class: "form-control", placeholder: "76275", id: "disabled-input" %>
+        <div class="form-group col-md-2">
+          <%= f.text_field :plz, class: "form-control", placeholder: "76275", id: "disabled-input", value: "#{@plz}" %>
         </div>
-        <div class="form-group col-md-8">
+        <div class="form-group col-md-4">
           <%= f.text_field :stadt, class: "form-control", placeholder: "Stadt", autofocus: true %>
         </div>
         <div class="form-group col-md-12">
-          <%= f.text_area :nachricht, class: "form-control", placeholder: "Nachricht schreiben", autofocus: true %>
+          <%= f.text_field :title, class: "form-control", placeholder: "Betreff", autofocus: true %>
+        </div>
+        <div class="form-group col-md-12">
+          <select class="form-control" name="inquiery[period]" id="inquiery_period">
+            <option value="Zum nächstmöglichen Zeitpunkt">Zum nächstmöglichen Zeitpunkt</option>
+            <option value="Innerhalb der nächsten 30 Tage">Innerhalb der nächsten 30 Tage</option>
+            <option value="In den nächsten 3 Monaten">In den nächsten 3 Monaten</option>
+            <option value="Innerhalb der nächsten 6 Monate">Innerhalb der nächsten 6 Monate</option>
+          </select>
+        </div>
+        <div class="form-group col-md-12">
+          <%= f.text_area :nachricht, class: "form-control", placeholder: "Nachricht schreiben", autofocus: true, rows: 4 %>
         </div>
         <% if params[:service_ids] then params[:service_ids].each do |s| %>
           <input name="inquiery[service_ids][]" type="hidden" value="<%= s %>">

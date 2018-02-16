@@ -14,7 +14,7 @@
   </div>
   <div class="col-sm-12">
     <h3><small><%= @inquiery.vorname if @inquiery.vorname %> <%= @inquiery.nachname %> - vor <%= time_ago_in_words(@inquiery.created_at) %> erstellt</small></h3>
-    <h1 style="margin: 5px 0 5px 0">Beispieltitel für Anfrage</h1>
+    <h1 style="margin: 5px 0 5px 0"><%= @inquiery.title %></h1>
     <div style="margin-bottom: 15px">
       <% @inquiery.services.each do |s| %>
         <div class="btn btn-default btn-sm"><%= s.name %></div>
@@ -53,7 +53,6 @@
             <span class="glyphicon glyphicon-earphone" aria-hidden="true" style="color: #337ab7"></span>
           </td>
           <td class="col-xs-11" style="text-align: right">
-            0173/2175458
             <!-- @inquiery.telefon if @inquiery.telefon !-->
           </td>
         </tr>
@@ -62,7 +61,7 @@
             <span class="glyphicon glyphicon-time" aria-hidden="true" style="color: #337ab7"></span>
           </td>
           <td class="col-xs-11" style="text-align: right">
-            Innerhalb der nächsten 2 Monate
+            <%= @inquiery.period %>
           </td>
         </tr>
         <tr>

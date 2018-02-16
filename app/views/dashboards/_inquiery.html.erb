@@ -23,7 +23,7 @@
                     <% @inquieries.each do |t| %>
                       <tr class="c-table__row">
                           <td class="c-table__cell" onclick="window.location='/dashboard/inquieries/<%= t.id %>';"><%= t.vorname if t.vorname %> <%= t.nachname %></td>
-                          <td class="c-table__cell" onclick="window.location='/dashboard/inquieries/<%= t.id %>';">Beispielbetreff Platzhalter</td>
+                          <td class="c-table__cell" onclick="window.location='/dashboard/inquieries/<%= t.id %>';"><%= t.title %></td>
                         <td class="c-table__cell" onclick="window.location='/dashboard/inquieries/<%= t.id %>';"><span class="u-text-mute"><%= truncate(t.nachricht, :length => 50) %></span></td>
                         <td class="c-table__cell" onclick="window.location='/dashboard/inquieries/<%= t.id %>';"><span class="u-text-mute"><%= time_ago_in_words(t.created_at) %></span></td>
                         <td class="c-table__cell u-text-right">

@@ -20,8 +20,11 @@ class ToolsController < ApplicationController
       @body = "bodyHome"
       @overlay = "Vielen Dank! Ihre Nachricht wurde an die ausgewählten Handwerker weitergeleitet."
     else 
-      render 'create'
+      render 'search'
     end
+  end
+  
+  def empty
   end
   
 private
@@ -42,7 +45,7 @@ private
     end
     
     def inquiery_params
-      params.require(:inquiery).permit(:plz, :email, :vorname, :nachname, :adresse, :stadt, :nachricht, user_ids: [], service_ids: [])
+      params.require(:inquiery).permit(:title, :period, :plz, :email, :vorname, :nachname, :adresse, :stadt, :nachricht, user_ids: [], service_ids: [])
     end
 
 end
