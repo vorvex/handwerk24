@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   get 'admin/new', to: 'admins#new'
   post 'admin', to: 'admins#create'
   
-resources :users, except: [:new, :create, :index]
+resources :users, except: [:new, :create, :index, :update]
+  
+  patch 'user/:id/edit', to: 'users#update', as: 'update_user_admin'
   
   get 'admin/login', to: 'sessions#newadmin'
   post 'admin/login', to: 'sessions#createadmin'

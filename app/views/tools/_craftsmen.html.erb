@@ -1,4 +1,4 @@
-<% if @users.any? %>
+<% if @plz %>
   <div class="infoContainer">
     <H5 class="Info1">Infrage kommende Betriebe (<%= @users.count %>)</h5>
     <a onclick="wasEinzeln()" class="Info2">Was ist das?</a>
@@ -12,8 +12,8 @@
         <div class ="info">
             <div class ="InfoOben">
                 <!--Reviews dienen als Platzhalter bis ein Modell besteht // Leistungen die auf Betrieb und Suche zutreffen-->
-              <h6 class="Reviews">4,5/5 (5 Reviews)</h6>
-              <h6 class="Leistung"><%= Field.find(u.field_id).name %> <%= u.score %></h6>
+              <h6 class="Leistung"><%= Field.find(u.field_id).name %></h6>
+              <% if u.unavailable(@selected_services).count > 0 then %><h6 class="Leistung" style="color: #ff7272"><% u.unavailable(@selected_services).each do |s| %><%= Service.find(s).name %><% end %></h6><% end %>
             </div>
             <!--Name Betrieb-->
             <h3 class="HWName"><%= u.name %></h3>

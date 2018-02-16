@@ -27,27 +27,32 @@ class ServicesController < ApplicationController
   end
   
   def update 
-  if @service.update(service_params)
-    flash[:success] = "Leistung wurde erfolgreich aktualisiert"
-    redirect_to admin_path
-  else
-    render 'edit'
-  end
+    if @service.update(service_params)
+      flash[:success] = "Leistung wurde erfolgreich aktualisiert"
+      redirect_to admin_path
+    else
+      render 'edit'
+    end
   end
   
  def destroy
-      @service.destroy
+   @service = Service.find(params[:id])
+   if @service.destroy
       flash[:success] = "Leistung wurde erfolgreich gelöscht"
       redirect_to admin_path
-  end
+   end
+ end
   
   private
+   
     def set_service
       @service = Service.find(params[:id])
     end
+   
     def service_params
       params.require(:service).permit(:name, :show, :service_category_id, :service_subcategory_id, :service_subject_id)
     end
+   
     def require_admin
       if !current_admin
         flash[:danger] = "Nur Administratoren können diese Funktion ausführen"

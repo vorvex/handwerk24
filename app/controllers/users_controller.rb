@@ -27,12 +27,12 @@ class UsersController < ApplicationController
   def new
     @body = "bodyHome"
     @user = User.new
-    @subcategories = Service_Subcategory.all.order(:service_category_id)
+    @subcategories = ServiceSubcategory.all.order(:service_category_id)
   end
   
   def edit
     @user = User.find(params[:id])
-    @subcategories = Service_Subcategory.all.order(:service_category_id)
+    @subcategories = ServiceSubcategory.all.order(:service_category_id)
   end
   
   def create
@@ -54,7 +54,6 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-    service_tabs
     if @user.update(user_params)
       flash[:success] = "Betrieb wurde erfolgreich aktualisiert"
       redirect_back(fallback_location: dashboard_path)
@@ -116,14 +115,14 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       @current_user = false
       @current_user = User.find(session[:user_id]) if session[:user_id]
-      if @user != @current_user
+      if @user != @current_user && !current_admin
         flash[:danger] = "Sie können nur Ihren eigenen Akkount bearbeiten"
         redirect_to dashboard_path
       end
     end
   
     def require_admin
-      if current_admin?
+      if current_admin
         flash[:danger] = "Nur Administratoren können diese Funktion ausführen"
         redirect_to root_path
       end

@@ -18,10 +18,12 @@
     <div class="form-group col-md-8">
       <%= f.text_field :stadt, class: "form-control", placeholder: "Stadt", autofocus: true %>
     </div>
-    <div style="display: none">
-      <%= f.collection_check_boxes :service_ids, @services, :id, :name do |cb| %>
-        <% cb.label(class: "checkbox") {cb.check_box + cb.text} %>
-          <% end %>
+    <div style="display: hidden">
+        <% @services.each do |service| %>
+          <label class="check_container" for="service_ids_<%= service.id %>">
+          <input id="click" type="checkbox" value="<%= service.id %>" name="service_ids[]" <%= 'checked="checked"' if @selected_services && @selected_services.map(&:to_i).include?(service.id) %></input><%= service.name %>
+          <span class="checkmark"></span></label>      
+        <% end %>
     </div>
     <div class="form-group col-md-12">
       <%= f.text_field :title, class: "form-control", placeholder: "Betreff", autofocus: true %>

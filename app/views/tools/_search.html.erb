@@ -9,7 +9,7 @@
   <div class="LeistungContainer">
     <% @services.each do |service| %>
       <label class="check_container" for="service_ids_<%= service.id %>">
-        <input id="click" type="checkbox" value="<%= service.id %>" name="service_ids[]"><%= service.name %>
+        <input id="click" type="checkbox" value="<%= service.id %>" name="service_ids[]" <%= 'checked="checked"' if @selected_services && @selected_services.map(&:to_i).include?(service.id) %></input><%= service.name %>
         <span class="checkmark"></span></label>      
     <% end %>
   </div>

@@ -1,8 +1,8 @@
 <%= render 'shared/header' %>
 <ol class="breadcrumb" style="margin-top: -20px; background-color: white;">
   <li><a href="/service_categories">Kategorien</a></li>
-  <li><a href="/service_categories/<%= Service_Category.find(Service_Subcategory.find(@subject.service_subcategory_id).id).id %>"><%= Service_Category.find(Service_Subcategory.find(@subject.service_subcategory_id).id).name %></a></li>
-  <li><a href="/service_subcategories/<%= Service_Subcategory.find(@subject.service_subcategory_id).id %>"><%= Service_Subcategory.find(@subject.service_subcategory_id).name %></a></li>
+  <li><a href="/service_categories/<%= ServiceCategory.find(ServiceSubcategory.find(@subject.service_subcategory_id).id).id %>"><%= ServiceCategory.find(ServiceSubcategory.find(@subject.service_subcategory_id).id).name %></a></li>
+  <li><a href="/service_subcategories/<%= ServiceSubcategory.find(@subject.service_subcategory_id).id %>"><%= ServiceSubcategory.find(@subject.service_subcategory_id).name %></a></li>
   <li class="active"><%= @subject.name %></li>
 </ol>
 <div class="container-fluid">
@@ -41,8 +41,8 @@
           <%= f.text_field :name, class: "form-control", placeholder: "Leistung", autofocus: true %>
         </div>
         <%= f.text_field :service_subject_id, :value => "#{@subject.id}", type: 'hidden' %>
-        <%= f.text_field :service_subcategory_id, :value => "#{Service_Subcategory.find(@subject.service_subcategory_id).id}", type: 'hidden' %>
-        <%= f.text_field :service_category_id, :value => "#{Service_Category.find(Service_Subcategory.find(@subject.service_subcategory_id).id).id}", type: 'hidden' %>
+        <%= f.text_field :service_subcategory_id, :value => "#{ServiceSubcategory.find(@subject.service_subcategory_id).id}", type: 'hidden' %>
+        <%= f.text_field :service_category_id, :value => "#{ServiceCategory.find(ServiceSubcategory.find(@subject.service_subcategory_id).id).id}", type: 'hidden' %>
         <div class="form-group">
            <%= f.submit class: 'btn btn-primary' %>
         </div>

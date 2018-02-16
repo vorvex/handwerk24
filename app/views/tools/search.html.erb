@@ -18,7 +18,7 @@
     </div>
     <div class="kontaktContainer" id="show">
       <div class="kontakt-body">
-        <h3 class="kontakt-header">Schicken Sie eine Kontaktanfrage an alle ausgewählten Handwerker</h3>
+        <h3 class="kontakt-header"><%= params[:service_ids] %></h3>
         <div class="form-group col-md-6">
           <%= f.text_field :vorname, class: "form-control", placeholder: "Vorname", autofocus: true %>
         </div>
@@ -37,14 +37,12 @@
         <div class="form-group col-md-8">
           <%= f.text_field :stadt, class: "form-control", placeholder: "Stadt", autofocus: true %>
         </div>
-        <div style="display: none">
-          <%= f.collection_check_boxes :service_ids, @services, :id, :name do |cb| %>
-            <% cb.label(class: "checkbox") {cb.check_box + cb.text} %>
-              <% end %>
-        </div>
         <div class="form-group col-md-12">
           <%= f.text_area :nachricht, class: "form-control", placeholder: "Nachricht schreiben", autofocus: true %>
         </div>
+        <% if params[:service_ids] then params[:service_ids].each do |s| %>
+          <input name="inquiery[service_ids][]" type="hidden" value="<%= s %>">
+        <% end end %>
         <div class="form-group">
           <%= f.submit "Anfrage senden", class: "buttonstyle5" %>
           <span class="buttonstyle3" id="hideKontakt">Zurück</span>

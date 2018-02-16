@@ -1,7 +1,7 @@
 <%= render 'shared/header' %>
 <ol class="breadcrumb" style="margin-top: -20px; background-color: white;">
   <li><a href="/service_categories">Kategorien</a></li>
-  <li><a href="/service_categories/<%= Service_Category.find(@subcategory.service_category_id).id %>"><%= Service_Category.find(@subcategory.service_category_id).name %></a></li>
+  <li><a href="/service_categories/<%= ServiceCategory.find(@subcategory.service_category_id).id %>"><%= ServiceCategory.find(@subcategory.service_category_id).name %></a></li>
   <li class="active"><%= @subcategory.name %></li>
 </ol>
 <div class="container-fluid">

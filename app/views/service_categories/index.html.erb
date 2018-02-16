@@ -1,6 +1,6 @@
 <%= render 'shared/header' %>
 <ol class="breadcrumb" style="margin-top: -20px; background-color: white;">
-  <li class="active" >Kategorien</a></li>
+  <li class="active">Kategorien</a></li>
 </ol>
 <div class="container-fluid">
   <div class="panel panel-default">
@@ -20,7 +20,7 @@
               <td class="col-md-4"><%= f.name %></td>
               <td class="col-md-1">
                 <%= link_to 'Bearbeiten', edit_service_category_path(f) %> 
-                <%= link_to 'Löschen', service_categories_path(f), method: :delete, data: {confirm: "Sicher?"} %>
+                <%= link_to 'Löschen', service_category_path(f), method: :delete, data: {confirm: "Sicher?"} %>
               </td> 
             </tr>
           <% end %>

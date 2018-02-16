@@ -45,13 +45,13 @@ class DashboardsController < ApplicationController
   def settings
     @active = 'Settings'
     @header = 'Einstellungen'
-    @subcategories = Service_Subcategory.all.order(:service_category_id)
+    @subcategories = ServiceSubcategory.all.order(:service_category_id)
   end
   
   def services
     @active = 'Services'
     @header = 'Leistungen bearbeiten'
-    @subcategories = Service_Subcategory.all.order(:service_category_id)
+    @subcategories = ServiceSubcategory.all.order(:service_category_id)
     @request = ServiceRequest.new
   end
   

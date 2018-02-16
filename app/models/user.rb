@@ -37,9 +37,9 @@ class User < ApplicationRecord
     end
   end
   
-  def self.search(search)
+  def self.search(search, top, bottom)
     if search
-      where('score > 0.0').order('score DESC')
+      where('plz BETWEEN ? AND ?', bottom, top).left_joins(:services).merge(Service.where(id: search)).uniq
     else
       none
     end
@@ -50,7 +50,11 @@ class User < ApplicationRecord
   end
   
   def comparison(services)
-    (services - self.services).count
+    (services - self.services.ids).count
+  end
+  
+  def unavailable(services)
+    (services - self.services.ids)
   end
   
 end

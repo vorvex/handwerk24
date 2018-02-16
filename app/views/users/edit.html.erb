@@ -2,7 +2,7 @@
 <%= render 'shared/messages' %>
 <%= render 'shared/errors', obj: @user %>
 <div class ="container">
-     <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+     <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}, url: update_user_admin_url(@user)) do |f| %>
       <div>
         <div class="form-group">
           <label class="control-label">Name Ihres Betriebs</label>
@@ -58,20 +58,20 @@
         <% end %>
         <ul class="nav nav-tabs">
           <% @subcategories.each do |c| %>
-          <li><a data-toggle="tab" href="#<%= c.id %>"><%= c.name %></a></li>
+          <li class="<%= 'active' if c.id == 1 %>"><a data-toggle="tab" href="#<%= c.id %>"><%= c.name %></a></li>
           <% end %>
         </ul>
-        <% @subcategories.each do |c| %>
         <div class="tab-content">
-            <div id="<%= c.id %>" class="tab-pane fade in active" style="height:150px">
+        <% @subcategories.each do |c| %>
+            <div id="<%= c.id %>" class="tab-pane fade in <%= 'active' if c.id == 1 %>" style="height:250px">
               <div class="form-group col-xs-12" style="max-height: 150px; overflow-y: scroll; overflow-x: hidden">
                  <%= f.collection_check_boxes :service_ids, Service.where('service_subcategory_id = ?', c.id), :id, :name do |cb| %>
                    <% cb.label(class: "check_container3") {cb.check_box(id: "click" ) + cb.text + "<span class='checkmark3'></span>".html_safe} %>
                  <% end %>
               </div>
             </div>
-        </div>
         <% end %>
+        </div>
         <div class="form-group">
           <%= f.submit class: 'btn btn-primary' %>
           <%= link_to "Akkount löschen", user_path, method: :destroy, class: 'btn btn-error pull-right' %>

@@ -4,21 +4,21 @@ class ServiceCategoriesController < ApplicationController
   before_action :dashboard
   
   def index 
-    @categories = Service_Category.all
-    @new_category = Service_Category.new
+    @categories = ServiceCategory.all
+    @new_category = ServiceCategory.new
   end
   
   def show
-    @category = Service_Category.find(params[:id])
-    @subcategories = Service_Subcategory.where('service_category_id = ?', params[:id])
-    @new_subcategory = Service_Subcategory.new
+    @category = ServiceCategory.find(params[:id])
+    @subcategories = ServiceSubcategory.where('service_category_id = ?', params[:id])
+    @new_subcategory = ServiceSubcategory.new
   end
   
   def create
-    @service_category = Service_Category.new(service_category_params)
+    @service_category = ServiceCategory.new(service_category_params)
     if @service_category.save
       flash[:success] = "Leistungs Unter-Kategorie wurde erfolgreich erstellt"
-      redirect_to service_category_path
+      redirect_to service_categories_path
     else 
       render 'new'
     end
@@ -42,7 +42,7 @@ class ServiceCategoriesController < ApplicationController
   private
   
   def set_service_category
-      @service_category = Service_Category.find(params[:id])
+      @service_category = ServiceCategory.find(params[:id])
     end
     def service_category_params
       params.require(:service_category).permit(:name)
