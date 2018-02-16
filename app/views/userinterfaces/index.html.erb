@@ -1,7 +1,11 @@
 <div class="bg">
   <header class="header">
     <%= image_tag("logo-white.png", :alt => "Handwerk24", :class => "logo") %>
-    <%= link_to "Handwerker?", signup_path, class: "buttonstyle1"%>
+    <% if logged_in_user? then %>
+      <%= link_to "Profil", dashboard_path, class: "buttonstyle1"%>
+    <% else %>
+      <%= link_to "Handwerker?", signup_path, class: "buttonstyle1"%>
+    <% end %>
     <div id="nav-icon1">
       <span></span>
       <span></span>
@@ -15,35 +19,19 @@
       Mehr erfahren
     </button>
   </div>
-  <div class="categoryContainer">
-    <a class="category" href="/suche?category=1">
-      <div class="category-inner">
-        <%= image_tag("haus.png", :alt => "Haus und Wohnung", :class => "category-img") %>
-        <label class="category-text">Haus und Wohnung</label>
-      </div>
-      <%= image_tag("arrow-right.png", :alt => "Pfeil", :class => "arrow-right") %>
-    </a>
-    <a class="category" href="/suche/bodenbelag">
-      <div class="category-inner">
-        <%= image_tag("bodenbelag.png", :alt => "Bodenbeläge", :class => "category-img") %>
-        <label class="category-text">Bodenbeläge</label>
-      </div>
-      <%= image_tag("arrow-right.png", :alt => "Pfeil", :class => "arrow-right") %>
-    </a>
-    <a class="category" href="/suche/aussen">
-      <div class="category-inner">
-        <%= image_tag("aussen.png", :alt => "Außen am Haus", :class => "category-img") %>
-        <label class="category-text">Außen am Haus</label>
-      </div>
-      <%= image_tag("arrow-right.png", :alt => "Pfeil", :class => "arrow-right") %>
-    </a>
-    <a class="category" href="/suche/gartenarbeit">
-      <div class="category-inner">
-        <%= image_tag("gartenarbeit.png", :alt => "Gartenarbeit", :class => "category-img") %>
-        <label class="category-text">Gartenarbeit</label>
-      </div>
-      <%= image_tag("arrow-right.png", :alt => "Haus und Wohnung", :class => "arrow-right") %>
-    </a>
+  <div class="categoryContainer" style="max-height: 400px; overflow-y: scroll;">
+    <% @categories.each do |c| %>
+      <label class="category-text" style="color: black"><%= c.name %></label>
+      <% ServiceSubcategory.where(service_category_id: c.id).each do |s| %>
+        <a class="category" href="/suche?category=<%= s.id %>">
+          <div class="category-inner">
+            <%= image_tag("category#{s.id}.png", :alt => "#{s.name}", :class => "category-img") %>
+            <label class="category-text"><%= s.name %></label>
+          </div>
+          <%= image_tag("arrow-right.png", :alt => "Pfeil", :class => "arrow-right") %>
+        </a>
+      <% end %>
+    <% end %>
   </div>
   <div class="footer">
     <a class="footer-link" href="#">Impressum</a>
