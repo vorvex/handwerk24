@@ -42,7 +42,7 @@ private
     else
      @users = User.none 
     end
-    end
+  end
     
     def inquiery_params
       params.require(:inquiery).permit(:title, :period, :plz, :email, :vorname, :nachname, :adresse, :stadt, :nachricht, user_ids: [], service_ids: [])

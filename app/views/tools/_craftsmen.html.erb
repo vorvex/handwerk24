@@ -4,7 +4,8 @@
     <a onclick="wasEinzeln()" class="Info2">Was ist das?</a>
   </div>
 <% end %>
-<% @users.each do |u| %>
+<% if @users.count > 0 then %>
+  <% @users.each do |u| %>
     <div class="SoloContainer">
       <div class="HandwerkerInner">
           <!--Foto/Logo von Handwerker-->
@@ -35,4 +36,7 @@
         </div>
       </div>
     </div>
+  <% end %>
+<% elsif @selected_services && @users.count == 0 %>
+  <%= render 'alarm' %>
 <% end %>

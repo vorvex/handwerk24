@@ -12,7 +12,6 @@
 <div class="rowcontainer" id="<%= "search" if @search %>">
   <%= render 'search' %>
   <%= form_for(@inquiery, :html => {class: "right", role: "form", id: "toggle"}, url: vielendank_path) do |f| %>
-  <%= render 'errors' %>  
   <div class="ergebnisContainer" id="paste">
       <%= render 'craftsmen' %>
     </div>

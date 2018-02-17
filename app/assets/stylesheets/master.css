@@ -1,3 +1,54 @@
+.hw-alarm {
+  display: flex;
+  flex-direction: column;
+  background: rgba(245,165,35,0.70);
+  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.30);
+  border-radius: 6px;
+  padding: 40px;
+  margin-top: 10px;
+}
+
+.hw-alarm-icon-container {
+  height: 120px;
+  width: 120px;
+  margin: 0 auto 30px auto;
+}
+
+.hw-alarm-text-container {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.hw-alarm-header {
+  font-size: 28px;
+  color: #FFFFFF;
+  line-height: 32px;
+}
+
+.hw-alarm-text {
+  font-size: 20px;
+  color: #FFFFFF;
+  line-height: 24px;
+}
+
+.hw-alarm-button {
+  background: #FFFFFF;
+  border-radius: 6px;
+  font-size: 20px;
+  color: #F6A623;
+  line-height: 30px;
+  padding: 5px 20px;
+  }
+
+.hw-alarm-form-container {
+  display: none;
+}
+
+.hw-alarm-button-container {
+  margin: 0 auto;
+  padding: 0 auto;
+}
+
 @media screen and (min-width:905px) {
 .bodyGarten {
 height : 100vh;
@@ -1420,3 +1471,4 @@ margin-right : 20px;
     max-width:100%;
   }
 }
+

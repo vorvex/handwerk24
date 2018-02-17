@@ -238,6 +238,11 @@ html {
   .container {
     max-width: 1140px; } }
 
+.d-print-block {
+	display: none;
+}
+
+
 .container-fluid {
   width: 100%;
   padding-right: 15px;

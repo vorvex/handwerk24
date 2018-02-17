@@ -1,19 +1,20 @@
 <div class="col-md-12" style="height: 100%">
   <div class="container">
   <% if @inquiery then %>
-  <div class="col-sm-12" style="margin-bottom: 20px">
-    <h3 style="display: inline"><%= link_to '<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>'.html_safe, dashboard_inquieries_path %></h3>
+  <div class="col-sm-12 d-print-none" style="margin-bottom: 20px">
+    <h3 style="display: inline"><%= link_to '<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>'.html_safe, dashboard_inquieries_path, style: "color: #b7c0cd" %></h3>
     <div class="pull-right">
-      <h3 style="display: inline; padding-right: 10px;">
-        <%= link_to '<span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>'.html_safe, "mailto:#{@inquiery.email}" %>
-        <%= link_to '<span class="glyphicon glyphicon-print" aria-hidden="true"></span>'.html_safe, "#", onclick: "window.print()" %>
-        <%= link_to '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>'.html_safe, detach_user_url(@inquiery.id, @user.id), method: 'delete' %>
-        <%= link_to '<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>'.html_safe, "#" %>
+      <h3 style="display: inline; padding-right: 10px; color: grey">
+        <%= link_to '<i class="fa fa-share"></i>'.html_safe, "mailto:#{@inquiery.email}", style: "color: #b7c0cd" %>
+        <%= link_to '<i class="fa fa-print"></i>'.html_safe, "#", onclick: "window.print()", style: "color: #b7c0cd" %>
+        <%= link_to '<i class="fa fa-trash"></i>'.html_safe, detach_user_url(@inquiery.id, @user.id), method: 'delete', style: "color: #b7c0cd" %>
+        <%= link_to '<i class="fa fa-file"></i>'.html_safe, "#", style: "color: #b7c0cd" %>
       </h3>
     </div>
   </div>
   <div class="col-sm-12">
-    <h3><small><%= @inquiery.vorname if @inquiery.vorname %> <%= @inquiery.nachname %> - vor <%= time_ago_in_words(@inquiery.created_at) %> erstellt</small></h3>
+    <h3 class="d-print-none"><small><%= @inquiery.vorname if @inquiery.vorname %> <%= @inquiery.nachname %> - vor <%= time_ago_in_words(@inquiery.created_at) %> erstellt</small></h3>
+    <h3 class="d-print-block"><small><%= @inquiery.vorname if @inquiery.vorname %> <%= @inquiery.nachname %> - <%= time_tag(@inquiery.created_at) %></small></h3>
     <h1 style="margin: 5px 0 5px 0"><%= @inquiery.title %></h1>
     <div style="margin-bottom: 15px">
       <% @inquiery.services.each do |s| %>
