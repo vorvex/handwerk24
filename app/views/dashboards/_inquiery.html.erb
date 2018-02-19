@@ -32,7 +32,7 @@
                             <div class="c-dropdown__menu dropdown-menu" aria-labelledby="dropdownMenuButton10">
                               <a class="c-dropdown__item dropdown-item" onclick="window.location='/dashboard/inquieries/<%= t.id %>';">Anzeigen</a>
                               <a class="c-dropdown__item dropdown-item" href="mailto:<%= t.email %>">Email senden</a>
-                              <%= link_to 'Löschen', detach_user_url(t.id, @user.id), class: "c-dropdown__item dropdown-item", method: 'delete' %>
+                              <%= link_to 'Löschen', detach_user_url(t.id, @user.id), class: "c-dropdown__item dropdown-item", :method => 'delete' %>
                             </div>
                           </div>
                         </td>

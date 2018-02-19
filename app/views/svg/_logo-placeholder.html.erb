@@ -1,0 +1,8 @@
+<svg class=<%= cls %> width="140px" height="140px" viewBox="0 0 140 140" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <circle fill="#<%= if obj.personalizations.any? then obj.personalizations.first.color_primary else '4A90E2' end %>" cx="70" cy="70" r="70"></circle>
+    <text id="hw" font-family="ArialRoundedMTBold, Arial Rounded MT Bold" font-size="80" font-weight="normal" fill="#FFFFFF" text-anchor="middle" x="70" y="100">
+      <%= obj.initials %>
+    </text>
+  </g>
+</svg>

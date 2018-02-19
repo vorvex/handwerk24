@@ -8,8 +8,7 @@
   <% @users.each do |u| %>
     <div class="SoloContainer">
       <div class="HandwerkerInner">
-          <!--Foto/Logo von Handwerker-->
-        <%= image_tag("image-placeholder.svg", :alt => "Handwerker Image", :class => "HWimg") %>
+        <%= render 'svg/logo-placeholder', obj: u, cls: "HWimg" %>
         <div class ="info">
             <div class ="InfoOben">
                 <!--Reviews dienen als Platzhalter bis ein Modell besteht // Leistungen die auf Betrieb und Suche zutreffen-->
@@ -18,14 +17,31 @@
             </div>
             <!--Name Betrieb-->
             <h3 class="HWName"><%= u.name %></h3>
-              <div class="InfoBottom">
+            <div class="InfoBottom">
+              <% if u.personalizations.any? %>
+                <% case u.personalizations.first.first_entry_a %>
+                  <% when 'phone' %>
+                    <%= link_to "#{u.telefon}", "tel:#{u.telefon}", class: "phone" %>
+                  <% when 'email' %>
+                    <%= link_to "#{u.email}", "mailto:#{u.email}", class: "mail" %>
+                <% end %>
+              <% else %>
                 <%= link_to "#{u.telefon}", "tel:#{u.telefon}", class: "phone" %>
-                <%= link_to "#{u.plz}, #{truncate(u.stadt, :length => 15)}", "#", class: "home" %> 
-              </div>
+              <% end %>
+              <%= link_to "#{u.plz}, #{truncate(u.stadt, :length => 15)}", "https://maps.google.com/?q=#{u.adresse + ' ' + u.stadt}", class: "home", target: "_blank" %> 
+            </div>
           </div>
-        <div class="links">
-            <!--Klick auf Link = öffnen im neuen Tap-->
-          <%= link_to image_tag("world64.png", :alt => "Website", :class => "World"), "http://#{u.url}", class: "Website" %>
+        <div class="hw-links">
+          <% if u.personalizations.any? %>
+                <% case u.personalizations.first.main_entry_a %>
+                  <% when 'website' %>
+                    <%= link_to image_tag("world64.png", :alt => "Website", :class => "World"), "http://#{u.url}", class: "Website", target: "_blank" %>
+                  <% when 'email' %>
+                    <%= link_to image_tag("envelope64.png", :alt => "Email", :class => "World"), "mailto:#{u.email}", class: "Website" %>
+                  <% end %>
+                <% else %>
+                    <%= link_to image_tag("world64.png", :alt => "Website", :class => "World"), "http://#{u.url}", class: "Website", target: "_blank" %>
+                <% end %>
           <div class="checkcontainer">
                 <!--Check Betrieb-->
                 <label class="check_container1">

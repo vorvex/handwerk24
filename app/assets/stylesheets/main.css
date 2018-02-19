@@ -7827,15 +7827,11 @@ be a descendant of the grid when it is being dragged.
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 70px;
+  width: 120px;
   height: 70px;
   margin: 0 auto;
-  border-radius: 100%;
   color: #fff;
-  font-size: 1.75rem;
-  background: #2ea1f8;
-  background: -webkit-gradient(linear, left top, left bottom, from(#2ea1f8), to(#1990ea));
-  background: linear-gradient(to bottom, #2ea1f8, #1990ea); }
+  font-size: 1.75rem; }
   .c-card__icon:hover i {
     color: inherit;
     text-decoration: none; }

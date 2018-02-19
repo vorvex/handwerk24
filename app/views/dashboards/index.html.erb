@@ -2,5 +2,247 @@
 <main class="o-page__content">
   <%= render 'header' %>
   <%= render 'messages' %>
-  
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="infoContainer">
+          <div>
+              <H5 class="Info1">Vorschau Ihres Eintrages</h5>
+              <!-- Button trigger modal -->
+              <a type="button" class="Info2" data-toggle="modal" data-target="#modal1">
+                 Personalisieren
+              </a>
+
+              <!-- Modal -->
+              <div  class="c-modal c-modal--large modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modal1">
+                  <div class="c-modal__dialog modal-dialog" role="document">
+                    <% if @user.personalizations.any? %>
+                      <%= form_for(@updatepersonalize, url: edit_personalization_url, edit_method: :post) do |f| %>
+                      <div class="c-modal__content">
+
+                          <div class="c-modal__header">
+                              <h3 class="c-modal__title">Personalisierung</h3>
+
+                              <span class="c-modal__close" data-dismiss="modal" aria-label="Close">
+                                  <i class="fa fa-close"></i>
+                              </span>
+                          </div>
+                          <div class="c-modal__body c-modal__body--maximized">
+                              <div class="o-line u-border-bottom u-pb-small">
+                                 <div class="form-group col-md-12">
+                                    <label class="c-field__label">Hauptfarbe</label>
+                                    <select class="form-control" name="perzonalization[color_primary]" id="personalization_color_primary">
+                                      <option value="007ACE"><span style="border-radius: 100%; height: 10px; width: 10px; background-color: #007ace;"></span> Standard: Dunkelblau</option>
+                                      <option value="CF493E"><span style="border-radius: 100%; height: 10px; width: 10px; background-color: #CF493E;"></span> Dunkelrot</option>
+                                      <option value="3F4756"><span style="border-radius: 100%; height: 10px; width: 10px; background-color: #3F4756;"></span> Petrol</option>
+                                      <option value="74FAC8"><span style="border-radius: 100%; height: 10px; width: 10px; background-color: #74FAC8;"></span> Grün</option>
+                                      <option value="E16C2D"><span style="border-radius: 100%; height: 10px; width: 10px; background-color: #E16C2D;"></span> Hell-Rot</option>
+                                      <option value="A3ABBD"><span style="border-radius: 100%; height: 10px; width: 10px; background-color: #A3ABBD;"></span> Grau</option>
+                                    </select>
+                                  </div>
+                              </div>
+
+                              <div class="o-line u-border-bottom u-pb-small">
+                                 <div class="form-group col-md-12">
+                                    <label class="c-field__label">Erster Link</label>
+                                    <select class="form-control" name="perzonalization[first_entry_a]" id="personalization_first_entry_a">
+                                      <option value="phone">Standard: Telefon</option>
+                                      <option value="email">Email</option>
+                                    </select>
+                                  </div>
+                              </div>
+
+                              <div class="o-line u-border-bottom u-pb-small">
+                                 <div class="form-group col-md-12">
+                                    <label class="c-field__label">Haupt Link</label>
+                                    <select class="form-control" name="perzonalization[main_entry_a]" id="personalization_main_entry_a">
+                                      <option value="website">Standard: Webseite</option>
+                                      <option value="email">Email</option>
+                                      <option value="phone">Telefon</option>
+                                    </select>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="c-modal__footer">
+                              <button class="c-btn c-btn--secondary" data-dismiss="modal" aria-label="Close">Abbrechen</button>
+                              <button class="c-btn c-btn--success">Bearbeiten</button>
+                          </div>
+
+                      </div><!-- // .c-modal__content -->
+                    <% end %>
+                    <% else %>
+                      <%= form_for(@newpersonalize, url: new_personalization_url, new_method: :post) do |f| %>
+                      <div class="c-modal__content">
+
+                          <div class="c-modal__header">
+                              <h3 class="c-modal__title">Personalisierung</h3>
+
+                              <span class="c-modal__close" data-dismiss="modal" aria-label="Close">
+                                  <i class="fa fa-close"></i>
+                              </span>
+                          </div>
+                          <div class="c-modal__body c-modal__body--maximized">
+                              <div class="o-line u-border-bottom u-pb-small">
+                                 <div class="form-group col-md-12">
+                                    <label class="c-field__label">Hauptfarbe</label>
+                                    <select class="form-control" name="perzonalization[color_primary]" id="personalization_color_primary">
+                                      <option value="007ACE"><span style="border-radius: 100%; height: 10px; width: 10px; background-color: #007ace;"></span> Standard: Dunkelblau</option>
+                                      <option value="CF493E"><span style="border-radius: 100%; height: 10px; width: 10px; background-color: #CF493E;"></span> Dunkelrot</option>
+                                      <option value="3F4756"><span style="border-radius: 100%; height: 10px; width: 10px; background-color: #3F4756;"></span> Petrol</option>
+                                      <option value="74FAC8"><span style="border-radius: 100%; height: 10px; width: 10px; background-color: #74FAC8;"></span> Grün</option>
+                                      <option value="E16C2D"><span style="border-radius: 100%; height: 10px; width: 10px; background-color: #E16C2D;"></span> Hell-Rot</option>
+                                      <option value="A3ABBD"><span style="border-radius: 100%; height: 10px; width: 10px; background-color: #A3ABBD;"></span> Grau</option>
+                                    </select>
+                                  </div>
+                              </div>
+
+                              <div class="o-line u-border-bottom u-pb-small">
+                                 <div class="form-group col-md-12">
+                                    <label class="c-field__label">Erster Link</label>
+                                    <select class="form-control" name="perzonalization[first_entry_a]" id="personalization_first_entry_a">
+                                      <option value="phone">Standard: Telefon</option>
+                                      <option value="email">Email</option>
+                                    </select>
+                                  </div>
+                              </div>
+
+                              <div class="o-line u-border-bottom u-pb-small">
+                                 <div class="form-group col-md-12">
+                                    <label class="c-field__label">Haupt Link</label>
+                                    <select class="form-control" name="perzonalization[main_entry_a]" id="personalization_main_entry_a">
+                                      <option value="website">Standard: Webseite</option>
+                                      <option value="email">Email</option>
+                                      <option value="phone">Telefon</option>
+                                    </select>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="c-modal__footer">
+                              <button class="c-btn c-btn--secondary" data-dismiss="modal" aria-label="Close">Abbrechen</button>
+                              <button class="c-btn c-btn--success">Bearbeiten</button>
+                          </div>
+
+                      </div><!-- // .c-modal__content -->
+                    <% end %>
+                    <% end %>
+                  </div><!-- // .c-modal__dialog -->
+              </div><!-- // .c-modal -->
+          </div>
+        </div>
+        <div class="SoloContainer">
+          <div class="HandwerkerInner">
+            <%= render 'svg/logo-placeholder', obj: @user, cls: "HWimg" %>
+            <div class ="info">
+                <div class ="InfoOben">
+                    <!--Reviews dienen als Platzhalter bis ein Modell besteht // Leistungen die auf Betrieb und Suche zutreffen-->
+                  <h6 class="Leistung"><%= Field.find(@user.field_id).name %></h6>
+                </div>
+                <!--Name Betrieb-->
+                <h3 class="HWName"><%= @user.name %></h3>
+                  <div class="InfoBottom">
+                    <% if @user.personalizations.any? %>
+                      <% case @user.personalizations.first.first_entry_a %>
+                        <% when 'phone' %>
+                          <%= link_to "#{@user.telefon}", "tel:#{@user.telefon}", class: "phone" %>
+                        <% when 'email' %>
+                          <%= link_to "#{@user.email}", "mailto:#{@user.email}", class: "mail" %>
+                      <% end %>
+                    <% else %>
+                      <%= link_to "#{@user.telefon}", "tel:#{@user.telefon}", class: "phone" %>
+                    <% end %>
+                    <%= link_to "#{@user.plz}, #{truncate(@user.stadt, :length => 15)}", "https://maps.google.com/?q=#{@user.adresse + @user.stadt}", class: "home" %> 
+                  </div>
+              </div>
+            <div class="hw-links">
+              <% if @user.personalizations.any? %>
+                <% case @user.personalizations.first.main_entry_a %>
+                  <% when 'website' %>
+                    <%= link_to image_tag("world64.png", :alt => "Website", :class => "World"), "http://#{@user.url}", class: "Website" %>
+                  <% when 'email' %>
+                    <%= link_to image_tag("envelope64.png", :alt => "Email", :class => "World"), "mailto:#{@user.email}", class: "Website" %>
+                  <% end %>
+                <% else %>
+                    <%= link_to image_tag("world64.png", :alt => "Website", :class => "World"), "http://#{@user.url}", class: "Website" %>
+                <% end %>
+              <div class="checkcontainer" style="margin: 0px">
+                    <!--Check Betrieb-->
+                    <label class="check_container1">
+                      <input name="inquiery[user_ids][]" type="checkbox" value="<%= @user.id %>">
+                      <span class="checkmark1"></span>
+                    </label>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <div class="c-card u-p-medium u-text-center u-mb-medium" data-mh="landing-cards" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3)">
+
+          <div class="u-mb-small" style="font-size: 84px; color: #bac8ff"><i class="far fa-address-book"></i></div>
+
+            <h4 class="u-h6 u-text-bold u-mb-small">
+                Alle Kundenanfragen auf einen Blick
+            </h4>
+            <a class="c-btn c-btn--info" href="/dashboard/inquieries">Nachrichten ansehen</a>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <div class="c-card u-p-medium u-text-center u-mb-medium" data-mh="landing-cards" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3)">
+
+            <div class="u-mb-small" style="font-size: 84px; color: #bac8ff"><i class="fas fa-bullhorn"></i></div>
+
+            <h4 class="u-h6 u-text-bold u-mb-small">
+                Alle öffentlichen Anfragen.
+            </h4>
+            <a class="c-btn c-btn--info" href="/dashboard/publicinquieries">Öffentliche Anfragen</a>
+        </div>
+      </div> 
+      <div class="col-sm-12 col-md-4">
+        <div class="c-card u-p-medium u-text-center u-mb-medium" data-mh="landing-cards" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3)">
+
+            <div class="u-mb-small" style="font-size: 84px; color: #bac8ff"><i class="fas fa-wrench"></i></div>
+
+            <h4 class="u-h6 u-text-bold u-mb-small">
+                Alle Ihre Partner an einem Ort
+            </h4>
+            <a class="c-btn c-btn--info" href="/dashboard/partners">Partner Übersicht</a>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <div class="c-card u-p-medium u-text-center u-mb-medium" data-mh="landing-cards" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3)">
+
+            <div class="u-mb-small" style="font-size: 84px; color: #bac8ff"><i class="fas fa-cogs"></i></div>
+
+            <h4 class="u-h6 u-text-bold u-mb-small">
+                Bearbeiten Sie Ihre Leistungen
+            </h4>
+            <a class="c-btn c-btn--info" href="/dashboard/settings/services">Leistungen bearbeiten</a>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <div class="c-card u-p-medium u-text-center u-mb-medium" data-mh="landing-cards" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3)">
+
+            <div class="u-mb-small" style="font-size: 84px; color: #bac8ff"><i class="far fa-life-ring"></i></div>
+
+            <h4 class="u-h6 u-text-bold u-mb-small">
+                Bei Fragen und Anfragen an Handwerk24
+            </h4>
+            <a class="c-btn c-btn--info" href="/dashboard/support">Support anzeigen</a>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <div class="c-card u-p-medium u-text-center u-mb-medium" data-mh="landing-cards" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3)">
+
+            <div class="u-mb-small" style="font-size: 84px; color: #bac8ff"><i class="fas fa-cog"></i></div>
+
+            <h4 class="u-h6 u-text-bold u-mb-small">
+                Bearbeiten Sie Ihr Benutzerkonto
+            </h4>
+            <a class="c-btn c-btn--info" href="/dashboard/settings">Einstellungen aufrufen</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>

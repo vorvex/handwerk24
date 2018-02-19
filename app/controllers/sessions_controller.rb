@@ -29,15 +29,19 @@ class SessionsController < ApplicationController
   end
   
   def createuser
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])    
-      session[:user_id] = user.id
-      flash[:success] = "Sie wurden erfolgreich angemeldet"
-      redirect_to dashboard_path
-    else
-      flash.now[:danger] = "Email-Adresse und/oder Password stimmen nicht überein"
-      render 'newuser'
-    end
+   if logged_in_user?
+     redirect_to dashboard_path
+   else
+      user = User.find_by(email: params[:session][:email].downcase)
+      if user && user.authenticate(params[:session][:password])    
+        session[:user_id] = user.id
+        flash[:success] = "Sie wurden erfolgreich angemeldet"
+        redirect_to dashboard_path
+      else
+        flash.now[:danger] = "Email-Adresse und/oder Password stimmen nicht überein"
+        render 'newuser'
+      end
+   end
   end
   
   def destroyuser

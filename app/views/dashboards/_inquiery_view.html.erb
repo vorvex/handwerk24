@@ -7,7 +7,7 @@
       <h3 style="display: inline; padding-right: 10px; color: grey">
         <%= link_to '<i class="fa fa-share"></i>'.html_safe, "mailto:#{@inquiery.email}", style: "color: #b7c0cd" %>
         <%= link_to '<i class="fa fa-print"></i>'.html_safe, "#", onclick: "window.print()", style: "color: #b7c0cd" %>
-        <%= link_to '<i class="fa fa-trash"></i>'.html_safe, detach_user_url(@inquiery.id, @user.id), method: 'delete', style: "color: #b7c0cd" %>
+        <%= link_to '<i class="fa fa-trash"></i>'.html_safe, detach_user_url(@inquiery.id, @user.id), method: :delete, style: "color: #b7c0cd" %>
         <%= link_to '<i class="fa fa-file"></i>'.html_safe, "#", style: "color: #b7c0cd" %>
       </h3>
     </div>

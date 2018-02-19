@@ -21,7 +21,7 @@ visibility : visible;
 }
 .infoContainer {
 display : block;
-min-width : 428px;
+min-width : 350px;
 width : 100%;
 }
 .Info1 {
@@ -54,7 +54,7 @@ margin-bottom : 20px;
 padding-left : 20px;
 background : white;
 border-radius : 8px;
-min-width : 428px;
+min-width : 350px;
 box-shadow : 0 2px 4px 0 rgba(0, 0, 0, 0.3);
 }
 .GroupHeader {
@@ -186,6 +186,29 @@ max-width : 200px;
 text-overflow : ellipsis;
 text-decoration : none;
 }
+
+.mail {
+display : inline;
+padding-left : 27px;
+padding-right : 5px;
+font-family : Roboto;
+font-size : 20px;
+color : #000000;
+line-height : 24px;
+font-weight : 300;
+background-image : url(/assets/envelope64.png);
+background-position : 0% 50%;
+background-size : 18px;
+background-repeat : no-repeat;
+max-width : 200px;
+text-overflow : ellipsis;
+text-decoration : none;
+}
+
+.mail:hover .phone:hover {
+    color: #000000;
+    text-decoration: none;
+}
 @media screen and (max-width:1064px) {
 .phone {
 font-size : 14px;
@@ -193,6 +216,12 @@ line-height : 20px;
 background-size : 14px;
 font-weight : 400;
 }
+.mail {
+font-size : 14px;
+line-height : 20px;
+background-size : 14px;
+font-weight : 400;
+}  
 }
 .home {
 display : inline;
@@ -218,7 +247,7 @@ background-size : 16px;
 font-weight : 400;
 }
 }
-.links {
+.hw-links {
 display : flex;
 height : 80px;
 width : 160px;
@@ -229,11 +258,10 @@ align-items : center;
 padding : 20px;
 width : 80px;
 }
-.links :hover {
+.hw-links :hover {
 background : #90B2FF;
 }
 .World {
-height : 40px;
 width : 40px;
 }
 .HWCheck {

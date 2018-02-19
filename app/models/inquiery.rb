@@ -11,4 +11,8 @@ class Inquiery < ApplicationRecord
   #validates :plz, presence: true
   #validates :stadt, presence: true
   
+  def distance(plz)  
+    (self.plz - plz).abs
+  end
+  
 end

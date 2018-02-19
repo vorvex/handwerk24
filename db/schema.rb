@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180215170601) do
+ActiveRecord::Schema.define(version: 20180218135928) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email"
@@ -50,6 +50,16 @@ ActiveRecord::Schema.define(version: 20180215170601) do
     t.integer "company_b_id", null: false
     t.boolean "enabled_by_a"
     t.boolean "enabled_by_b"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "personalizations", force: :cascade do |t|
+    t.string "color_primary", default: "007ACE"
+    t.string "color_secondary", default: "FFFFFF"
+    t.string "first_entry_a", default: "phone"
+    t.string "main_entry_a", default: "website"
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

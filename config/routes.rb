@@ -42,6 +42,8 @@ resources :users, except: [:new, :create, :index, :update]
   resources :inquieries
   
   get 'dashboard', to: 'dashboards#index'
+  post 'dashboard', to: 'personalizations#create', as: 'new_personalization'
+  patch 'dashboard', to: 'personalizations#update', as: 'edit_personalization'
   get 'dashboard/inquieries', to: 'dashboards#inquieries'
   get 'dashboard/inquieries/:id', to: 'dashboards#inquiery_show'
   get 'dashboard/publicinquieries', to: 'dashboards#public_inquieries'
@@ -59,7 +61,7 @@ resources :users, except: [:new, :create, :index, :update]
   get 'dashboard/reset-password/', to: 'dashboards#reset_password'
   get 'passwort-vergessen', to: 'dashboards#forgot_password'
   
-  delete '/inquieries/:id/:user_id', to: 'inquieries#detach', as: 'detach_user'
+  get '/inquieries/:id/:user_id', to: 'inquieries#detach', as: 'detach_user'
   
   post   '/partners/:id', to: 'users#attach', as: 'attach_partner'
   delete '/partners/:id/:partner_id', to: 'users#detach', as: 'detach_partner'

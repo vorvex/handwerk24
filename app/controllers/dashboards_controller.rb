@@ -6,6 +6,11 @@ class DashboardsController < ApplicationController
   def index
     @header = @user.name
     @active = 'Index'
+    if @user.personalizations.any?
+      @updatepersonalize = @user.personalizations.first
+    else
+      @newpersonalize = Personalization.new
+    end
   end
   
   def inquieries
@@ -20,7 +25,11 @@ class DashboardsController < ApplicationController
   def public_inquieries
     @header = 'Öffentliche Nachrichten'
     @active = 'Public Inquieries'
-    @inquieries = Inquiery.where.not(email: nil).left_joins(:users).merge(User.where(id: nil)).order('created_at DESC')
+    @all_inquieries = Inquiery.where.not(email: "").left_joins(:users).merge(User.where(id: nil)).order('created_at DESC')
+    @inquieries = []
+    @all_inquieries.each do |inquiery|
+      @inquieries << inquiery if inquiery.distance(@user.plz) < 300 
+    end
   end
   
   
@@ -117,15 +126,7 @@ class DashboardsController < ApplicationController
     params.require(:user).permit(:username, :name, :email, :telefon, :adresse, :plz, :stadt, :url, :inhaber, :password, :bulletproof, :field_id, service_ids: [])
   end
   
-  def service_tabs
-    @services = Service.all
-    @garten , @aussen, @haus, @boden = [], [], [], []
-    @services.each do |service|
-      @garten << service if service.show && service.category == 'Gartenarbeit'
-      @aussen << service if service.show && service.category == 'Außen am Haus'
-      @haus << service if service.show && service.category == 'Haus und Wohnung'
-      @boden << service if service.show && service.category == 'Bodenbeläge'
-    end
-  end
+
+  
   
 end

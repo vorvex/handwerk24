@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :user_services
   has_many :services, through: :user_services
   has_many :user_inquieries
+  has_many :personalizations
   has_many :inquieries, through: :user_inquieries
   before_save { self.email = email.downcase }
   
@@ -55,6 +56,15 @@ class User < ApplicationRecord
   
   def unavailable(services)
     (services - self.services.ids)
+  end
+  
+  def initials
+    first_name = self.name.split.first[0]
+    second_name = self.name.split.second[0]
+    f = first_name.split[0]
+    s = second_name.split[0]
+    initials = (f+s).downcase
+    return initials
   end
   
 end

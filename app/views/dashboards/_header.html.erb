@@ -9,7 +9,7 @@
   
     <div class="c-dropdown dropdown">
         <a  class="c-avatar c-avatar--xsmall has-dropdown dropdown-toggle" href="#" id="dropdwonMenuAvatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= image_tag 'image-placeholder.svg', class: "c-avatar__img", alt: "Betriebsfoto" %>
+          <%= render 'svg/logo-placeholder', obj: @user, cls: "c-avatar__img" %>
         </a>
 
         <div class="c-dropdown__menu dropdown-menu dropdown-menu-right" aria-labelledby="dropdwonMenuAvatar">
